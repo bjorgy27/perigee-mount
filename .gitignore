@@ -1,0 +1,11 @@
+# renderer virtualenv
+.venv/
+__pycache__/
+*.pyc
+# FreeCAD backups
+*.FCBak
+*.FCStd1
+# huge render intermediates (regenerate with tools_render.py --anim)
+out/renders/anim/
+out/renders/*.gif
+out/renders/anim_log.txt

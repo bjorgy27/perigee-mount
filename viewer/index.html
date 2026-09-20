@@ -1,0 +1,376 @@
+<title>PERIGEE Gimbal</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#eef1f4; --panel:#ffffffcc; --panel-solid:#ffffff; --ink:#111820; --muted:#5b6876; --line:#d3dae2;
+  --accent:#ff7a1a; --accent-ink:#8a3b00; --tele:#0b7d6f; --grid:#c9d1da; --scene:#e6eaef; --shadow:0 10px 30px #0b141e22;
+  --display:"Chakra Petch",ui-sans-serif,system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1016; --panel:#121a23d9; --panel-solid:#121a23; --ink:#e6edf3; --muted:#8393a4; --line:#22303d;
+    --accent:#ff8a2a; --accent-ink:#ffb27a; --tele:#2dd4bf; --grid:#1c2733; --scene:#0d141c; --shadow:0 10px 30px #00000066;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b1016; --panel:#121a23d9; --panel-solid:#121a23; --ink:#e6edf3; --muted:#8393a4; --line:#22303d;
+  --accent:#ff8a2a; --accent-ink:#ffb27a; --tele:#2dd4bf; --grid:#1c2733; --scene:#0d141c; --shadow:0 10px 30px #00000066;
+}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--display);overflow:hidden}
+#stage{position:fixed;inset:0;background:var(--scene)}
+canvas{display:block;touch-action:none}
+.hud{position:fixed;left:16px;top:calc(16px + env(safe-area-inset-top,0px));width:min(320px,calc(100vw - 32px));
+  background:var(--panel);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);
+  padding:14px 16px;display:flex;flex-direction:column;gap:12px;max-height:calc(100vh - 140px);overflow:auto}
+.hud h1{margin:0;font-size:20px;letter-spacing:.14em;font-weight:700;display:flex;align-items:baseline;gap:10px}
+.hud h1 small{font-size:11px;letter-spacing:.18em;color:var(--muted);font-weight:500}
+.row{display:flex;align-items:center;gap:10px}
+.row label{flex:0 0 34px;font-size:12px;letter-spacing:.12em;color:var(--muted)}
+.row input[type=range]{flex:1;accent-color:var(--accent);min-width:0}
+.row output{flex:0 0 68px;text-align:right;font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+button{font-family:var(--display);font-weight:600;letter-spacing:.06em;font-size:12px;border:1px solid var(--line);
+  background:var(--panel-solid);color:var(--ink);border-radius:6px;padding:7px 10px;cursor:pointer}
+button.primary{background:var(--accent);border-color:var(--accent);color:#1a0d00}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;font-size:12px;color:var(--muted)}
+.toggles label{display:flex;gap:6px;align-items:center;cursor:pointer}
+.toggles input{accent-color:var(--accent)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:11px;color:var(--muted);letter-spacing:.06em}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px;background:var(--sw);border:1px solid #0003}
+.tele{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;gap:8px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:12px}
+.tele div{background:var(--panel);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:8px;padding:6px 10px;min-width:96px;flex:1 1 96px}
+.tele b{display:block;font-family:var(--display);font-weight:600;font-size:10px;letter-spacing:.16em;color:var(--muted)}
+.tele em{font-style:normal;color:var(--tele);font-variant-numeric:tabular-nums;font-size:15px}
+#load{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);font-family:var(--mono);font-size:13px;color:var(--muted);text-align:center}
+#load i{display:block;height:3px;width:220px;background:var(--line);margin:10px auto 0;border-radius:2px;overflow:hidden}
+#load i b{display:block;height:100%;width:0;background:var(--accent)}
+.hint{font-size:11px;color:var(--muted);line-height:1.45}
+@media (max-width:560px){ .hud{max-height:46vh} .tele div{min-width:70px} .legend{display:none} }
+@media (prefers-reduced-motion: reduce){ * { transition:none !important } }
+</style>
+
+<div id="stage"></div>
+<div id="load">loading model<i><b id="bar"></b></i></div>
+
+<section class="hud" aria-label="Controls">
+  <h1>PERIGEE <small>AZ/EL GIMBAL · 1 m MESH</small></h1>
+  <div class="row"><label for="az">AZ</label><input id="az" type="range" min="-180" max="180" step="0.5" value="0"><output id="azo">0.0°</output></div>
+  <div class="row"><label for="el">EL</label><input id="el" type="range" min="0" max="180" step="0.5" value="0"><output id="elo">0.0°</output></div>
+  <div class="btns">
+    <button id="play" class="primary">Simulate pass</button>
+    <button id="stop">Stop</button>
+    <button id="home">Reset view</button>
+  </div>
+  <div class="btns">
+    <button id="asm" class="primary">Assemble</button>
+    <button id="asmEnd">Show assembled</button>
+  </div>
+  <div class="row"><label for="asmT">BUILD</label><input id="asmT" type="range" min="0" max="1000" step="1" value="1000"><output id="asmTo">done</output></div>
+  <div class="hint" id="asmLabel" style="min-height:1.2em"></div>
+  <div class="row"><label for="maxel">MAX EL</label><input id="maxel" type="range" min="10" max="89" step="1" value="82"><output id="maxelo">82°</output></div>
+  <div class="toggles">
+    <label><input id="tDish" type="checkbox" checked> dish reference</label>
+    <label><input id="tXray" type="checkbox"> x-ray</label>
+    <label><input id="tOrbit" type="checkbox" checked> auto-orbit</label>
+    <label><input id="tAlt" type="checkbox"> pipe adapter</label>
+    <label><input id="tBase" type="checkbox"> lift head (show gears)</label>
+    <label><input id="tSpin" type="checkbox" checked> spin gears</label>
+    <label><input id="tHw" type="checkbox" checked> fasteners</label>
+  </div>
+  <div class="legend">
+    <span style="--sw:#17181a">black ASA</span><span style="--sw:#ff7a1a">orange</span><span style="--sw:#ededec">white</span>
+    <span style="--sw:#6b7078">grey</span><span style="--sw:#cfe4f5">translucent</span><span style="--sw:#cc9e40">brass inserts</span>
+  </div>
+  <p class="hint">Drag to orbit · scroll or pinch to zoom · right-drag or two fingers to pan. The pass simulation flies a 550 km satellite over the station and flips the dish over the top instead of slewing azimuth at zenith. <b>Assemble</b> builds the gimbal from the base up, every fastener arriving along its own axis; drag BUILD to scrub.</p>
+</section>
+
+<div class="tele" aria-live="polite">
+  <div><b>AZIMUTH</b><em id="tAz">0.0°</em></div>
+  <div><b>ELEVATION</b><em id="tEl">0.0°</em></div>
+  <div><b>AZ RATE</b><em id="tAzr">0.00°/s</em></div>
+  <div><b>EL RATE</b><em id="tElr">0.00°/s</em></div>
+  <div><b>AZ SERVO</b><em id="tAzs">0 rpm</em></div>
+  <div><b>EL SERVO</b><em id="tEls">0 rpm</em></div>
+  <div><b>PASS TIME</b><em id="tT">—</em></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+<script>
+(async function(){
+  const $ = id => document.getElementById(id);
+  const stage = $('stage');
+  const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.setSize(innerWidth, innerHeight);
+  stage.appendChild(renderer.domElement);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(38, innerWidth/innerHeight, 5, 20000);
+  camera.up.set(0,0,1);
+  const target = new THREE.Vector3(0, 0, 420);
+  let sph = {r: 2300, theta: 0.9, phi: 1.15};   // orbit camera in spherical coords around target (z-up)
+  function placeCamera(){
+    const x = sph.r*Math.sin(sph.phi)*Math.cos(sph.theta), y = sph.r*Math.sin(sph.phi)*Math.sin(sph.theta), z = sph.r*Math.cos(sph.phi);
+    camera.position.set(target.x + x, target.y + y, target.z + z);
+    camera.lookAt(target);
+  }
+  placeCamera();
+
+  // lights
+  scene.add(new THREE.HemisphereLight(0xdfe8f2, 0x1a2029, 0.9));
+  const key = new THREE.DirectionalLight(0xffffff, 1.4); key.position.set(900, -1300, 1600); scene.add(key);
+  const fill = new THREE.DirectionalLight(0xffe0c0, 0.45); fill.position.set(-1200, 800, 500); scene.add(fill);
+
+  // ground grid (z-up)
+  const cs = getComputedStyle(document.documentElement);
+  const gridCol = new THREE.Color(cs.getPropertyValue('--grid').trim() || '#1c2733');
+  const grid = new THREE.GridHelper(4000, 40, gridCol, gridCol); grid.rotation.x = Math.PI/2; grid.position.z = -1; scene.add(grid);
+
+  const meta = await (await fetch('meta.json')).json();
+  const COL = meta.colors;
+  const kin = meta.kinematics;
+  const mats = {};
+  function mat(name){
+    if (mats[name]) return mats[name];
+    const c = COL[name] || [0.6,0.6,0.6,0];
+    const m = new THREE.MeshStandardMaterial({color:new THREE.Color(c[0],c[1],c[2]), roughness:name==='steel'?0.35:0.7, metalness:name==='steel'?0.6:0.05,
+      flatShading:true, transparent:c[3]>0, opacity:1-c[3], depthWrite:c[3]===0, side:THREE.DoubleSide});
+    if (name==='clear') { m.roughness = 0.25; }
+    mats[name] = m; return m;
+  }
+  function parseGLB(buf){
+    const dv = new DataView(buf);
+    const jl = dv.getUint32(12, true);
+    const js = JSON.parse(new TextDecoder().decode(new Uint8Array(buf, 20, jl)));
+    const binOff = 20 + jl + 8;
+    const bv = js.bufferViews, acc = js.accessors;
+    const pos = new Float32Array(buf, binOff + bv[acc[0].bufferView].byteOffset, acc[0].count*3);
+    const idx = new Uint32Array(buf, binOff + bv[acc[1].bufferView].byteOffset, acc[1].count);
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    g.setIndex(new THREE.BufferAttribute(idx, 1));
+    const ng = g.toNonIndexed(); ng.computeVertexNormals();
+    return ng;
+  }
+
+  // kinematic tree: pivots positioned at their axis origins; meshes are in world coords so offset them back
+  const pivots = {};
+  function pivot(name, origin, parent){
+    const p = new THREE.Object3D(); p.position.set(origin[0], origin[1], origin[2]);
+    parent.add(p); pivots[name] = p; return p;
+  }
+  const base = new THREE.Group(); scene.add(base); pivots.Base = base;
+  const head = pivot('Head', kin.az_axis.origin, scene);
+  const cradle = pivot('Cradle', kin.el_axis.origin, head);
+  cradle.position.sub(head.position);
+  for (const [gname, g] of Object.entries(kin.gears)) {
+    const p = pivot(gname, g.origin, head); p.position.sub(head.position);
+  }
+  function worldOffsetOf(p){ const v = new THREE.Vector3(); p.getWorldPosition(v); return v; }
+
+  const parts = {};
+  const list = meta.parts;
+  let done = 0;
+  // meshes travel as one base64 bundle (the artifact host serves JSON, not .glb)
+  const bundle = await (await fetch('parts_bundle.json')).json();
+  function b64buf(s){ const bin = atob(s); const u = new Uint8Array(bin.length); for (let i=0;i<bin.length;i++) u[i] = bin.charCodeAt(i); return u.buffer; }
+  await Promise.all(list.map(async p => {
+    const buf = b64buf(bundle[p.name]);
+    await new Promise(r => setTimeout(r, 0));
+    const geo = parseGLB(buf);
+    const mesh = new THREE.Mesh(geo, mat(p.color));
+    const pv = pivots[p.group] || base;
+    const off = worldOffsetOf(pv);
+    mesh.position.set(-off.x, -off.y, -off.z);
+    mesh.userData = p;
+    pv.add(mesh);
+    parts[p.name] = mesh;
+    if (p.hidden) mesh.visible = false;
+    done++; $('bar').style.width = (100*done/list.length) + '%';
+  }));
+  // hardware: one geometry per kind, instanced by matrix into its group
+  const hwGeo = {};
+  for (const [k, hk] of Object.entries(meta.hardware_kinds || {})) {
+    hwGeo[k] = parseGLB(b64buf(bundle['HW_' + k]));
+  }
+  const hwMeshes = [];
+  for (const inst of (meta.hardware || [])) {
+    const hk = meta.hardware_kinds[inst.kind];
+    const mesh = new THREE.Mesh(hwGeo[inst.kind], mat(hk.color));
+    const m = new THREE.Matrix4(); const a = inst.matrix;
+    m.set(a[0][0],a[0][1],a[0][2],a[0][3], a[1][0],a[1][1],a[1][2],a[1][3], a[2][0],a[2][1],a[2][2],a[2][3], 0,0,0,1);
+    const pv = pivots[inst.group] || base;
+    const off = worldOffsetOf(pv);
+    const t = new THREE.Matrix4().makeTranslation(-off.x, -off.y, -off.z);
+    mesh.matrixAutoUpdate = false; mesh.matrix.copy(t.multiply(m)); mesh.userData = {name: hk.label, hardware: true};
+    pv.add(mesh); hwMeshes.push(mesh);
+  }
+  $('load').hidden = true;
+
+  // ---- assembly sequence (from meta: same timing as the rendered video)
+  const ASM = meta.assembly || {items:[], total:1};
+  const asmItems = [];
+  for (const it of ASM.items) {
+    if (it.kind === 'part') { const m = parts[it.name]; if (!m) continue; asmItems.push({it, mesh:m, base:m.position.clone(), dir:new THREE.Vector3(...it.approach)}); }
+    else { const m = hwMeshes[it.index]; if (!m) continue; const e = m.matrix.elements; asmItems.push({it, mesh:m, base:m.matrix.clone(), dir:new THREE.Vector3(e[8], e[9], e[10]).normalize()}); }
+  }
+  const easeOut = p => 1 - Math.pow(1 - Math.min(1, Math.max(0, p)), 3);
+  const smooth = p => { p = Math.min(1, Math.max(0, p)); return p*p*(3-2*p); };
+  function shotCamera(t){
+    const shots = ASM.shots || []; if (!shots.length) return null;
+    const blend = ASM.blend || 0.7;
+    const camIn = (sh, tt) => { const f = Math.min(1, Math.max(0, (tt - sh.t0) / Math.max(1e-6, sh.t1 - sh.t0)));
+      return {c:new THREE.Vector3(...sh.center), e:sh.extent*(1-0.07*f), th:sh.theta + sh.sweep*f, el:sh.elev, label:sh.label}; };
+    let k = 0; for (let i=0;i<shots.length;i++) if (t >= shots[i].t0) k = i;
+    const cur = camIn(shots[k], t);
+    if (k > 0 && t - shots[k].t0 < blend) {
+      const prev = camIn(shots[k-1], shots[k-1].t1); const p = smooth((t - shots[k].t0)/blend);
+      const d = ((cur.th - prev.th + 180) % 360 + 360) % 360 - 180;
+      cur.c.lerpVectors(prev.c, cur.c, p); cur.e = prev.e + (cur.e - prev.e)*p; cur.th = prev.th + d*p; cur.el = prev.el + (cur.el - prev.el)*p;
+    }
+    return cur;
+  }
+  function applyAssembly(t){
+    for (const a of asmItems) {
+      const p = (t - a.it.t0) / a.it.dur;
+      const hiddenByUser = a.mesh.userData.hidden || (a.mesh.userData.name === undefined && false);
+      if (p <= 0) { a.mesh.visible = false; continue; }
+      a.mesh.visible = !a.mesh.userData.userHidden;
+      const d = a.it.dist * (1 - easeOut(p));
+      if (a.it.kind === 'part') { a.mesh.position.copy(a.base).addScaledVector(a.dir, d); }
+      else { a.mesh.matrix.copy(a.base); const e = a.mesh.matrix.elements; e[12] += a.dir.x*d; e[13] += a.dir.y*d; e[14] += a.dir.z*d; }
+    }
+    $('asmT').value = Math.round(1000 * t / ASM.total);
+    const sc = shotCamera(t);
+    $('asmTo').value = t >= ASM.total ? 'done' : ('T+' + t.toFixed(1) + 's');
+    if (sc && t < ASM.total) $('asmLabel').textContent = sc.label; else $('asmLabel').textContent = '';
+  }
+  // remember user-driven visibility so the assembly pass respects it
+  for (const p of list) if (parts[p.name]) parts[p.name].userData.userHidden = p.hidden;
+
+  // ---- state
+  const S = {az:0, el:0, playing:false, t:0, prevAz:0, prevEl:0, azr:0, elr:0, orbit:true, lift:0, asmPlaying:false, asmT:ASM.total};
+  const ratios = {AzPinion: kin.gears.AzPinion.ratio_vs_az, Idler: kin.gears.Idler.ratio_vs_az, Sensor: kin.gears.Sensor.ratio_vs_az, ElPinion: kin.gears.ElPinion.ratio_vs_el};
+  const P = meta.params;
+  const azRatio = P.az_ring_teeth/P.az_pinion_teeth, elRatio = P.el_gear_teeth/P.el_pinion_teeth;
+  const d2r = Math.PI/180;
+  function applyPose(){
+    head.rotation.z = S.az*d2r;
+    cradle.rotation.x = S.el*d2r;
+    const spin = $('tSpin').checked;
+    pivots.AzPinion.rotation.z = spin ? S.az*ratios.AzPinion*d2r : 0;
+    pivots.Idler.rotation.z = spin ? S.az*ratios.Idler*d2r : 0;
+    pivots.Sensor.rotation.z = spin ? S.az*ratios.Sensor*d2r : 0;
+    pivots.ElPinion.rotation.x = spin ? S.el*ratios.ElPinion*d2r : 0;
+    head.position.z = kin.az_axis.origin[2] + S.lift;
+    $('azo').value = S.az.toFixed(1)+'°'; $('elo').value = S.el.toFixed(1)+'°';
+    $('tAz').textContent = S.az.toFixed(1)+'°'; $('tEl').textContent = S.el.toFixed(1)+'°';
+    $('tAzr').textContent = S.azr.toFixed(2)+'°/s'; $('tElr').textContent = S.elr.toFixed(2)+'°/s';
+    $('tAzs').textContent = (Math.abs(S.azr)*azRatio/6).toFixed(1)+' rpm';
+    $('tEls').textContent = (Math.abs(S.elr)*elRatio/6).toFixed(1)+' rpm';
+  }
+  $('az').addEventListener('input', e => { S.playing=false; S.az = +e.target.value; S.azr=S.elr=0; applyPose(); });
+  $('el').addEventListener('input', e => { S.playing=false; S.el = +e.target.value; S.azr=S.elr=0; applyPose(); });
+  $('maxel').addEventListener('input', e => { $('maxelo').value = e.target.value+'°'; });
+
+  // ---- pass model: satellite at 550 km altitude, 7.6 km/s ground track, closest approach sets max elevation
+  const passT = 600; // seconds, centred on culmination
+  let t0 = 0;
+  function passPose(t){
+    const h = 550, v = 7.6, maxEl = +$('maxel').value;
+    const x0 = h/Math.tan(maxEl*d2r);
+    const px = x0, py = v*t;
+    const rng = Math.hypot(px, py);
+    let el = Math.atan2(h, rng)/d2r;
+    let az = Math.atan2(px, py)/d2r;      // 0 = +Y (north), clockwise positive
+    if (maxEl > 70 && py < 0) { el = 180 - el; az = az - 180; }   // flip-over past zenith
+    az = ((az + 180) % 360 + 360) % 360 - 180;
+    return {az, el};
+  }
+  $('asm').addEventListener('click', () => { S.playing = false; S.az = 0; S.el = 0; S.lift = 0; $('tBase').checked = false; applyPose(); S.asmT = 0; S.asmPlaying = true; sph = {r:2300, theta:0.9, phi:1.15}; target.set(0,0,420); placeCamera(); });
+  $('asmEnd').addEventListener('click', () => { S.asmPlaying = false; S.asmT = ASM.total; applyAssembly(S.asmT); });
+  $('asmT').addEventListener('input', e => { S.asmPlaying = false; S.asmT = ASM.total * (+e.target.value) / 1000; applyAssembly(S.asmT);
+    const sc = shotCamera(S.asmT); if (sc) { sph.theta = sc.th*d2r; sph.phi = Math.PI/2 - sc.el*d2r; sph.r = sc.e * 2.9; target.copy(sc.c); placeCamera(); } });
+  $('play').addEventListener('click', () => { S.playing = true; S.t = -passT/2; t0 = performance.now(); S.prevAz=null; });
+  $('stop').addEventListener('click', () => { S.playing = false; S.azr=S.elr=0; applyPose(); });
+  $('home').addEventListener('click', () => { sph = {r:2300, theta:0.9, phi:1.15}; target.set(0,0,420); placeCamera(); });
+  function setUserVis(name, v){ if (parts[name]) { parts[name].userData.userHidden = !v; parts[name].visible = v; } }
+  $('tDish').addEventListener('change', e => { for (const n of ['Dish_Reference_1m','Feed_Reference']) setUserVis(n, e.target.checked); });
+  $('tAlt').addEventListener('change', e => { setUserVis('Dish_Adapter_PipeStub', e.target.checked); setUserVis('Dish_Adapter_Plate', !e.target.checked); });
+  $('tOrbit').addEventListener('change', e => S.orbit = e.target.checked);
+  $('tHw').addEventListener('change', e => { for (const m of hwMeshes) m.visible = e.target.checked; });
+  $('tBase').addEventListener('change', e => { S.lift = e.target.checked ? 160 : 0; applyPose(); });
+  $('tXray').addEventListener('change', e => {
+    for (const m of Object.values(mats)) { if (m.userData.clear) continue; m.transparent = e.target.checked || m.userData.baseT; m.opacity = e.target.checked ? 0.28 : m.userData.baseO; m.depthWrite = !e.target.checked && m.userData.baseO===1; m.needsUpdate = true; }
+  });
+  for (const [n,m] of Object.entries(mats)) { m.userData.baseT = m.transparent; m.userData.baseO = m.opacity; m.userData.clear = (n==='clear'||n==='ref'); }
+
+  // ---- orbit controls (pointer + wheel + touch)
+  const el = renderer.domElement;
+  let drag = null; const touches = new Map();
+  el.addEventListener('pointerdown', e => { el.setPointerCapture(e.pointerId); touches.set(e.pointerId, {x:e.clientX, y:e.clientY}); drag = {x:e.clientX, y:e.clientY, btn:e.button, shift:e.shiftKey}; S.orbitPause = performance.now(); });
+  el.addEventListener('pointerup', e => { touches.delete(e.pointerId); if (!touches.size) drag = null; });
+  el.addEventListener('pointercancel', e => { touches.delete(e.pointerId); drag = null; });
+  el.addEventListener('pointermove', e => {
+    if (!drag) return;
+    if (touches.size === 2) {
+      const pts = [...touches.values()]; const before = Math.hypot(pts[0].x-pts[1].x, pts[0].y-pts[1].y);
+      touches.set(e.pointerId, {x:e.clientX, y:e.clientY});
+      const p2 = [...touches.values()]; const after = Math.hypot(p2[0].x-p2[1].x, p2[0].y-p2[1].y);
+      if (before > 0) sph.r = THREE.MathUtils.clamp(sph.r * before/after, 400, 9000);
+      const cx = (p2[0].x+p2[1].x)/2 - (pts[0].x+pts[1].x)/2, cy = (p2[0].y+p2[1].y)/2 - (pts[0].y+pts[1].y)/2;
+      pan(cx, cy); placeCamera(); return;
+    }
+    const dx = e.clientX - drag.x, dy = e.clientY - drag.y; drag.x = e.clientX; drag.y = e.clientY;
+    if (drag.btn === 2 || drag.shift) pan(dx, dy);
+    else { sph.theta -= dx*0.006; sph.phi = THREE.MathUtils.clamp(sph.phi - dy*0.006, 0.05, Math.PI-0.05); }
+    placeCamera();
+  });
+  function pan(dx, dy){
+    const right = new THREE.Vector3(), up = new THREE.Vector3(0,0,1);
+    camera.getWorldDirection(right); right.cross(up).normalize();
+    const k = sph.r*0.0012;
+    target.addScaledVector(right, -dx*k); target.z += dy*k;
+  }
+  el.addEventListener('contextmenu', e => e.preventDefault());
+  el.addEventListener('wheel', e => { e.preventDefault(); sph.r = THREE.MathUtils.clamp(sph.r * Math.exp(e.deltaY*0.0012), 400, 9000); placeCamera(); }, {passive:false});
+  addEventListener('resize', () => { camera.aspect = innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
+
+  // ---- loop
+  let last = performance.now();
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function frame(now){
+    const dt = Math.min(0.1, (now-last)/1000); last = now;
+    if (S.playing) {
+      const speed = 12;                      // 12x real time
+      S.t += dt*speed;
+      if (S.t > passT/2) { S.playing = false; S.azr = S.elr = 0; $('tT').textContent = 'LOS'; }
+      else {
+        const p = passPose(S.t);
+        if (S.prevAz !== null && S.prevAz !== undefined) {
+          let dAz = p.az - S.prevAz; if (dAz > 180) dAz -= 360; if (dAz < -180) dAz += 360;
+          S.azr = dAz/(dt*speed); S.elr = (p.el - S.prevEl)/(dt*speed);
+        }
+        S.prevAz = p.az; S.prevEl = p.el; S.az = p.az; S.el = p.el;
+        $('az').value = S.az; $('el').value = S.el;
+        const tt = S.t + passT/2; $('tT').textContent = 'T+' + String(Math.floor(tt/60)).padStart(2,'0') + ':' + String(Math.floor(tt%60)).padStart(2,'0');
+      }
+      applyPose();
+    }
+    if (S.asmPlaying) {
+      S.asmT += dt;
+      if (S.asmT >= ASM.total) { S.asmT = ASM.total; S.asmPlaying = false; }
+      applyAssembly(S.asmT);
+      const sc = shotCamera(S.asmT);
+      if (sc && !reduce) { sph.theta = sc.th*d2r; sph.phi = Math.PI/2 - sc.el*d2r; sph.r = sc.e * 2.9; target.copy(sc.c); placeCamera(); }
+    }
+    if (S.orbit && !reduce && !(drag) && !S.asmPlaying && now - (S.orbitPause||0) > 4000) { sph.theta += dt*0.12; placeCamera(); }
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  applyPose();
+  requestAnimationFrame(frame);
+})().catch(err => { const l = document.getElementById('load'); l.hidden = false; l.textContent = 'Could not load the model: ' + err.message; });
+</script>

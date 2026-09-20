@@ -1,0 +1,30 @@
+<title>PERIGEE Assembly Film</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+:root{--bg:#eef1f4;--ink:#111820;--muted:#5b6876;--line:#d3dae2;--accent:#ff7a1a;--panel:#ffffff;
+  --display:"Chakra Petch",ui-sans-serif,system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0b1016;--ink:#e6edf3;--muted:#8393a4;--line:#22303d;--accent:#ff8a2a;--panel:#121a23}}
+:root[data-theme="dark"]{--bg:#0b1016;--ink:#e6edf3;--muted:#8393a4;--line:#22303d;--accent:#ff8a2a;--panel:#121a23}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--display);padding-inline:16px;padding-block:24px}
+main{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+h1{margin:0;font-size:22px;letter-spacing:.14em;display:flex;gap:12px;align-items:baseline}
+h1 small{font-size:11px;letter-spacing:.18em;color:var(--muted);font-weight:500}
+video{width:100%;max-width:100%;aspect-ratio:4/3;background:#0d141c;border:1px solid var(--line);border-radius:10px;display:block}
+.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px 14px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.shots span{display:flex;gap:8px;cursor:pointer;padding:3px 0}
+.shots span b{color:var(--accent);font-weight:400;min-width:44px;font-variant-numeric:tabular-nums}
+.shots span:hover{color:var(--ink)}
+p{color:var(--muted);font-size:13px;line-height:1.5;max-width:70ch;margin:0}
+a{color:var(--accent)}
+</style>
+<main>
+  <h1>PERIGEE <small>ASSEMBLY FILM · 16 SHOTS · 70.5 s</small></h1>
+  <video id="v" controls playsinline preload="metadata" src="/_blob/25d9810292e3c544b1d5f251deb6f5a9"></video>
+  <div class="shots" id="shots"></div>
+  <p>Base-up assembly of the fully printed 1 m dish gimbal, styled after EO/IR tracking gimbals. Each shot frames the sub-assembly being placed; every one of the 211 metric fasteners flies in along its own axis right after the part it joins. Click a shot to jump to it. The same sequence runs live in the <a href="https://claude.ai/artifact/CDMET8jFXXFJrPcQUhj2Ft">interactive viewer</a> under Assemble.</p>
+</main>
+<script>
+const shots = [{"t0": 0.0, "label": "Pedestal"}, {"t0": 3.02, "label": "Ring gear, sun gear, slip ring"}, {"t0": 7.14, "label": "Head module: deck, encoder train, AZ pinion, servo"}, {"t0": 11.61, "label": "Flange plate and servo clamp"}, {"t0": 15.18, "label": "Azimuth housing, yoke plate, access cover"}, {"t0": 19.85, "label": "Yoke arms, lower segments"}, {"t0": 23.42, "label": "Shoulder segments"}, {"t0": 26.99, "label": "Yoke complete"}, {"t0": 31.99, "label": "Cradle: bushings, stubs, gear, hub, lid"}, {"t0": 38.31, "label": "Pillow-block caps"}, {"t0": 42.98, "label": "Right shoulder: pinion, servo, covers"}, {"t0": 47.65, "label": "Left shoulder: encoder cap and window"}, {"t0": 51.22, "label": "Dish boom and adapter"}, {"t0": 54.79, "label": "Counterweight"}, {"t0": 58.91, "label": "1 m dish"}, {"t0": 62.48, "label": "PERIGEE gimbal complete"}];
+const v = document.getElementById('v'), box = document.getElementById('shots');
+for (const s of shots) { const el = document.createElement('span'); el.innerHTML = '<b>' + s.t0.toFixed(1) + 's</b>' + s.label; el.onclick = () => { v.currentTime = s.t0; v.play(); }; box.appendChild(el); }
+</script>

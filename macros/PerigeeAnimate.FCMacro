@@ -1,0 +1,68 @@
+# -*- coding: utf-8 -*-
+"""Animate the Perigee gimbal in the FreeCAD GUI (no solver needed).
+Open out/PerigeeGimbal.FCStd, then run this macro. Simulates an overhead pass with the flip-over EL axis.
+"""
+import math, time, json, os
+import FreeCAD as App, FreeCADGui as Gui
+
+doc = App.ActiveDocument
+if doc is None or doc.getObject("Gimbal") is None:
+    raise RuntimeError("Open out/PerigeeGimbal.FCStd first")
+
+V = App.Vector
+grp = {n: doc.getObject(n) for n in ("Base", "Head", "Cradle", "AzPinion", "ElPinion", "Idler", "Sensor")}
+sheet = doc.getObject("Params")
+def P(name, default):
+    try:
+        return float(sheet.get(name))
+    except Exception:
+        return default
+z_puck0 = P("puck_z0", 40.0)
+el_z = P("el_axis_height", 510.0) + z_puck0 + P("puck_h", 30.0)
+m = P("gear_module", 2.0)
+az_ratio = P("az_ring_teeth", 84) / P("az_pinion_teeth", 20)
+el_ratio = P("el_gear_teeth", 100) / P("el_pinion_teeth", 20)
+r_sun = P("sensor_sun_teeth", 36) * P("sensor_module", 1.5) / 2
+r_idl = P("sensor_idler_teeth", 16) * P("sensor_module", 1.5) / 2
+r_sen = P("sensor_gear_teeth", 36) * P("sensor_module", 1.5) / 2
+az_pin_c = V(0, P("az_ring_teeth", 84) * m / 2 - P("az_pinion_teeth", 20) * m / 2, 0)
+idler_c = V(0, -(r_sun + r_idl), 0)
+sens_c = V(0, -(r_sun + 2 * r_idl + r_sen), 0)
+x_gear0 = P("arm_inner_x", 60) + P("arm_thick", 30) + 2
+z_elpin = el_z - (P("el_gear_teeth", 100) + P("el_pinion_teeth", 20)) * m / 2
+
+def about(axis, deg, origin):
+    return App.Placement(origin, App.Rotation(axis, deg), V(0, 0, 0)).multiply(App.Placement(-origin, App.Rotation()))
+
+def pose(az, el):
+    H = about(V(0, 0, 1), az, V(0, 0, z_puck0))
+    grp["Head"].Placement = H
+    grp["Cradle"].Placement = H.multiply(about(V(1, 0, 0), el, V(0, 0, el_z)))
+    grp["AzPinion"].Placement = H.multiply(about(V(0, 0, 1), az * az_ratio, az_pin_c))
+    grp["Idler"].Placement = H.multiply(about(V(0, 0, 1), az * (r_sun / r_idl), idler_c))
+    grp["Sensor"].Placement = H.multiply(about(V(0, 0, 1), -az, sens_c))
+    grp["ElPinion"].Placement = H.multiply(about(V(1, 0, 0), -el * el_ratio, V(0, 0, z_elpin)))
+    Gui.updateGui()
+
+# Overhead pass: satellite at 550 km, 7.6 km/s, max elevation 85 deg, flip-over past zenith
+h, v, max_el = 550.0, 7.6, 85.0
+x0 = h / math.tan(math.radians(max_el))
+T = 480.0            # seconds of pass shown
+speed = 12.0         # playback speed factor
+t0 = time.time()
+try:
+    while True:
+        t = (time.time() - t0) * speed - T / 2
+        if t > T / 2:
+            break
+        px, py = x0, v * t
+        rng = math.hypot(px, py)
+        el = math.degrees(math.atan2(h, rng))
+        az = math.degrees(math.atan2(px, py))
+        if py < 0:  # far side of the pass: flip over instead of swinging azimuth 180
+            el = 180 - el
+            az = az - 180
+        pose(az, el)
+        time.sleep(0.02)
+finally:
+    pose(0, 0)
