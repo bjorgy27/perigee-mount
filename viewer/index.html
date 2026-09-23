@@ -252,24 +252,23 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline
 
   // ---- state
   const S = {az:0, el:0, playing:false, t:0, prevAz:0, prevEl:0, azr:0, elr:0, orbit:true, lift:0, asmPlaying:false, asmT:ASM.total};
-  const ratios = {AzPinion: kin.gears.AzPinion.ratio_vs_az, Idler: kin.gears.Idler.ratio_vs_az, Sensor: kin.gears.Sensor.ratio_vs_az, ElPinion: kin.gears.ElPinion.ratio_vs_el};
   const P = meta.params;
-  const azRatio = P.az_ring_teeth/P.az_pinion_teeth, elRatio = P.el_gear_teeth/P.el_pinion_teeth;
   const d2r = Math.PI/180;
   function applyPose(){
     head.rotation.z = S.az*d2r;
     cradle.rotation.x = S.el*d2r;
     const spin = $('tSpin').checked;
-    pivots.AzPinion.rotation.z = spin ? S.az*ratios.AzPinion*d2r : 0;
-    pivots.Idler.rotation.z = spin ? S.az*ratios.Idler*d2r : 0;
-    pivots.Sensor.rotation.z = spin ? S.az*ratios.Sensor*d2r : 0;
-    pivots.ElPinion.rotation.x = spin ? S.el*ratios.ElPinion*d2r : 0;
+    for (const [gname, g] of Object.entries(kin.gears)) {           // direct drives: no separate gear pivots
+      if (!pivots[gname]) continue;
+      if (g.ratio_vs_el !== undefined) pivots[gname].rotation.x = spin ? S.el*g.ratio_vs_el*d2r : 0;
+      else pivots[gname].rotation.z = spin ? S.az*g.ratio_vs_az*d2r : 0;
+    }
     head.position.z = kin.az_axis.origin[2] + S.lift;
     $('azo').value = S.az.toFixed(1)+'°'; $('elo').value = S.el.toFixed(1)+'°';
     $('tAz').textContent = S.az.toFixed(1)+'°'; $('tEl').textContent = S.el.toFixed(1)+'°';
     $('tAzr').textContent = S.azr.toFixed(2)+'°/s'; $('tElr').textContent = S.elr.toFixed(2)+'°/s';
-    $('tAzs').textContent = (Math.abs(S.azr)*azRatio/6).toFixed(1)+' rpm';
-    $('tEls').textContent = (Math.abs(S.elr)*elRatio/6).toFixed(1)+' rpm';
+    $('tAzs').textContent = (Math.abs(S.azr)/6).toFixed(2)+' rpm';
+    $('tEls').textContent = (Math.abs(S.elr)/6).toFixed(2)+' rpm';
   }
   $('az').addEventListener('input', e => { S.playing=false; S.az = +e.target.value; S.azr=S.elr=0; applyPose(); });
   $('el').addEventListener('input', e => { S.playing=false; S.el = +e.target.value; S.azr=S.elr=0; applyPose(); });

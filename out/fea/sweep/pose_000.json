@@ -1,0 +1,24 @@
+{
+ "el_deg": 0.0,
+ "z_el": 599,
+ "y_boom_end": 150,
+ "y_cw_end": -220.0,
+ "foot_center": [
+  0.0,
+  0.0,
+  0.0
+ ],
+ "dish_center": [
+  0.0,
+  150.0,
+  599.0
+ ],
+ "cw_center": [
+  0.0,
+  -220.0,
+  599.0
+ ],
+ "dish_offset": 150,
+ "volume_cm3": 6403.269208053194,
+ "one_solid": true
+}

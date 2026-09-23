@@ -6,13 +6,13 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 10970,
-  "notes": "AZ pedestal. Step at z 40 (r 92-104) is the greased thrust face; 208 mm bore is the journal. 6x M6 in the foot flange for a mount plate. Nut traps for the flange-plate bolts open on the outside.",
-  "volume_cm3": 1013.9,
+  "tris": 13524,
+  "notes": "AZ pedestal. Step at the puck underside (r 84-96) is the greased thrust face; 192 mm bore is the journal. Stingray-4 on four pillars, 4x M4x40 from under the floor. 6x M6 in the foot flange for a mount plate.",
+  "volume_cm3": 1174.8,
   "print_bbox_mm": [
-   252.0,
-   252.0,
-   56.0
+   236.0,
+   236.0,
+   75.0
   ]
  },
  {
@@ -22,57 +22,36 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 5028,
+  "tris": 7920,
   "notes": "Wide flange plate (12x M4x20 + nuts in the pedestal wall) trapping the puck lip: uplift + moment, and the visible AZ seam.",
-  "volume_cm3": 141.0,
+  "volume_cm3": 130.8,
   "print_bbox_mm": [
-   252.0,
-   252.0,
+   236.0,
+   236.0,
    8.0
   ]
  },
  {
-  "name": "Az_Ring_Gear",
+  "name": "Az_Stingray4",
   "group": "Base",
-  "color": "orange",
-  "printed": true,
+  "color": "black",
+  "printed": false,
   "qty": 1,
   "hidden": false,
-  "tris": 11712,
-  "notes": "Internal ring gear 80 T module 2; 6x M4x12 from below, nuts slid into the inner face slots.",
-  "volume_cm3": 86.8,
-  "print_bbox_mm": [
-   177.0,
-   177.0,
-   23.0
-  ]
+  "tris": 5096,
+  "notes": "goBILDA Stingray-4 (4:1, 450 deg, 100 kg.cm), SKU 3215-0001-0004: direct AZ drive under the deck (block + servo + pinion).",
+  "volume_cm3": 99.8
  },
  {
-  "name": "Sensor_Sun_Gear",
-  "group": "Base",
-  "color": "orange",
-  "printed": true,
-  "qty": 1,
-  "hidden": false,
-  "tris": 5444,
-  "notes": "Fixed sun of the AZ encoder train: D-flat press fit, a drop of CA; the puck retains it axially.",
-  "volume_cm3": 6.4,
-  "print_bbox_mm": [
-   47.3,
-   47.3,
-   12.0
-  ]
- },
- {
-  "name": "SlipRing_Capsule_22mm",
-  "group": "Base",
+  "name": "Az_Stingray4_Output",
+  "group": "Head",
   "color": "steel",
   "printed": false,
   "qty": 1,
   "hidden": false,
-  "tris": 644,
-  "notes": "22 mm flanged capsule slip ring (bought).",
-  "volume_cm3": 9.7
+  "tris": 4936,
+  "notes": "Stingray-4 output gear, hub and standoffs: turns with the head, bolted to the puck (4x M4x25 from the deck).",
+  "volume_cm3": 31.2
  },
  {
   "name": "Arm_R_1",
@@ -81,13 +60,13 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 3584,
-  "notes": "Lower yoke arm (R). Foot bolts (4x M4x25) come up from under the yoke plate into side-loaded nuts; tenon + 2x M4x40 to the shoulder.",
-  "volume_cm3": 613.4,
+  "tris": 4574,
+  "notes": "Lower arm column (R), hollow, cables inside. Feet 4x M4x25 from under the yoke plate into side-loaded nuts; socket for the upper spigot, 2x M4x50 across.",
+  "volume_cm3": 149.8,
   "print_bbox_mm": [
-   156.0,
-   124.0,
-   40.0
+   180.0,
+   60.0,
+   60.0
   ]
  },
  {
@@ -97,13 +76,13 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 4430,
-  "notes": "Shoulder segment (R): pillow block top, on-axis cap, servo pocket behind the lower cover. All nuts side-loaded (traps on the Y faces, from the bore, from the servo pocket).",
-  "volume_cm3": 1386.4,
+  "tris": 9560,
+  "notes": "Upper arm column + lower half of the shoulder drum (R): Stingray-9 pocket from the inner face, open cavity behind the translucent lens; block held by 8x M4 from the drum surface.",
+  "volume_cm3": 519.8,
   "print_bbox_mm": [
-   275.0,
-   128.0,
-   64.0
+   250.0,
+   150.0,
+   60.0
   ]
  },
  {
@@ -113,13 +92,13 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 3584,
-  "notes": "Lower yoke arm (L). Foot bolts (4x M4x25) come up from under the yoke plate into side-loaded nuts; tenon + 2x M4x40 to the shoulder.",
-  "volume_cm3": 613.4,
+  "tris": 4786,
+  "notes": "Lower arm column (L), hollow, cables inside. Feet 4x M4x25 from under the yoke plate into side-loaded nuts; socket for the upper spigot, 2x M4x50 across.",
+  "volume_cm3": 148.6,
   "print_bbox_mm": [
-   156.0,
-   124.0,
-   40.0
+   180.0,
+   60.0,
+   60.0
   ]
  },
  {
@@ -129,13 +108,13 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 2734,
-  "notes": "Shoulder segment (L): pillow block top, on-axis cap. All nuts side-loaded (traps on the Y faces, from the bore, from the servo pocket).",
-  "volume_cm3": 1504.3,
+  "tris": 7286,
+  "notes": "Upper arm column + lower half of the shoulder drum (L): pillow block for the left stub bushing, on-axis encoder cap.",
+  "volume_cm3": 657.9,
   "print_bbox_mm": [
-   275.0,
-   128.0,
-   64.0
+   250.0,
+   150.0,
+   60.0
   ]
  },
  {
@@ -145,45 +124,13 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 1396,
-  "notes": "Rounded pillow-block cap, 2x M4x20 into nuts trapped in the shoulder; holds the upper bushing half.",
-  "volume_cm3": 360.1,
+  "tris": 4622,
+  "notes": "Upper half of the shoulder drum, 2x M4x25 into nuts trapped in the lower half; closes the top of the gearbox pocket.",
+  "volume_cm3": 468.6,
   "print_bbox_mm": [
-   64.0,
-   128.0,
-   64.0
-  ]
- },
- {
-  "name": "El_Bushing_R_Lower",
-  "group": "Head",
-  "color": "white",
-  "printed": true,
-  "qty": 1,
-  "hidden": false,
-  "tris": 132,
-  "notes": "Half of the split plain bushing (36/30.5 x 40). Grease.",
-  "volume_cm3": 5.7,
-  "print_bbox_mm": [
-   40.0,
-   36.0,
-   18.0
-  ]
- },
- {
-  "name": "El_Bushing_R_Upper",
-  "group": "Head",
-  "color": "white",
-  "printed": true,
-  "qty": 1,
-  "hidden": false,
-  "tris": 132,
-  "notes": "Half of the split plain bushing (36/30.5 x 40). Grease.",
-  "volume_cm3": 5.7,
-  "print_bbox_mm": [
-   40.0,
-   36.0,
-   18.0
+   60.0,
+   150.0,
+   75.0
   ]
  },
  {
@@ -193,13 +140,13 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 828,
-  "notes": "Rounded pillow-block cap, 2x M4x20 into nuts trapped in the shoulder; holds the upper bushing half.",
-  "volume_cm3": 368.2,
+  "tris": 3726,
+  "notes": "Upper half of the shoulder drum, 2x M4x25 into nuts trapped in the lower half; holds the upper bushing half.",
+  "volume_cm3": 484.6,
   "print_bbox_mm": [
-   64.0,
-   128.0,
-   64.0
+   60.0,
+   150.0,
+   75.0
   ]
  },
  {
@@ -209,7 +156,7 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 132,
+  "tris": 172,
   "notes": "Half of the split plain bushing (36/30.5 x 40). Grease.",
   "volume_cm3": 5.7,
   "print_bbox_mm": [
@@ -225,7 +172,7 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 132,
+  "tris": 180,
   "notes": "Half of the split plain bushing (36/30.5 x 40). Grease.",
   "volume_cm3": 5.7,
   "print_bbox_mm": [
@@ -235,31 +182,15 @@
   ]
  },
  {
-  "name": "El_Axis_Cap_R",
-  "group": "Head",
-  "color": "grey",
-  "printed": true,
-  "qty": 1,
-  "hidden": false,
-  "tris": 1352,
-  "notes": "Right axis cap over the stub end; 4x M3x12 into bore-loaded nuts.",
-  "volume_cm3": 34.2,
-  "print_bbox_mm": [
-   80.0,
-   80.0,
-   7.0
-  ]
- },
- {
   "name": "El_Axis_Cap_L",
   "group": "Head",
   "color": "grey",
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 1922,
+  "tris": 3774,
   "notes": "Left axis cap: AS5600 column (2 mm off the stub magnet), translucent window; 4x M3x12 into bore-loaded nuts.",
-  "volume_cm3": 33.6,
+  "volume_cm3": 33.2,
   "print_bbox_mm": [
    80.0,
    80.0,
@@ -273,7 +204,7 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 124,
+  "tris": 164,
   "notes": "Translucent disc in the left cap.",
   "volume_cm3": 2.4,
   "print_bbox_mm": [
@@ -285,29 +216,40 @@
  {
   "name": "El_Servo_Cover",
   "group": "Head",
-  "color": "grey",
+  "color": "clear",
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 1416,
-  "notes": "Round cover over the servo pocket; integral spacer holds the servo. 4x M3x12 into pocket-loaded nuts.",
-  "volume_cm3": 52.6,
+  "tris": 4272,
+  "notes": "Translucent lens on the right shoulder drum showing the Stingray-9; 4x M3x12 into cavity-loaded nuts.",
+  "volume_cm3": 49.7,
   "print_bbox_mm": [
-   92.0,
-   92.0,
-   13.7
+   96.0,
+   96.0,
+   7.0
   ]
  },
  {
-  "name": "El_Servo_placeholder",
+  "name": "El_Stingray9",
   "group": "Head",
+  "color": "black",
+  "printed": false,
+  "qty": 1,
+  "hidden": false,
+  "tris": 5096,
+  "notes": "goBILDA Stingray-9 (9:1, 200 deg, 227 kg.cm), SKU 3215-0001-0009: direct EL drive in the right shoulder drum (block + servo + pinion).",
+  "volume_cm3": 98.6
+ },
+ {
+  "name": "El_Stingray9_Output",
+  "group": "Cradle",
   "color": "steel",
   "printed": false,
   "qty": 1,
   "hidden": false,
-  "tris": 140,
-  "notes": "Your servo (placeholder box) inside the right shoulder.",
-  "volume_cm3": 80.3
+  "tris": 4952,
+  "notes": "Stingray-9 output gear, hub and standoffs: turns with the cradle, bolted to the hub's right wall (4x M4x12 from inside).",
+  "volume_cm3": 38.8
  },
  {
   "name": "Head_Puck",
@@ -316,45 +258,13 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 3804,
-  "notes": "Rotating deck: 15 mm journal lip + thrust face (grease). Nuts for the deck hardware sit in hex pockets on its underside.",
-  "volume_cm3": 892.8,
+  "tris": 4112,
+  "notes": "Rotating deck: 15 mm journal lip + thrust face (grease); bolted to the Stingray-4 standoffs (4x M4x25). Cable loop hole at the back.",
+  "volume_cm3": 817.2,
   "print_bbox_mm": [
-   207.0,
-   207.0,
+   191.0,
+   191.0,
    30.0
-  ]
- },
- {
-  "name": "SlipRing_Stub_Clamp",
-  "group": "Head",
-  "color": "white",
-  "printed": true,
-  "qty": 1,
-  "hidden": false,
-  "tris": 458,
-  "notes": "Hex split collar keyed into the puck; M3x16 pinch bolt + nut.",
-  "volume_cm3": 3.5,
-  "print_bbox_mm": [
-   22.0,
-   25.1,
-   10.0
-  ]
- },
- {
-  "name": "Az_Servo_Clamp",
-  "group": "Head",
-  "color": "white",
-  "printed": true,
-  "qty": 1,
-  "hidden": false,
-  "tris": 536,
-  "notes": "Saddle pinning the AZ servo; 2x M3x35 through the deck into underside nuts.",
-  "volume_cm3": 5.9,
-  "print_bbox_mm": [
-   64.0,
-   12.0,
-   28.0
   ]
  },
  {
@@ -364,12 +274,12 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 6060,
+  "tris": 8254,
   "notes": "Rotating azimuth housing (same diameter as the pedestal) = electronics bay. 4 pillars + ribs carry the yoke; M4x30 from below, M4x16 from above, nuts trapped in the pillars.",
-  "volume_cm3": 453.3,
+  "volume_cm3": 429.8,
   "print_bbox_mm": [
-   232.0,
-   232.0,
+   216.0,
+   216.0,
    88.0
   ]
  },
@@ -380,12 +290,12 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 68,
+  "tris": 92,
   "notes": "Curved translucent plate behind the drum stencil (glue), LED behind.",
-  "volume_cm3": 3.4,
+  "volume_cm3": 3.1,
   "print_bbox_mm": [
-   76.2,
-   8.6,
+   70.7,
+   8.1,
    22.0
   ]
  },
@@ -396,136 +306,29 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 6272,
-  "notes": "Broad yoke base / drum lid: pillars 4x M4x16 from above (nuts in the pillars), arm feet 4x M4x25 each from below (nuts in the arm feet), round access cover 6x M3x25 (nuts under the plate).",
-  "volume_cm3": 655.6,
+  "tris": 16776,
+  "notes": "Oval yoke plate / drum lid (244 x 220 mm): pillars 4x M4x16 from above (nuts in the pillars), arm feet 4x M4x25 each from below (nuts in the arm feet), translucent access cover 6x M3x25 (nuts under the plate).",
+  "volume_cm3": 568.2,
   "print_bbox_mm": [
-   240.0,
-   236.0,
+   244.0,
+   220.0,
    16.0
   ]
  },
  {
   "name": "Yoke_Access_Cover",
   "group": "Head",
-  "color": "grey",
+  "color": "clear",
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 2680,
-  "notes": "Round access cover on the yoke plate; 6x M3x25 + nuts under the plate.",
+  "tris": 4466,
+  "notes": "Translucent round access cover on the yoke plate (electronics visible); 6x M3x25 + nuts under the plate.",
   "volume_cm3": 57.6,
   "print_bbox_mm": [
    116.0,
    116.0,
    7.0
-  ]
- },
- {
-  "name": "Az_Servo_placeholder",
-  "group": "Head",
-  "color": "steel",
-  "printed": false,
-  "qty": 1,
-  "hidden": false,
-  "tris": 140,
-  "notes": "Your servo (placeholder box).",
-  "volume_cm3": 80.3
- },
- {
-  "name": "Sensor_Gear_Keeper",
-  "group": "Head",
-  "color": "white",
-  "printed": true,
-  "qty": 1,
-  "hidden": false,
-  "tris": 348,
-  "notes": "Retains the AZ sensor gear on its pin; 2x M3x45 from the deck, nuts in the keeper.",
-  "volume_cm3": 2.6,
-  "print_bbox_mm": [
-   68.0,
-   10.0,
-   12.5
-  ]
- },
- {
-  "name": "Az_Pinion",
-  "group": "AzPinion",
-  "color": "orange",
-  "printed": true,
-  "qty": 1,
-  "hidden": false,
-  "tris": 3500,
-  "notes": "20 T module 2; M3x10 axial screw into the servo's own shaft thread.",
-  "volume_cm3": 16.8,
-  "print_bbox_mm": [
-   43.5,
-   43.5,
-   22.0
-  ]
- },
- {
-  "name": "El_Gear",
-  "group": "Cradle",
-  "color": "orange",
-  "printed": true,
-  "qty": 1,
-  "hidden": false,
-  "tris": 10792,
-  "notes": "72 T module 2 bolted to the right hub wall (4x M4x20, nuts inside the hub).",
-  "volume_cm3": 94.9,
-  "print_bbox_mm": [
-   147.8,
-   147.8,
-   10.0
-  ]
- },
- {
-  "name": "El_Pinion",
-  "group": "ElPinion",
-  "color": "orange",
-  "printed": true,
-  "qty": 1,
-  "hidden": false,
-  "tris": 3632,
-  "notes": "20 T module 2 on the EL servo shaft; M3x10 axial into the servo's shaft thread.",
-  "volume_cm3": 12.5,
-  "print_bbox_mm": [
-   43.5,
-   43.5,
-   13.0
-  ]
- },
- {
-  "name": "Sensor_Idler",
-  "group": "Idler",
-  "color": "orange",
-  "printed": true,
-  "qty": 1,
-  "hidden": false,
-  "tris": 2096,
-  "notes": "Runs on the M4x45 axle.",
-  "volume_cm3": 1.2,
-  "print_bbox_mm": [
-   16.9,
-   16.9,
-   8.0
-  ]
- },
- {
-  "name": "Sensor_Gear",
-  "group": "Sensor",
-  "color": "orange",
-  "printed": true,
-  "qty": 1,
-  "hidden": false,
-  "tris": 5580,
-  "notes": "1:1 with the sun; carries the AZ AS5600 magnet.",
-  "volume_cm3": 12.7,
-  "print_bbox_mm": [
-   47.3,
-   47.3,
-   14.0
   ]
  },
  {
@@ -535,9 +338,9 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 3132,
-  "notes": "Hollow faceted hub, open top with a bolted lid: every flange bolt (stubs, gear, boom, counterweight arm) ends in a nut inside the cavity.",
-  "volume_cm3": 191.0,
+  "tris": 7592,
+  "notes": "Hollow rounded hub, open top with a flush bolted lid: every flange bolt (left stub, boom, counterweight arm) ends in a nut inside the cavity; the right wall bolts straight onto the Stingray-9 standoffs.",
+  "volume_cm3": 254.5,
   "print_bbox_mm": [
    90.0,
    90.0,
@@ -551,29 +354,13 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 1128,
-  "notes": "Hub lid, 4x M3x20 into nuts trapped in the hub walls. Fit after all flange nuts are in.",
-  "volume_cm3": 50.8,
+  "tris": 1540,
+  "notes": "Flush hub lid, 4x M3x12 into nuts trapped in the rim. Fit after all flange nuts and the standoff screws are in.",
+  "volume_cm3": 37.9,
   "print_bbox_mm": [
-   81.3,
-   85.4,
-   8.0
-  ]
- },
- {
-  "name": "El_Stub_R",
-  "group": "Cradle",
-  "color": "black",
-  "printed": true,
-  "qty": 1,
-  "hidden": false,
-  "tris": 1432,
-  "notes": "EL stub axle, flange 4x M4x20 through the hub wall into nuts inside; turns in the split bushings. ",
-  "volume_cm3": 63.3,
-  "print_bbox_mm": [
-   60.0,
-   60.0,
-   73.0
+   80.4,
+   80.4,
+   6.0
   ]
  },
  {
@@ -583,13 +370,13 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 1560,
-  "notes": "EL stub axle, flange 4x M4x20 through the hub wall into nuts inside; turns in the split bushings. Magnet in the end face.",
-  "volume_cm3": 63.2,
+  "tris": 2060,
+  "notes": "Left EL stub axle, flange 4x M4x20 through the hub wall into nuts inside; turns in the split bushings. Magnet in the end face.",
+  "volume_cm3": 58.9,
   "print_bbox_mm": [
    60.0,
    60.0,
-   73.0
+   67.0
   ]
  },
  {
@@ -599,13 +386,13 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 1708,
-  "notes": "Square boom to the dish offset; root flange 4x M4x20 into nuts inside the hub; round end flange takes either adapter (4x M5 + nuts).",
-  "volume_cm3": 125.4,
+  "tris": 3236,
+  "notes": "Round boom tube to the dish offset; round root flange 4x M4x20 into nuts inside the hub; round end flange takes either adapter (4x M5 + nuts).",
+  "volume_cm3": 101.1,
   "print_bbox_mm": [
-   64.0,
+   70.0,
    115.0,
-   64.0
+   70.0
   ]
  },
  {
@@ -615,13 +402,13 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 2468,
-  "notes": "Square tube with a row of M4 holes for the canister collar; root flange 4x M4x20 into nuts inside the hub.",
-  "volume_cm3": 141.5,
+  "tris": 4812,
+  "notes": "Round tube with a row of M4 holes for the canister collar; round root flange 4x M4x20 into nuts inside the hub.",
+  "volume_cm3": 109.6,
   "print_bbox_mm": [
-   64.0,
+   70.0,
    185.0,
-   64.0
+   70.0
   ]
  },
  {
@@ -631,9 +418,9 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 1748,
-  "notes": "Adapter A: slotted plate; 4x M5x20 + nuts.",
-  "volume_cm3": 72.3,
+  "tris": 7004,
+  "notes": "Adapter A: slotted plate; 4x M5x12 into nuts pocketed in the boom flange.",
+  "volume_cm3": 71.7,
   "print_bbox_mm": [
    120.0,
    120.0,
@@ -647,7 +434,7 @@
   "printed": true,
   "qty": 1,
   "hidden": true,
-  "tris": 1466,
+  "tris": 1912,
   "notes": "Adapter B: 48.3 mm pipe stub.",
   "volume_cm3": 81.4,
   "print_bbox_mm": [
@@ -659,13 +446,13 @@
  {
   "name": "Counterweight_Canister",
   "group": "Cradle",
-  "color": "clear",
+  "color": "black",
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 1448,
-  "notes": "Translucent canister (~1.3 L); collar 2x M4x55 + nuts; cap 2x M3x10 with nuts inside the rim.",
-  "volume_cm3": 194.9,
+  "tris": 3580,
+  "notes": "Opaque canister (~1.3 L); collar 2x M4x55 + nuts; cap 2x M3x10 with nuts inside the rim.",
+  "volume_cm3": 183.3,
   "print_bbox_mm": [
    100.0,
    100.0,
@@ -679,13 +466,13 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 1440,
-  "notes": "Press cap, engraved PERIGEE; 2x M3x10 + nuts.",
-  "volume_cm3": 98.1,
+  "tris": 4704,
+  "notes": "Press cap, engraved PERIGEE; 2x M3x10 into nuts pocketed in the plug.",
+  "volume_cm3": 76.1,
   "print_bbox_mm": [
    104.0,
    104.0,
-   13.0
+   10.0
   ]
  },
  {
@@ -695,7 +482,7 @@
   "printed": false,
   "qty": 1,
   "hidden": false,
-  "tris": 19468,
+  "tris": 40302,
   "notes": "Reference paraboloid, not printed.",
   "volume_cm3": 2356.2
  },
@@ -706,7 +493,7 @@
   "printed": false,
   "qty": 1,
   "hidden": false,
-  "tris": 372,
+  "tris": 492,
   "notes": "LNB / feed placeholder.",
   "volume_cm3": 86.5
  }

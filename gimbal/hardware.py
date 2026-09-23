@@ -60,15 +60,26 @@ class Hardware:
         self.instances.append(dict(kind=key, group=group, placement=plc))
         return L
 
-    def nut(self, group, d, at, direction):
-        """Hex nut. `at` = bearing face position, `direction` = axis pointing away from the joint (nut extends along it)."""
+    def nut(self, group, d, at, direction, open_dir=None):
+        """Hex nut. `at` = bearing face position, `direction` = axis pointing away from the joint (nut extends along it).
+        `open_dir`: for a nut that slides into a nut_trap, the direction the slot opens toward. The nut is spun
+        about its axis so two flats ride the slot walls and a corner points along the slot (what nut_trap cuts);
+        without it the hex keeps its fixed orientation, which only suits a hex pocket cut the same way."""
         af, h = NUT[d]
         key = "Nut_M%g" % d
 
         def build():
             return hex_prism(af, h, (0, 0, 0)).cut(cyl(d / 2 * 0.98, h + 2, (0, 0, -1)))
         self._kind(key, build, "steel", "M%g hex nut" % d)
-        self.instances.append(dict(kind=key, group=group, placement=App.Placement(V(*at), _rot_to(direction))))
+        rot = _rot_to(direction)
+        if open_dir is not None:
+            ax = V(*direction); ax.normalize()
+            od = V(*open_dir); od = od - ax * od.dot(ax); od.normalize()
+            corner = rot.multVec(V(0, 1, 0))                     # hex_prism has a vertex on local +Y
+            corner = corner - ax * corner.dot(ax); corner.normalize()
+            spin = math.degrees(math.atan2(corner.cross(od).dot(ax), corner.dot(od)))
+            rot = App.Rotation(ax, spin).multiply(rot)
+        self.instances.append(dict(kind=key, group=group, placement=App.Placement(V(*at), rot)))
 
     def insert(self, group, d, at, direction):
         """Heat-set insert. `at` = surface point, `direction` = into the material."""
@@ -129,9 +140,11 @@ class Hardware:
         # slot cross-section: (af+0.4) across flats ... build a box aligned with (od, ax x od, ax)
         side = ax.cross(od); side.normalize()
         w, t = af + 0.5, h + 0.5
-        # box centred on the nut, extended along od by depth
-        L_ = depth + w / 2
-        corner = a - side * (w / 2) - ax * (t / 2) - od * (w / 2)
+        # The nut slides in with its flats against the slot walls, so its corners point along `open_dir`:
+        # the slot is `w` wide across the flats but must extend a full circumradius behind the nut centre.
+        cr = af / math.sqrt(3) + 0.25
+        L_ = depth + cr
+        corner = a - side * (w / 2) - ax * (t / 2) - od * cr
         box = Part.makeBox(L_, w, t)
         m = App.Matrix()
         m.A11, m.A21, m.A31 = od.x, od.y, od.z

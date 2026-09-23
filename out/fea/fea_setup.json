@@ -1,0 +1,11 @@
+{
+ "structure_volume_cm3": 6403,
+ "faces": 285,
+ "solids": 1,
+ "fixed_face": "Face10",
+ "dish_face": "Face280",
+ "canister_face": "Face263",
+ "dish_N": 88.3,
+ "cw_N": 62,
+ "wind_N": 130
+}

@@ -123,7 +123,17 @@ def involute_gear_face(teeth, module, external=True, pressure_angle=20.0, backla
             # negative profile shift thins the tooth: ds = 2*x*m*tan(alpha); half the backlash per gear
             g.ProfileShiftCoefficient = -(backlash / 2) / (2 * module * math.tan(math.radians(pressure_angle)))
         doc.recompute()
-        wire = Part.Wire(g.Shape.Edges)
+        # fcgear's flanks are Bezier edges; a solid extruded from them fails OCC's BOP validity check
+        # ("BOPAlgo OperationAborted" in Check Geometry) and makes later booleans fragile. Sample the whole
+        # outline into a fine closed polygon instead (0.01 mm deflection, far below printer resolution).
+        pts = Part.Wire(g.Shape.Edges).discretize(Deflection=0.01)
+        clean = [pts[0]]
+        for p in pts[1:]:
+            if (p - clean[-1]).Length > 1e-4:
+                clean.append(p)
+        if (clean[-1] - clean[0]).Length < 1e-4:
+            clean.pop()
+        wire = Part.makePolygon([V(p.x, p.y, 0) for p in clean] + [V(clean[0].x, clean[0].y, 0)])
         face = Part.Face(wire)
         doc.removeObject(g.Name)
     finally:
@@ -250,7 +260,7 @@ def hex_grid_cutter(width, height, af, rib, depth, at=(0, 0, 0), axis=Z, keepout
     return c
 
 
-def stencil_text_cut(target, text, font, size, depth, at, axis, rotate_deg=0.0, mirror_plane=None, bridge_frac=(0.22, -0.22), bridge_w=1.6):
+def stencil_text_cut(target, text, font, size, depth, at, axis, rotate_deg=0.0, mirror_plane=None, bridge_frac=(0.22, -0.22), bridge_w=1.6, clip=None):
     """Cut `text` through `target` and put thin stencil bridges back so letter counters (P, R, O...) stay attached.
     Bridges run along the text's baseline direction at fractions of `size` above/below the centre line."""
     txt = text_solid(text, font, size, depth, at=at, axis=axis, rotate_deg=rotate_deg)
@@ -277,6 +287,8 @@ def stencil_text_cut(target, text, font, size, depth, at, axis, rotate_deg=0.0, 
         slab.rotate(V(0, 0, 0), along, ang)
         slab.translate(c)
         cutter = cutter.cut(slab)
+    if clip is not None:
+        cutter = cutter.common(clip)                      # e.g. only the outer wall of a hollow column
     return target.cut(cutter)
 
 

@@ -6,41 +6,15 @@
   "dish_focal_length": 400,
   "dish_mass_kg": 9.0,
   "dish_offset": 150,
-  "servo_w": 40,
-  "servo_h": 40,
-  "servo_len": 50,
-  "servo_shaft_d": 6,
-  "servo_shaft_len": 12,
-  "servo_wall": 3,
-  "gear_module": 2.0,
-  "az_ring_teeth": 80,
-  "az_pinion_teeth": 20,
-  "el_gear_teeth": 72,
-  "el_pinion_teeth": 20,
-  "gear_face_width": 12,
-  "gear_backlash": 0.15,
-  "sensor_module": 1.25,
-  "sensor_sun_teeth": 36,
-  "sensor_idler_teeth": 12,
-  "sensor_gear_teeth": 36,
-  "sensor_face_width": 8,
-  "base_od": 252,
-  "base_h": 56,
+  "base_od": 236,
+  "base_h": 75,
   "base_floor": 6,
-  "base_wall_inner_r": 104,
-  "tower_od": 36,
-  "tower_top_z": 38,
-  "slipring_body_d": 22,
-  "slipring_body_len": 20,
-  "slipring_stub_d": 7,
-  "puck_od": 207,
-  "puck_z0": 40,
+  "base_wall_inner_r": 96,
+  "puck_od": 191,
+  "puck_z0": 59,
   "puck_h": 30,
-  "arm_inner_x": 60,
-  "arm_thick": 40,
-  "arm_top_halfwidth": 40,
-  "arm_max_halfwidth": 62,
-  "arm_cone_deg": 15,
+  "arm_inner_x": 58,
+  "arm_thick": 60,
   "el_axis_height": 510,
   "hub_size": 90,
   "logo_text": "PERIGEE",
@@ -60,9 +34,9 @@
   "m3_clear_d": 3.4,
   "segment_max": 256,
   "filament_density_g_cc": 1.07,
-  "puck_body_od": 200,
+  "puck_body_od": 184,
   "puck_lip_h": 15.2,
-  "thrust_ring_r": 92,
+  "thrust_ring_r": 84,
   "retainer_h": 8,
   "retainer_bolts": 12,
   "el_axle_d": 30,
@@ -70,13 +44,11 @@
   "el_bushing_len": 25,
   "el_housing_od": 120,
   "drum_h": 88,
-  "drum_od": 232,
-  "yoke_plate_x": 240,
-  "yoke_plate_y": 170,
+  "drum_od": 216,
   "yoke_plate_h": 16,
-  "base_body_od": 232,
-  "shoulder_thick": 64,
-  "shoulder_r": 64,
+  "base_body_od": 216,
+  "shoulder_thick": 60,
+  "shoulder_r": 75,
   "hub_wall": 8
  },
  "kinematics": {
@@ -84,7 +56,7 @@
    "origin": [
     0,
     0,
-    40
+    59
    ],
    "axis": [
     0,
@@ -96,7 +68,7 @@
    "origin": [
     0,
     0,
-    580
+    599
    ],
    "axis": [
     1,
@@ -104,60 +76,7 @@
     0
    ]
   },
-  "gears": {
-   "AzPinion": {
-    "origin": [
-     0.0,
-     60.0,
-     0
-    ],
-    "axis": [
-     0,
-     0,
-     1
-    ],
-    "ratio_vs_az": 4.0
-   },
-   "ElPinion": {
-    "origin": [
-     0,
-     0,
-     488.0
-    ],
-    "axis": [
-     1,
-     0,
-     0
-    ],
-    "ratio_vs_el": -3.6
-   },
-   "Idler": {
-    "origin": [
-     0.0,
-     -30.0,
-     0
-    ],
-    "axis": [
-     0,
-     0,
-     1
-    ],
-    "ratio_vs_az": 3.0
-   },
-   "Sensor": {
-    "origin": [
-     0.0,
-     -60.0,
-     0
-    ],
-    "axis": [
-     0,
-     0,
-     1
-    ],
-    "ratio_vs_az": -1.0
-   }
-  }
+  "gears": {}
  },
  "colors": {
   "black": [
@@ -217,7 +136,7 @@
    "color": "black",
    "printed": true,
    "hidden": false,
-   "notes": "AZ pedestal. Step at z 40 (r 92-104) is the greased thrust face; 208 mm bore is the journal. 6x M6 in the foot flange for a mount plate. Nut traps for the flange-plate bolts open on the outside."
+   "notes": "AZ pedestal. Step at the puck underside (r 84-96) is the greased thrust face; 192 mm bore is the journal. Stingray-4 on four pillars, 4x M4x40 from under the floor. 6x M6 in the foot flange for a mount plate."
   },
   {
    "name": "Az_Retainer_Ring",
@@ -229,31 +148,22 @@
    "notes": "Wide flange plate (12x M4x20 + nuts in the pedestal wall) trapping the puck lip: uplift + moment, and the visible AZ seam."
   },
   {
-   "name": "Az_Ring_Gear",
-   "file": "parts/Az_Ring_Gear.glb",
+   "name": "Az_Stingray4",
+   "file": "parts/Az_Stingray4.glb",
    "group": "Base",
-   "color": "orange",
-   "printed": true,
+   "color": "black",
+   "printed": false,
    "hidden": false,
-   "notes": "Internal ring gear 80 T module 2; 6x M4x12 from below, nuts slid into the inner face slots."
+   "notes": "goBILDA Stingray-4 (4:1, 450 deg, 100 kg.cm), SKU 3215-0001-0004: direct AZ drive under the deck (block + servo + pinion)."
   },
   {
-   "name": "Sensor_Sun_Gear",
-   "file": "parts/Sensor_Sun_Gear.glb",
-   "group": "Base",
-   "color": "orange",
-   "printed": true,
-   "hidden": false,
-   "notes": "Fixed sun of the AZ encoder train: D-flat press fit, a drop of CA; the puck retains it axially."
-  },
-  {
-   "name": "SlipRing_Capsule_22mm",
-   "file": "parts/SlipRing_Capsule_22mm.glb",
-   "group": "Base",
+   "name": "Az_Stingray4_Output",
+   "file": "parts/Az_Stingray4_Output.glb",
+   "group": "Head",
    "color": "steel",
    "printed": false,
    "hidden": false,
-   "notes": "22 mm flanged capsule slip ring (bought)."
+   "notes": "Stingray-4 output gear, hub and standoffs: turns with the head, bolted to the puck (4x M4x25 from the deck)."
   },
   {
    "name": "Arm_R_1",
@@ -262,7 +172,7 @@
    "color": "white",
    "printed": true,
    "hidden": false,
-   "notes": "Lower yoke arm (R). Foot bolts (4x M4x25) come up from under the yoke plate into side-loaded nuts; tenon + 2x M4x40 to the shoulder."
+   "notes": "Lower arm column (R), hollow, cables inside. Feet 4x M4x25 from under the yoke plate into side-loaded nuts; socket for the upper spigot, 2x M4x50 across."
   },
   {
    "name": "Arm_R_2",
@@ -271,7 +181,7 @@
    "color": "white",
    "printed": true,
    "hidden": false,
-   "notes": "Shoulder segment (R): pillow block top, on-axis cap, servo pocket behind the lower cover. All nuts side-loaded (traps on the Y faces, from the bore, from the servo pocket)."
+   "notes": "Upper arm column + lower half of the shoulder drum (R): Stingray-9 pocket from the inner face, open cavity behind the translucent lens; block held by 8x M4 from the drum surface."
   },
   {
    "name": "Arm_L_1",
@@ -280,7 +190,7 @@
    "color": "white",
    "printed": true,
    "hidden": false,
-   "notes": "Lower yoke arm (L). Foot bolts (4x M4x25) come up from under the yoke plate into side-loaded nuts; tenon + 2x M4x40 to the shoulder."
+   "notes": "Lower arm column (L), hollow, cables inside. Feet 4x M4x25 from under the yoke plate into side-loaded nuts; socket for the upper spigot, 2x M4x50 across."
   },
   {
    "name": "Arm_L_2",
@@ -289,7 +199,7 @@
    "color": "white",
    "printed": true,
    "hidden": false,
-   "notes": "Shoulder segment (L): pillow block top, on-axis cap. All nuts side-loaded (traps on the Y faces, from the bore, from the servo pocket)."
+   "notes": "Upper arm column + lower half of the shoulder drum (L): pillow block for the left stub bushing, on-axis encoder cap."
   },
   {
    "name": "El_Bearing_Cap_R",
@@ -298,25 +208,7 @@
    "color": "white",
    "printed": true,
    "hidden": false,
-   "notes": "Rounded pillow-block cap, 2x M4x20 into nuts trapped in the shoulder; holds the upper bushing half."
-  },
-  {
-   "name": "El_Bushing_R_Lower",
-   "file": "parts/El_Bushing_R_Lower.glb",
-   "group": "Head",
-   "color": "white",
-   "printed": true,
-   "hidden": false,
-   "notes": "Half of the split plain bushing (36/30.5 x 40). Grease."
-  },
-  {
-   "name": "El_Bushing_R_Upper",
-   "file": "parts/El_Bushing_R_Upper.glb",
-   "group": "Head",
-   "color": "white",
-   "printed": true,
-   "hidden": false,
-   "notes": "Half of the split plain bushing (36/30.5 x 40). Grease."
+   "notes": "Upper half of the shoulder drum, 2x M4x25 into nuts trapped in the lower half; closes the top of the gearbox pocket."
   },
   {
    "name": "El_Bearing_Cap_L",
@@ -325,7 +217,7 @@
    "color": "white",
    "printed": true,
    "hidden": false,
-   "notes": "Rounded pillow-block cap, 2x M4x20 into nuts trapped in the shoulder; holds the upper bushing half."
+   "notes": "Upper half of the shoulder drum, 2x M4x25 into nuts trapped in the lower half; holds the upper bushing half."
   },
   {
    "name": "El_Bushing_L_Lower",
@@ -344,15 +236,6 @@
    "printed": true,
    "hidden": false,
    "notes": "Half of the split plain bushing (36/30.5 x 40). Grease."
-  },
-  {
-   "name": "El_Axis_Cap_R",
-   "file": "parts/El_Axis_Cap_R.glb",
-   "group": "Head",
-   "color": "grey",
-   "printed": true,
-   "hidden": false,
-   "notes": "Right axis cap over the stub end; 4x M3x12 into bore-loaded nuts."
   },
   {
    "name": "El_Axis_Cap_L",
@@ -376,19 +259,28 @@
    "name": "El_Servo_Cover",
    "file": "parts/El_Servo_Cover.glb",
    "group": "Head",
-   "color": "grey",
+   "color": "clear",
    "printed": true,
    "hidden": false,
-   "notes": "Round cover over the servo pocket; integral spacer holds the servo. 4x M3x12 into pocket-loaded nuts."
+   "notes": "Translucent lens on the right shoulder drum showing the Stingray-9; 4x M3x12 into cavity-loaded nuts."
   },
   {
-   "name": "El_Servo_placeholder",
-   "file": "parts/El_Servo_placeholder.glb",
+   "name": "El_Stingray9",
+   "file": "parts/El_Stingray9.glb",
    "group": "Head",
+   "color": "black",
+   "printed": false,
+   "hidden": false,
+   "notes": "goBILDA Stingray-9 (9:1, 200 deg, 227 kg.cm), SKU 3215-0001-0009: direct EL drive in the right shoulder drum (block + servo + pinion)."
+  },
+  {
+   "name": "El_Stingray9_Output",
+   "file": "parts/El_Stingray9_Output.glb",
+   "group": "Cradle",
    "color": "steel",
    "printed": false,
    "hidden": false,
-   "notes": "Your servo (placeholder box) inside the right shoulder."
+   "notes": "Stingray-9 output gear, hub and standoffs: turns with the cradle, bolted to the hub's right wall (4x M4x12 from inside)."
   },
   {
    "name": "Head_Puck",
@@ -397,25 +289,7 @@
    "color": "white",
    "printed": true,
    "hidden": false,
-   "notes": "Rotating deck: 15 mm journal lip + thrust face (grease). Nuts for the deck hardware sit in hex pockets on its underside."
-  },
-  {
-   "name": "SlipRing_Stub_Clamp",
-   "file": "parts/SlipRing_Stub_Clamp.glb",
-   "group": "Head",
-   "color": "white",
-   "printed": true,
-   "hidden": false,
-   "notes": "Hex split collar keyed into the puck; M3x16 pinch bolt + nut."
-  },
-  {
-   "name": "Az_Servo_Clamp",
-   "file": "parts/Az_Servo_Clamp.glb",
-   "group": "Head",
-   "color": "white",
-   "printed": true,
-   "hidden": false,
-   "notes": "Saddle pinning the AZ servo; 2x M3x35 through the deck into underside nuts."
+   "notes": "Rotating deck: 15 mm journal lip + thrust face (grease); bolted to the Stingray-4 standoffs (4x M4x25). Cable loop hole at the back."
   },
   {
    "name": "Az_Drum",
@@ -442,79 +316,16 @@
    "color": "white",
    "printed": true,
    "hidden": false,
-   "notes": "Broad yoke base / drum lid: pillars 4x M4x16 from above (nuts in the pillars), arm feet 4x M4x25 each from below (nuts in the arm feet), round access cover 6x M3x25 (nuts under the plate)."
+   "notes": "Oval yoke plate / drum lid (244 x 220 mm): pillars 4x M4x16 from above (nuts in the pillars), arm feet 4x M4x25 each from below (nuts in the arm feet), translucent access cover 6x M3x25 (nuts under the plate)."
   },
   {
    "name": "Yoke_Access_Cover",
    "file": "parts/Yoke_Access_Cover.glb",
    "group": "Head",
-   "color": "grey",
+   "color": "clear",
    "printed": true,
    "hidden": false,
-   "notes": "Round access cover on the yoke plate; 6x M3x25 + nuts under the plate."
-  },
-  {
-   "name": "Az_Servo_placeholder",
-   "file": "parts/Az_Servo_placeholder.glb",
-   "group": "Head",
-   "color": "steel",
-   "printed": false,
-   "hidden": false,
-   "notes": "Your servo (placeholder box)."
-  },
-  {
-   "name": "Sensor_Gear_Keeper",
-   "file": "parts/Sensor_Gear_Keeper.glb",
-   "group": "Head",
-   "color": "white",
-   "printed": true,
-   "hidden": false,
-   "notes": "Retains the AZ sensor gear on its pin; 2x M3x45 from the deck, nuts in the keeper."
-  },
-  {
-   "name": "Az_Pinion",
-   "file": "parts/Az_Pinion.glb",
-   "group": "AzPinion",
-   "color": "orange",
-   "printed": true,
-   "hidden": false,
-   "notes": "20 T module 2; M3x10 axial screw into the servo's own shaft thread."
-  },
-  {
-   "name": "El_Gear",
-   "file": "parts/El_Gear.glb",
-   "group": "Cradle",
-   "color": "orange",
-   "printed": true,
-   "hidden": false,
-   "notes": "72 T module 2 bolted to the right hub wall (4x M4x20, nuts inside the hub)."
-  },
-  {
-   "name": "El_Pinion",
-   "file": "parts/El_Pinion.glb",
-   "group": "ElPinion",
-   "color": "orange",
-   "printed": true,
-   "hidden": false,
-   "notes": "20 T module 2 on the EL servo shaft; M3x10 axial into the servo's shaft thread."
-  },
-  {
-   "name": "Sensor_Idler",
-   "file": "parts/Sensor_Idler.glb",
-   "group": "Idler",
-   "color": "orange",
-   "printed": true,
-   "hidden": false,
-   "notes": "Runs on the M4x45 axle."
-  },
-  {
-   "name": "Sensor_Gear",
-   "file": "parts/Sensor_Gear.glb",
-   "group": "Sensor",
-   "color": "orange",
-   "printed": true,
-   "hidden": false,
-   "notes": "1:1 with the sun; carries the AZ AS5600 magnet."
+   "notes": "Translucent round access cover on the yoke plate (electronics visible); 6x M3x25 + nuts under the plate."
   },
   {
    "name": "Cradle_Hub",
@@ -523,7 +334,7 @@
    "color": "black",
    "printed": true,
    "hidden": false,
-   "notes": "Hollow faceted hub, open top with a bolted lid: every flange bolt (stubs, gear, boom, counterweight arm) ends in a nut inside the cavity."
+   "notes": "Hollow rounded hub, open top with a flush bolted lid: every flange bolt (left stub, boom, counterweight arm) ends in a nut inside the cavity; the right wall bolts straight onto the Stingray-9 standoffs."
   },
   {
    "name": "Cradle_Lid",
@@ -532,16 +343,7 @@
    "color": "black",
    "printed": true,
    "hidden": false,
-   "notes": "Hub lid, 4x M3x20 into nuts trapped in the hub walls. Fit after all flange nuts are in."
-  },
-  {
-   "name": "El_Stub_R",
-   "file": "parts/El_Stub_R.glb",
-   "group": "Cradle",
-   "color": "black",
-   "printed": true,
-   "hidden": false,
-   "notes": "EL stub axle, flange 4x M4x20 through the hub wall into nuts inside; turns in the split bushings. "
+   "notes": "Flush hub lid, 4x M3x12 into nuts trapped in the rim. Fit after all flange nuts and the standoff screws are in."
   },
   {
    "name": "El_Stub_L",
@@ -550,7 +352,7 @@
    "color": "black",
    "printed": true,
    "hidden": false,
-   "notes": "EL stub axle, flange 4x M4x20 through the hub wall into nuts inside; turns in the split bushings. Magnet in the end face."
+   "notes": "Left EL stub axle, flange 4x M4x20 through the hub wall into nuts inside; turns in the split bushings. Magnet in the end face."
   },
   {
    "name": "Dish_Boom",
@@ -559,7 +361,7 @@
    "color": "black",
    "printed": true,
    "hidden": false,
-   "notes": "Square boom to the dish offset; root flange 4x M4x20 into nuts inside the hub; round end flange takes either adapter (4x M5 + nuts)."
+   "notes": "Round boom tube to the dish offset; round root flange 4x M4x20 into nuts inside the hub; round end flange takes either adapter (4x M5 + nuts)."
   },
   {
    "name": "Counterweight_Arm",
@@ -568,7 +370,7 @@
    "color": "black",
    "printed": true,
    "hidden": false,
-   "notes": "Square tube with a row of M4 holes for the canister collar; root flange 4x M4x20 into nuts inside the hub."
+   "notes": "Round tube with a row of M4 holes for the canister collar; round root flange 4x M4x20 into nuts inside the hub."
   },
   {
    "name": "Dish_Adapter_Plate",
@@ -577,7 +379,7 @@
    "color": "grey",
    "printed": true,
    "hidden": false,
-   "notes": "Adapter A: slotted plate; 4x M5x20 + nuts."
+   "notes": "Adapter A: slotted plate; 4x M5x12 into nuts pocketed in the boom flange."
   },
   {
    "name": "Dish_Adapter_PipeStub",
@@ -592,10 +394,10 @@
    "name": "Counterweight_Canister",
    "file": "parts/Counterweight_Canister.glb",
    "group": "Cradle",
-   "color": "clear",
+   "color": "black",
    "printed": true,
    "hidden": false,
-   "notes": "Translucent canister (~1.3 L); collar 2x M4x55 + nuts; cap 2x M3x10 with nuts inside the rim."
+   "notes": "Opaque canister (~1.3 L); collar 2x M4x55 + nuts; cap 2x M3x10 with nuts inside the rim."
   },
   {
    "name": "Counterweight_Cap",
@@ -604,7 +406,7 @@
    "color": "orange",
    "printed": true,
    "hidden": false,
-   "notes": "Press cap, engraved PERIGEE; 2x M3x10 + nuts."
+   "notes": "Press cap, engraved PERIGEE; 2x M3x10 into nuts pocketed in the plug."
   },
   {
    "name": "Dish_Reference_1m",
@@ -626,20 +428,10 @@
   }
  ],
  "hardware_kinds": {
-  "Screw_M3x10": {
-   "file": "parts/HW_Screw_M3x10.glb",
+  "Screw_M4x40": {
+   "file": "parts/HW_Screw_M4x40.glb",
    "color": "steel",
-   "label": "M3 x 10 socket head cap screw"
-  },
-  "Nut_M3": {
-   "file": "parts/HW_Nut_M3.glb",
-   "color": "steel",
-   "label": "M3 hex nut"
-  },
-  "Screw_M4x12": {
-   "file": "parts/HW_Screw_M4x12.glb",
-   "color": "steel",
-   "label": "M4 x 12 socket head cap screw"
+   "label": "M4 x 40 socket head cap screw"
   },
   "Nut_M4": {
    "file": "parts/HW_Nut_M4.glb",
@@ -651,70 +443,55 @@
    "color": "steel",
    "label": "M4 x 20 socket head cap screw"
   },
-  "Screw_M4x40": {
-   "file": "parts/HW_Screw_M4x40.glb",
+  "Nut_M3": {
+   "file": "parts/HW_Nut_M3.glb",
    "color": "steel",
-   "label": "M4 x 40 socket head cap screw"
+   "label": "M3 hex nut"
   },
-  "Screw_M3x12": {
-   "file": "parts/HW_Screw_M3x12.glb",
+  "Screw_M4x50": {
+   "file": "parts/HW_Screw_M4x50.glb",
    "color": "steel",
-   "label": "M3 x 12 socket head cap screw"
-  },
-  "Screw_M4x45": {
-   "file": "parts/HW_Screw_M4x45.glb",
-   "color": "steel",
-   "label": "M4 x 45 socket head cap screw"
-  },
-  "Washer_M4": {
-   "file": "parts/HW_Washer_M4.glb",
-   "color": "steel",
-   "label": "M4 washer"
-  },
-  "Screw_M3x45": {
-   "file": "parts/HW_Screw_M3x45.glb",
-   "color": "steel",
-   "label": "M3 x 45 socket head cap screw"
-  },
-  "Screw_M4x30": {
-   "file": "parts/HW_Screw_M4x30.glb",
-   "color": "steel",
-   "label": "M4 x 30 socket head cap screw"
-  },
-  "Screw_M3x16": {
-   "file": "parts/HW_Screw_M3x16.glb",
-   "color": "steel",
-   "label": "M3 x 16 socket head cap screw"
-  },
-  "Screw_M3x35": {
-   "file": "parts/HW_Screw_M3x35.glb",
-   "color": "steel",
-   "label": "M3 x 35 socket head cap screw"
-  },
-  "Screw_M4x16": {
-   "file": "parts/HW_Screw_M4x16.glb",
-   "color": "steel",
-   "label": "M4 x 16 socket head cap screw"
+   "label": "M4 x 50 socket head cap screw"
   },
   "Screw_M4x25": {
    "file": "parts/HW_Screw_M4x25.glb",
    "color": "steel",
    "label": "M4 x 25 socket head cap screw"
   },
+  "Screw_M3x12": {
+   "file": "parts/HW_Screw_M3x12.glb",
+   "color": "steel",
+   "label": "M3 x 12 socket head cap screw"
+  },
+  "Screw_M3x8": {
+   "file": "parts/HW_Screw_M3x8.glb",
+   "color": "steel",
+   "label": "M3 x 8 socket head cap screw"
+  },
+  "Screw_M4x30": {
+   "file": "parts/HW_Screw_M4x30.glb",
+   "color": "steel",
+   "label": "M4 x 30 socket head cap screw"
+  },
+  "Screw_M4x16": {
+   "file": "parts/HW_Screw_M4x16.glb",
+   "color": "steel",
+   "label": "M4 x 16 socket head cap screw"
+  },
   "Screw_M3x25": {
    "file": "parts/HW_Screw_M3x25.glb",
    "color": "steel",
    "label": "M3 x 25 socket head cap screw"
   },
-  "Screw_M3x20": {
-   "file": "parts/HW_Screw_M3x20.glb",
+  "Screw_M4x12": {
+   "file": "parts/HW_Screw_M4x12.glb",
    "color": "steel",
-   "label": "M3 x 20 socket head cap screw"
+   "label": "M4 x 12 socket head cap screw"
   },
-  "Screw_M5x20": {
-   "file": "parts/HW_Screw_M5x20.glb",
+  "Screw_M5x12": {
+   "file": "parts/HW_Screw_M5x12.glb",
    "color": "steel",
-   "label": "M5 x 20 socket head cap screw"
+   "label": "M5 x 12 socket head cap screw"
   },
   "Nut_M5": {
    "file": "parts/HW_Nut_M5.glb",
@@ -725,1320 +502,35 @@
    "file": "parts/HW_Screw_M4x55.glb",
    "color": "steel",
    "label": "M4 x 55 socket head cap screw"
+  },
+  "Screw_M3x10": {
+   "file": "parts/HW_Screw_M3x10.glb",
+   "color": "steel",
+   "label": "M3 x 10 socket head cap screw"
   }
  },
  "hardware": [
   {
-   "kind": "Screw_M3x10",
+   "kind": "Screw_M4x40",
    "group": "Base",
    "matrix": [
     [
      1.0,
      0.0,
      0.0,
-     7.960204194457795e-16
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     13.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     34.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M3",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     7.960204194457795e-16
+     -16.0
     ],
     [
      0.0,
      -1.0,
      -1.2246467991473532e-16,
-     13.0
+     64.0
     ],
     [
      0.0,
      1.2246467991473532e-16,
      -1.0,
-     25.3
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M3x10",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -2.3880612583373385e-15
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -13.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     34.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M3",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -2.3880612583373385e-15
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     -13.0
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     25.3
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x12",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     74.0451720235695
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     42.74999999999999
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     5.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x12",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     5.235365066354935e-15
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     85.5
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     5.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x12",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -74.0451720235695
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     42.74999999999999
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     5.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x12",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -74.0451720235695
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     -42.75000000000001
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     5.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x12",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -1.5706095199064805e-14
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     -85.5
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     5.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x12",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     74.04517202356948
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     -42.750000000000036
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     5.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     106.25184089179751
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     28.470094961277283
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     45.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     77.78174593052023
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     77.78174593052022
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     45.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     28.470094961277283
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     106.25184089179751
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     45.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -28.470094961277294
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     106.25184089179751
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     45.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -77.78174593052022
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     77.78174593052023
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     45.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -106.2518408917975
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     28.47009496127731
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     45.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -106.25184089179751
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     -28.470094961277287
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     45.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -77.78174593052024
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     -77.78174593052022
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     45.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -28.47009496127727
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     -106.25184089179751
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     45.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     28.470094961277233
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     -106.25184089179753
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     45.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     77.7817459305202
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     -77.78174593052024
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     45.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     106.25184089179751
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     -28.470094961277276
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     45.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     106.25184089179751
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     28.470094961277283
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     60.5
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     77.78174593052023
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     77.78174593052022
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     60.5
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     28.470094961277283
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     106.25184089179751
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     60.5
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -28.470094961277294
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     106.25184089179751
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     60.5
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -77.78174593052022
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     77.78174593052023
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     60.5
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -106.2518408917975
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     28.47009496127731
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     60.5
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -106.25184089179751
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -28.470094961277287
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     60.5
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -77.78174593052024
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -77.78174593052022
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     60.5
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -28.47009496127727
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -106.25184089179751
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     60.5
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     28.470094961277233
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -106.25184089179753
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     60.5
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     77.7817459305202
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -77.78174593052024
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     60.5
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     106.25184089179751
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -28.470094961277276
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     60.5
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     74.0451720235695
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     42.74999999999999
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     9.9
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     5.235365066354935e-15
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     85.5
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     9.9
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -74.0451720235695
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     42.74999999999999
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     9.9
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -74.0451720235695
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -42.75000000000001
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     9.9
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -1.5706095199064805e-14
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -85.5
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     9.9
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Base",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     74.04517202356948
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -42.750000000000036
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     9.9
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     66.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -40.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     181.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     66.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     40.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     181.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     94.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -40.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     181.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     94.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     40.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     181.4
+     4.5
     ],
     [
      0,
@@ -2050,55 +542,25 @@
   },
   {
    "kind": "Screw_M4x40",
-   "group": "Head",
+   "group": "Base",
    "matrix": [
     [
-     2.220446049250313e-16,
-     0.0,
      1.0,
-     95.5
+     0.0,
+     0.0,
+     16.0
     ],
     [
      0.0,
-     1.0,
-     0.0,
-     -29.082758620689656
-    ],
-    [
      -1.0,
-     0.0,
-     2.220446049250313e-16,
-     318.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     60.0
+     -1.2246467991473532e-16,
+     64.0
     ],
     [
      0.0,
-     1.0,
-     0.0,
-     -29.082758620689656
-    ],
-    [
+     1.2246467991473532e-16,
      -1.0,
-     0.0,
-     2.220446049250313e-16,
-     318.0
+     4.5
     ],
     [
      0,
@@ -2110,475 +572,25 @@
   },
   {
    "kind": "Screw_M4x40",
-   "group": "Head",
+   "group": "Base",
    "matrix": [
     [
-     2.220446049250313e-16,
-     0.0,
      1.0,
-     95.5
+     0.0,
+     0.0,
+     -16.0
     ],
     [
      0.0,
-     1.0,
-     0.0,
-     29.082758620689656
-    ],
-    [
      -1.0,
-     0.0,
-     2.220446049250313e-16,
-     318.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     60.0
+     -1.2246467991473532e-16,
+     -16.0
     ],
     [
      0.0,
-     1.0,
-     0.0,
-     29.082758620689656
-    ],
-    [
+     1.2246467991473532e-16,
      -1.0,
-     0.0,
-     2.220446049250313e-16,
-     318.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M3",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     117.2
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     28.284271247461902
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     516.2842712474619
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M3",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     117.2
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -28.2842712474619
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     516.2842712474619
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M3",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     117.2
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -28.28427124746191
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     459.7157287525381
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M3",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     117.2
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     28.284271247461895
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     459.7157287525381
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     92.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -44.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     568.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     92.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     44.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     568.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M3",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     116.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -29.90815697220945
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     566.053597362557
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M3",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     116.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -13.946402637443072
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     550.0918430277906
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M3",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     116.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     13.946402637443088
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     550.0918430277906
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M3",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     116.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     29.90815697220945
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     566.053597362557
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -66.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -40.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     181.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -66.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     40.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     181.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -94.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -40.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     181.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -94.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     40.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     181.4
+     4.5
     ],
     [
      0,
@@ -2590,25 +602,1255 @@
   },
   {
    "kind": "Screw_M4x40",
+   "group": "Base",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     16.0
+    ],
+    [
+     0.0,
+     -1.0,
+     -1.2246467991473532e-16,
+     -16.0
+    ],
+    [
+     0.0,
+     1.2246467991473532e-16,
+     -1.0,
+     4.5
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Base",
+   "matrix": [
+    [
+     -0.2588190451025214,
+     0.9659258262890681,
+     1.1829179713786696e-16,
+     98.52443428148497
+    ],
+    [
+     0.9659258262890681,
+     0.2588190451025215,
+     3.1696191514317736e-17,
+     26.399542600457117
+    ],
+    [
+     -1.232595164407831e-32,
+     1.2246467991473532e-16,
+     -1.0,
+     67.6
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Base",
+   "matrix": [
+    [
+     -0.7071067811865475,
+     0.7071067811865475,
+     8.659560562354932e-17,
+     72.12489168102785
+    ],
+    [
+     0.7071067811865475,
+     0.7071067811865476,
+     8.659560562354933e-17,
+     72.12489168102785
+    ],
+    [
+     0.0,
+     1.224646799147353e-16,
+     -1.0,
+     67.6
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Base",
+   "matrix": [
+    [
+     -0.9659258262890686,
+     0.2588190451025199,
+     3.1696191514317545e-17,
+     26.399542600457117
+    ],
+    [
+     0.2588190451025199,
+     0.9659258262890685,
+     1.1829179713786698e-16,
+     98.52443428148497
+    ],
+    [
+     0.0,
+     1.2246467991473532e-16,
+     -1.0,
+     67.6
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Base",
+   "matrix": [
+    [
+     -0.9659258262890682,
+     -0.258819045102521,
+     -3.169619151431768e-17,
+     -26.399542600457128
+    ],
+    [
+     -0.258819045102521,
+     0.9659258262890682,
+     1.1829179713786698e-16,
+     98.52443428148497
+    ],
+    [
+     -3.0814879110195774e-33,
+     1.2246467991473532e-16,
+     -1.0,
+     67.6
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Base",
+   "matrix": [
+    [
+     -0.7071067811865475,
+     -0.7071067811865477,
+     -8.659560562354934e-17,
+     -72.12489168102785
+    ],
+    [
+     -0.7071067811865477,
+     0.7071067811865475,
+     8.65956056235493e-17,
+     72.12489168102785
+    ],
+    [
+     0.0,
+     1.2246467991473532e-16,
+     -1.0,
+     67.6
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Base",
+   "matrix": [
+    [
+     -0.2588190451025212,
+     -0.9659258262890683,
+     -1.1829179713786698e-16,
+     -98.52443428148496
+    ],
+    [
+     -0.9659258262890683,
+     0.25881904510252096,
+     3.169619151431768e-17,
+     26.399542600457142
+    ],
+    [
+     0.0,
+     1.2246467991473532e-16,
+     -1.0,
+     67.6
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Base",
+   "matrix": [
+    [
+     0.25881904510252074,
+     -0.9659258262890683,
+     -1.1829179713786698e-16,
+     -98.52443428148497
+    ],
+    [
+     -0.9659258262890683,
+     -0.25881904510252074,
+     -3.169619151431765e-17,
+     -26.39954260045712
+    ],
+    [
+     0.0,
+     1.2246467991473532e-16,
+     -1.0,
+     67.6
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Base",
+   "matrix": [
+    [
+     0.7071067811865475,
+     -0.7071067811865476,
+     -8.659560562354933e-17,
+     -72.12489168102786
+    ],
+    [
+     -0.7071067811865476,
+     -0.7071067811865475,
+     -8.659560562354932e-17,
+     -72.12489168102785
+    ],
+    [
+     -6.162975822039155e-33,
+     1.224646799147353e-16,
+     -1.0,
+     67.6
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Base",
+   "matrix": [
+    [
+     0.9659258262890683,
+     -0.2588190451025207,
+     -3.1696191514317643e-17,
+     -26.399542600457103
+    ],
+    [
+     -0.2588190451025207,
+     -0.9659258262890686,
+     -1.18291797137867e-16,
+     -98.52443428148497
+    ],
+    [
+     3.0814879110195774e-33,
+     1.2246467991473535e-16,
+     -1.0000000000000004,
+     67.6
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Base",
+   "matrix": [
+    [
+     0.9659258262890683,
+     0.25881904510252074,
+     3.1696191514317643e-17,
+     26.39954260045707
+    ],
+    [
+     0.25881904510252074,
+     -0.9659258262890682,
+     -1.1829179713786698e-16,
+     -98.52443428148499
+    ],
+    [
+     3.0814879110195774e-33,
+     1.2246467991473532e-16,
+     -1.0,
+     67.6
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Base",
+   "matrix": [
+    [
+     0.7071067811865474,
+     0.7071067811865477,
+     8.659560562354935e-17,
+     72.12489168102783
+    ],
+    [
+     0.7071067811865477,
+     -0.7071067811865475,
+     -8.65956056235493e-17,
+     -72.12489168102786
+    ],
+    [
+     0.0,
+     1.2246467991473532e-16,
+     -1.0,
+     67.6
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Base",
+   "matrix": [
+    [
+     0.2588190451025202,
+     0.9659258262890685,
+     1.18291797137867e-16,
+     98.52443428148497
+    ],
+    [
+     0.9659258262890685,
+     -0.2588190451025205,
+     -3.1696191514317594e-17,
+     -26.39954260045711
+    ],
+    [
+     0.0,
+     1.2246467991473535e-16,
+     -1.0000000000000004,
+     67.6
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x20",
+   "group": "Base",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     98.52443428148497
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     26.399542600457117
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     79.5
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x20",
+   "group": "Base",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     72.12489168102785
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     72.12489168102785
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     79.5
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x20",
+   "group": "Base",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     26.399542600457117
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     98.52443428148497
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     79.5
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x20",
+   "group": "Base",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     -26.399542600457128
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     98.52443428148497
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     79.5
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x20",
+   "group": "Base",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     -72.12489168102785
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     72.12489168102785
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     79.5
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x20",
+   "group": "Base",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     -98.52443428148496
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     26.399542600457142
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     79.5
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x20",
+   "group": "Base",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     -98.52443428148497
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     -26.39954260045712
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     79.5
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x20",
+   "group": "Base",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     -72.12489168102786
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     -72.12489168102785
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     79.5
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x20",
+   "group": "Base",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     -26.399542600457103
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     -98.52443428148497
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     79.5
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x20",
+   "group": "Base",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     26.39954260045707
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     -98.52443428148499
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     79.5
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x20",
+   "group": "Base",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     72.12489168102783
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     -72.12489168102786
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     79.5
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x20",
+   "group": "Base",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     98.52443428148497
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     -26.39954260045711
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     79.5
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M3",
+   "group": "Head",
+   "matrix": [
+    [
+     0.0,
+     0.0,
+     1.0000000000000002,
+     108.8
+    ],
+    [
+     -0.7071067811865477,
+     -0.7071067811865479,
+     1.6653345369377348e-16,
+     31.112698372208094
+    ],
+    [
+     0.7071067811865477,
+     -0.7071067811865477,
+     -2.220446049250313e-16,
+     615.1126983722081
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M3",
    "group": "Head",
    "matrix": [
     [
      2.220446049250313e-16,
-     -0.0,
-     -1.0,
-     -95.5
+     -5.551115123125783e-17,
+     1.0,
+     108.8
     ],
     [
+     -0.7071067811865477,
+     0.7071067811865472,
+     1.6653345369377348e-16,
+     -31.112698372208087
+    ],
+    [
+     -0.7071067811865474,
+     -0.7071067811865477,
+     1.1102230246251565e-16,
+     615.1126983722081
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M3",
+   "group": "Head",
+   "matrix": [
+    [
+     3.3306690738754696e-16,
      0.0,
      1.0,
-     -0.0,
-     -29.082758620689656
+     108.8
     ],
     [
+     0.7071067811865475,
+     0.7071067811865476,
+     -1.1102230246251565e-16,
+     -31.112698372208097
+    ],
+    [
+     -0.7071067811865475,
+     0.7071067811865475,
+     2.220446049250313e-16,
+     552.8873016277919
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M3",
+   "group": "Head",
+   "matrix": [
+    [
+     2.220446049250313e-16,
+     0.0,
      1.0,
+     108.8
+    ],
+    [
+     0.7071067811865476,
+     -0.7071067811865475,
+     -1.1102230246251565e-16,
+     31.112698372208083
+    ],
+    [
+     0.7071067811865475,
+     0.7071067811865476,
+     0.0,
+     552.8873016277919
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x20",
+   "group": "Head",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     65.2
+    ],
+    [
      0.0,
      2.220446049250313e-16,
-     318.0
+     -1.0,
+     -35.102429592034305
+    ],
+    [
+     -0.0,
+     1.0,
+     2.220446049250313e-16,
+     535.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x20",
+   "group": "Head",
+   "matrix": [
+    [
+     1.0,
+     -0.0,
+     0.0,
+     65.2
+    ],
+    [
+     0.0,
+     2.220446049250313e-16,
+     1.0,
+     35.102429592034305
+    ],
+    [
+     -0.0,
+     -1.0,
+     2.220446049250313e-16,
+     535.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x50",
+   "group": "Head",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     65.2
+    ],
+    [
+     0.0,
+     2.220446049250313e-16,
+     -1.0,
+     -63.83067152844649
+    ],
+    [
+     -0.0,
+     1.0,
+     2.220446049250313e-16,
+     567.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x50",
+   "group": "Head",
+   "matrix": [
+    [
+     1.0,
+     -0.0,
+     0.0,
+     65.2
+    ],
+    [
+     0.0,
+     2.220446049250313e-16,
+     1.0,
+     63.83067152844649
+    ],
+    [
+     -0.0,
+     -1.0,
+     2.220446049250313e-16,
+     567.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x20",
+   "group": "Head",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     73.2
+    ],
+    [
+     0.0,
+     2.220446049250313e-16,
+     -1.0,
+     -35.102429592034305
+    ],
+    [
+     -0.0,
+     1.0,
+     2.220446049250313e-16,
+     535.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x20",
+   "group": "Head",
+   "matrix": [
+    [
+     1.0,
+     -0.0,
+     0.0,
+     73.2
+    ],
+    [
+     0.0,
+     2.220446049250313e-16,
+     1.0,
+     35.102429592034305
+    ],
+    [
+     -0.0,
+     -1.0,
+     2.220446049250313e-16,
+     535.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x50",
+   "group": "Head",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     73.2
+    ],
+    [
+     0.0,
+     2.220446049250313e-16,
+     -1.0,
+     -63.83067152844649
+    ],
+    [
+     -0.0,
+     1.0,
+     2.220446049250313e-16,
+     567.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x50",
+   "group": "Head",
+   "matrix": [
+    [
+     1.0,
+     -0.0,
+     0.0,
+     73.2
+    ],
+    [
+     0.0,
+     2.220446049250313e-16,
+     1.0,
+     63.83067152844649
+    ],
+    [
+     -0.0,
+     -1.0,
+     2.220446049250313e-16,
+     567.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Head",
+   "matrix": [
+    [
+     -0.7071067811865475,
+     -0.7071067811865477,
+     0.0,
+     70.0
+    ],
+    [
+     0.7071067811865477,
+     -0.7071067811865475,
+     0.0,
+     -18.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     200.4
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Head",
+   "matrix": [
+    [
+     0.7071067811865475,
+     -0.7071067811865476,
+     0.0,
+     70.0
+    ],
+    [
+     0.7071067811865476,
+     0.7071067811865475,
+     0.0,
+     18.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     200.4
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Head",
+   "matrix": [
+    [
+     -0.7071067811865475,
+     0.7071067811865475,
+     0.0,
+     106.0
+    ],
+    [
+     -0.7071067811865475,
+     -0.7071067811865475,
+     0.0,
+     -18.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     200.4
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Head",
+   "matrix": [
+    [
+     0.7071067811865474,
+     0.7071067811865477,
+     0.0,
+     106.0
+    ],
+    [
+     -0.7071067811865477,
+     0.7071067811865474,
+     0.0,
+     18.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     200.4
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x50",
+   "group": "Head",
+   "matrix": [
+    [
+     2.220446049250313e-16,
+     0.0,
+     1.0,
+     106.37715508089904
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     -16.0
+    ],
+    [
+     -1.0,
+     0.0,
+     2.220446049250313e-16,
+     361.0
     ],
     [
      0,
@@ -2624,21 +1866,21 @@
    "matrix": [
     [
      2.220446049250313e-16,
-     -0.0,
-     -1.0,
-     -60.0
+     0.0,
+     1.0,
+     66.62284491910096
     ],
     [
      0.0,
      1.0,
-     -0.0,
-     -29.082758620689656
+     0.0,
+     -16.0
     ],
     [
-     1.0,
+     -1.0,
      0.0,
      2.220446049250313e-16,
-     318.0
+     361.0
     ],
     [
      0,
@@ -2649,56 +1891,26 @@
    ]
   },
   {
-   "kind": "Screw_M4x40",
+   "kind": "Screw_M4x50",
    "group": "Head",
    "matrix": [
     [
      2.220446049250313e-16,
-     -0.0,
+     0.0,
+     1.0,
+     106.37715508089904
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     16.0
+    ],
+    [
      -1.0,
-     -95.5
-    ],
-    [
-     0.0,
-     1.0,
-     -0.0,
-     29.082758620689656
-    ],
-    [
-     1.0,
      0.0,
      2.220446049250313e-16,
-     318.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     -0.0,
-     -1.0,
-     -60.0
-    ],
-    [
-     0.0,
-     1.0,
-     -0.0,
-     29.082758620689656
-    ],
-    [
-     1.0,
-     0.0,
-     2.220446049250313e-16,
-     318.0
+     361.0
     ],
     [
      0,
@@ -2713,10 +1925,40 @@
    "group": "Head",
    "matrix": [
     [
+     2.220446049250313e-16,
+     0.0,
+     1.0,
+     66.62284491910096
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     16.0
+    ],
+    [
+     -1.0,
+     0.0,
+     2.220446049250313e-16,
+     361.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Head",
+   "matrix": [
+    [
      1.0,
      0.0,
      0.0,
-     -92.0
+     88.0
     ],
     [
      0.0,
@@ -2728,7 +1970,7 @@
      0.0,
      0.0,
      1.0,
-     568.4
+     587.4
     ],
     [
      0,
@@ -2746,7 +1988,7 @@
      1.0,
      0.0,
      0.0,
-     -92.0
+     88.0
     ],
     [
      0.0,
@@ -2758,7 +2000,7 @@
      0.0,
      0.0,
      1.0,
-     568.4
+     587.4
     ],
     [
      0,
@@ -2769,26 +2011,146 @@
    ]
   },
   {
-   "kind": "Nut_M3",
+   "kind": "Nut_M4",
+   "group": "Head",
+   "matrix": [
+    [
+     -0.7071067811865475,
+     0.7071067811865475,
+     0.0,
+     -70.0
+    ],
+    [
+     -0.7071067811865475,
+     -0.7071067811865475,
+     0.0,
+     -18.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     200.4
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Head",
+   "matrix": [
+    [
+     0.7071067811865474,
+     0.7071067811865477,
+     0.0,
+     -70.0
+    ],
+    [
+     -0.7071067811865477,
+     0.7071067811865474,
+     0.0,
+     18.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     200.4
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Head",
+   "matrix": [
+    [
+     -0.7071067811865475,
+     -0.7071067811865477,
+     0.0,
+     -106.0
+    ],
+    [
+     0.7071067811865477,
+     -0.7071067811865475,
+     0.0,
+     -18.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     200.4
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Head",
+   "matrix": [
+    [
+     0.7071067811865475,
+     -0.7071067811865476,
+     0.0,
+     -106.0
+    ],
+    [
+     0.7071067811865476,
+     0.7071067811865475,
+     0.0,
+     18.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     200.4
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x50",
    "group": "Head",
    "matrix": [
     [
      2.220446049250313e-16,
      -0.0,
      -1.0,
-     -116.0
+     -106.37715508089904
     ],
     [
      0.0,
      1.0,
      -0.0,
-     -29.90815697220945
+     -16.0
     ],
     [
      1.0,
      0.0,
      2.220446049250313e-16,
-     566.053597362557
+     361.0
     ],
     [
      0,
@@ -2799,26 +2161,26 @@
    ]
   },
   {
-   "kind": "Nut_M3",
+   "kind": "Nut_M4",
    "group": "Head",
    "matrix": [
     [
      2.220446049250313e-16,
      -0.0,
      -1.0,
-     -116.0
+     -66.62284491910096
     ],
     [
      0.0,
      1.0,
      -0.0,
-     -13.946402637443072
+     -16.0
     ],
     [
      1.0,
      0.0,
      2.220446049250313e-16,
-     550.0918430277906
+     361.0
     ],
     [
      0,
@@ -2829,26 +2191,26 @@
    ]
   },
   {
-   "kind": "Nut_M3",
+   "kind": "Screw_M4x50",
    "group": "Head",
    "matrix": [
     [
      2.220446049250313e-16,
      -0.0,
      -1.0,
-     -116.0
+     -106.37715508089904
     ],
     [
      0.0,
      1.0,
      -0.0,
-     13.946402637443088
+     16.0
     ],
     [
      1.0,
      0.0,
      2.220446049250313e-16,
-     550.0918430277906
+     361.0
     ],
     [
      0,
@@ -2859,26 +2221,26 @@
    ]
   },
   {
-   "kind": "Nut_M3",
+   "kind": "Nut_M4",
    "group": "Head",
    "matrix": [
     [
      2.220446049250313e-16,
      -0.0,
      -1.0,
-     -116.0
+     -66.62284491910096
     ],
     [
      0.0,
      1.0,
      -0.0,
-     29.90815697220945
+     16.0
     ],
     [
      1.0,
      0.0,
      2.220446049250313e-16,
-     566.053597362557
+     361.0
     ],
     [
      0,
@@ -2889,14 +2251,14 @@
    ]
   },
   {
-   "kind": "Screw_M4x20",
+   "kind": "Nut_M4",
    "group": "Head",
    "matrix": [
     [
      1.0,
      0.0,
      0.0,
-     92.0
+     -88.0
     ],
     [
      0.0,
@@ -2908,7 +2270,7 @@
      0.0,
      0.0,
      1.0,
-     589.0
+     587.4
     ],
     [
      0,
@@ -2919,14 +2281,14 @@
    ]
   },
   {
-   "kind": "Screw_M4x20",
+   "kind": "Nut_M4",
    "group": "Head",
    "matrix": [
     [
      1.0,
      0.0,
      0.0,
-     92.0
+     -88.0
     ],
     [
      0.0,
@@ -2938,7 +2300,7 @@
      0.0,
      0.0,
      1.0,
-     589.0
+     587.4
     ],
     [
      0,
@@ -2949,14 +2311,134 @@
    ]
   },
   {
-   "kind": "Screw_M4x20",
+   "kind": "Nut_M3",
+   "group": "Head",
+   "matrix": [
+    [
+     1.1102230246251565e-16,
+     2.7755575615628914e-17,
+     -1.0,
+     -108.8
+    ],
+    [
+     -0.42261826174069916,
+     0.90630778703665,
+     -2.7755575615628914e-17,
+     -29.90815697220945
+    ],
+    [
+     0.9063077870366502,
+     0.42261826174069916,
+     1.1102230246251565e-16,
+     585.053597362557
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M3",
+   "group": "Head",
+   "matrix": [
+    [
+     0.0,
+     0.0,
+     -1.0000000000000002,
+     -108.8
+    ],
+    [
+     -0.9063077870366505,
+     0.4226182617406986,
+     -1.1102230246251565e-16,
+     -13.946402637443072
+    ],
+    [
+     0.42261826174069883,
+     0.9063077870366505,
+     -2.220446049250313e-16,
+     569.0918430277906
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M3",
+   "group": "Head",
+   "matrix": [
+    [
+     0.0,
+     5.551115123125783e-17,
+     -1.0,
+     -108.8
+    ],
+    [
+     -0.9063077870366496,
+     -0.42261826174069994,
+     -5.551115123125783e-17,
+     13.946402637443088
+    ],
+    [
+     -0.42261826174069994,
+     0.9063077870366496,
+     0.0,
+     569.0918430277906
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M3",
+   "group": "Head",
+   "matrix": [
+    [
+     2.220446049250313e-16,
+     0.0,
+     -1.0,
+     -108.8
+    ],
+    [
+     -0.42261826174069883,
+     -0.90630778703665,
+     -5.551115123125783e-17,
+     29.90815697220945
+    ],
+    [
+     -0.9063077870366503,
+     0.42261826174069883,
+     -2.220446049250313e-16,
+     585.053597362557
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x25",
    "group": "Head",
    "matrix": [
     [
      1.0,
      0.0,
      0.0,
-     -92.0
+     88.0
     ],
     [
      0.0,
@@ -2968,7 +2450,7 @@
      0.0,
      0.0,
      1.0,
-     589.0
+     608.0
     ],
     [
      0,
@@ -2979,14 +2461,14 @@
    ]
   },
   {
-   "kind": "Screw_M4x20",
+   "kind": "Screw_M4x25",
    "group": "Head",
    "matrix": [
     [
      1.0,
      0.0,
      0.0,
-     -92.0
+     88.0
     ],
     [
      0.0,
@@ -2998,7 +2480,7 @@
      0.0,
      0.0,
      1.0,
-     589.0
+     608.0
     ],
     [
      0,
@@ -3009,26 +2491,26 @@
    ]
   },
   {
-   "kind": "Screw_M3x12",
+   "kind": "Screw_M4x25",
    "group": "Head",
    "matrix": [
     [
-     2.220446049250313e-16,
-     0.0,
      1.0,
-     125.0
+     0.0,
+     0.0,
+     -88.0
     ],
     [
      0.0,
      1.0,
      0.0,
-     -29.90815697220945
+     -44.0
     ],
     [
-     -1.0,
      0.0,
-     2.220446049250313e-16,
-     566.053597362557
+     0.0,
+     1.0,
+     608.0
     ],
     [
      0,
@@ -3039,86 +2521,26 @@
    ]
   },
   {
-   "kind": "Screw_M3x12",
+   "kind": "Screw_M4x25",
    "group": "Head",
    "matrix": [
     [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     125.0
-    ],
-    [
-     0.0,
      1.0,
      0.0,
-     -13.946402637443072
-    ],
-    [
-     -1.0,
      0.0,
-     2.220446049250313e-16,
-     550.0918430277906
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M3x12",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     125.0
+     -88.0
     ],
     [
      0.0,
      1.0,
      0.0,
-     13.946402637443088
+     44.0
     ],
     [
-     -1.0,
      0.0,
-     2.220446049250313e-16,
-     550.0918430277906
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M3x12",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
      0.0,
      1.0,
-     125.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     29.90815697220945
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     566.053597362557
+     608.0
     ],
     [
      0,
@@ -3136,7 +2558,7 @@
      2.220446049250313e-16,
      -0.0,
      -1.0,
-     -125.0
+     -119.0
     ],
     [
      0.0,
@@ -3148,7 +2570,7 @@
      1.0,
      0.0,
      2.220446049250313e-16,
-     566.053597362557
+     585.053597362557
     ],
     [
      0,
@@ -3166,7 +2588,7 @@
      2.220446049250313e-16,
      -0.0,
      -1.0,
-     -125.0
+     -119.0
     ],
     [
      0.0,
@@ -3178,7 +2600,7 @@
      1.0,
      0.0,
      2.220446049250313e-16,
-     550.0918430277906
+     569.0918430277906
     ],
     [
      0,
@@ -3196,7 +2618,7 @@
      2.220446049250313e-16,
      -0.0,
      -1.0,
-     -125.0
+     -119.0
     ],
     [
      0.0,
@@ -3208,7 +2630,7 @@
      1.0,
      0.0,
      2.220446049250313e-16,
-     550.0918430277906
+     569.0918430277906
     ],
     [
      0,
@@ -3226,7 +2648,7 @@
      2.220446049250313e-16,
      -0.0,
      -1.0,
-     -125.0
+     -119.0
     ],
     [
      0.0,
@@ -3238,7 +2660,7 @@
      1.0,
      0.0,
      2.220446049250313e-16,
-     566.053597362557
+     585.053597362557
     ],
     [
      0,
@@ -3249,14 +2671,14 @@
    ]
   },
   {
-   "kind": "Screw_M3x10",
+   "kind": "Screw_M3x8",
    "group": "Head",
    "matrix": [
     [
      2.220446049250313e-16,
      0.0,
      1.0,
-     -115.6
+     -109.6
     ],
     [
      0.0,
@@ -3268,7 +2690,7 @@
      -1.0,
      0.0,
      2.220446049250313e-16,
-     587.0
+     606.0
     ],
     [
      0,
@@ -3284,21 +2706,21 @@
    "matrix": [
     [
      2.220446049250313e-16,
-     -0.0,
+     0.0,
      -1.0,
-     -123.9
+     -115.0
     ],
     [
-     0.0,
-     1.0,
-     -0.0,
+     1.2246467991473532e-16,
+     -1.0,
+     2.465190328815662e-32,
      -7.0
     ],
     [
-     1.0,
-     0.0,
-     2.220446049250313e-16,
-     587.0
+     -1.0,
+     -1.2246467991473532e-16,
+     -2.220446049250313e-16,
+     606.0
     ],
     [
      0,
@@ -3309,14 +2731,14 @@
    ]
   },
   {
-   "kind": "Screw_M3x10",
+   "kind": "Screw_M3x8",
    "group": "Head",
    "matrix": [
     [
      2.220446049250313e-16,
      0.0,
      1.0,
-     -115.6
+     -109.6
     ],
     [
      0.0,
@@ -3328,7 +2750,7 @@
      -1.0,
      0.0,
      2.220446049250313e-16,
-     587.0
+     606.0
     ],
     [
      0,
@@ -3346,7 +2768,7 @@
      2.220446049250313e-16,
      -0.0,
      -1.0,
-     -123.9
+     -115.0
     ],
     [
      0.0,
@@ -3358,7 +2780,7 @@
      1.0,
      0.0,
      2.220446049250313e-16,
-     587.0
+     606.0
     ],
     [
      0,
@@ -3376,19 +2798,19 @@
      2.220446049250313e-16,
      0.0,
      1.0,
-     125.0
+     119.0
     ],
     [
      0.0,
      1.0,
      0.0,
-     28.284271247461902
+     31.112698372208094
     ],
     [
      -1.0,
      0.0,
      2.220446049250313e-16,
-     516.2842712474619
+     615.1126983722081
     ],
     [
      0,
@@ -3406,19 +2828,19 @@
      2.220446049250313e-16,
      0.0,
      1.0,
-     125.0
+     119.0
     ],
     [
      0.0,
      1.0,
      0.0,
-     -28.2842712474619
+     -31.112698372208087
     ],
     [
      -1.0,
      0.0,
      2.220446049250313e-16,
-     516.2842712474619
+     615.1126983722081
     ],
     [
      0,
@@ -3436,19 +2858,19 @@
      2.220446049250313e-16,
      0.0,
      1.0,
-     125.0
+     119.0
     ],
     [
      0.0,
      1.0,
      0.0,
-     -28.28427124746191
+     -31.112698372208097
     ],
     [
      -1.0,
      0.0,
      2.220446049250313e-16,
-     459.7157287525381
+     552.8873016277919
     ],
     [
      0,
@@ -3466,19 +2888,19 @@
      2.220446049250313e-16,
      0.0,
      1.0,
-     125.0
+     119.0
     ],
     [
      0.0,
      1.0,
      0.0,
-     28.284271247461895
+     31.112698372208083
     ],
     [
      -1.0,
      0.0,
      2.220446049250313e-16,
-     459.7157287525381
+     552.8873016277919
     ],
     [
      0,
@@ -3489,26 +2911,26 @@
    ]
   },
   {
-   "kind": "Nut_M3",
+   "kind": "Screw_M4x25",
    "group": "Head",
    "matrix": [
     [
      1.0,
      0.0,
      0.0,
-     -28.0
+     -8.0
     ],
     [
      0.0,
      1.0,
      0.0,
-     60.0
+     -8.0
     ],
     [
      0.0,
      0.0,
      1.0,
-     40.0
+     81.0
     ],
     [
      0,
@@ -3519,26 +2941,26 @@
    ]
   },
   {
-   "kind": "Nut_M3",
+   "kind": "Screw_M4x25",
    "group": "Head",
    "matrix": [
     [
      1.0,
      0.0,
      0.0,
-     28.0
+     8.0
     ],
     [
      0.0,
      1.0,
      0.0,
-     60.0
+     -8.0
     ],
     [
      0.0,
      0.0,
      1.0,
-     40.0
+     81.0
     ],
     [
      0,
@@ -3549,26 +2971,26 @@
    ]
   },
   {
-   "kind": "Screw_M4x45",
+   "kind": "Screw_M4x25",
    "group": "Head",
    "matrix": [
     [
      1.0,
      0.0,
      0.0,
-     0.0
+     -8.0
     ],
     [
      0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     -30.0
+     1.0,
+     0.0,
+     8.0
     ],
     [
      0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     30.2
+     0.0,
+     1.0,
+     81.0
     ],
     [
      0,
@@ -3579,236 +3001,26 @@
    ]
   },
   {
-   "kind": "Washer_M4",
+   "kind": "Screw_M4x25",
    "group": "Head",
    "matrix": [
     [
      1.0,
      0.0,
      0.0,
-     0.0
-    ],
-    [
-     0.0,
-     -1.0,
-     -1.2246467991473532e-16,
-     -30.0
-    ],
-    [
-     0.0,
-     1.2246467991473532e-16,
-     -1.0,
-     30.2
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     0.0
+     8.0
     ],
     [
      0.0,
      1.0,
      0.0,
-     -30.0
+     8.0
     ],
     [
      0.0,
      0.0,
      1.0,
-     66.5
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M3x12",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     0.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -73.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     49.1
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M3",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     0.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -73.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     40.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M3x12",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     0.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -47.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     49.1
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M3",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     0.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -47.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     40.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M3x45",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -30.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -60.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     66.5
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M3x45",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     30.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -60.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     66.5
+     81.0
     ],
     [
      0,
@@ -3826,19 +3038,19 @@
      1.0,
      0.0,
      0.0,
-     61.87184335382291
+     56.214989104330535
     ],
     [
      0.0,
      -1.0,
      -1.2246467991473532e-16,
-     61.871843353822904
+     56.21498910433052
     ],
     [
      0.0,
      1.2246467991473532e-16,
      -1.0,
-     48.0
+     67.0
     ],
     [
      0,
@@ -3856,19 +3068,19 @@
      1.0,
      0.0,
      0.0,
-     -61.871843353822904
+     -56.21498910433052
     ],
     [
      0.0,
      -1.0,
      -1.2246467991473532e-16,
-     61.87184335382291
+     56.214989104330535
     ],
     [
      0.0,
      1.2246467991473532e-16,
      -1.0,
-     48.0
+     67.0
     ],
     [
      0,
@@ -3886,19 +3098,19 @@
      1.0,
      0.0,
      0.0,
-     -61.871843353822925
+     -56.21498910433054
     ],
     [
      0.0,
      -1.0,
      -1.2246467991473532e-16,
-     -61.871843353822904
+     -56.21498910433052
     ],
     [
      0.0,
      1.2246467991473532e-16,
      -1.0,
-     48.0
+     67.0
     ],
     [
      0,
@@ -3916,139 +3128,19 @@
      1.0,
      0.0,
      0.0,
-     61.8718433538229
+     56.21498910433051
     ],
     [
      0.0,
      -1.0,
      -1.2246467991473532e-16,
-     -61.871843353822925
+     -56.21498910433054
     ],
     [
      0.0,
      1.2246467991473532e-16,
      -1.0,
-     48.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M3x16",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     -0.0,
-     -1.0,
-     -11.0
-    ],
-    [
-     0.0,
-     1.0,
-     -0.0,
-     7.0
-    ],
-    [
-     1.0,
-     0.0,
-     2.220446049250313e-16,
-     45.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M3",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     8.5
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     7.0
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     45.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M3x35",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -28.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     60.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     74.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M3x35",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     28.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     60.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     74.0
+     67.0
     ],
     [
      0,
@@ -4063,52 +3155,22 @@
    "group": "Head",
    "matrix": [
     [
-     1.0,
+     -0.7071067811865475,
+     -0.7071067811865477,
      0.0,
-     0.0,
-     61.87184335382291
+     56.214989104330535
     ],
     [
+     0.7071067811865477,
+     -0.7071067811865475,
      0.0,
-     1.0,
-     0.0,
-     61.871843353822904
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     77.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     61.87184335382291
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     61.871843353822904
+     56.21498910433052
     ],
     [
      0.0,
      0.0,
      1.0,
-     147.4
+     96.4
     ],
     [
      0,
@@ -4123,52 +3185,22 @@
    "group": "Head",
    "matrix": [
     [
-     1.0,
+     -0.7071067811865475,
+     -0.7071067811865477,
      0.0,
-     0.0,
-     -61.871843353822904
+     56.214989104330535
     ],
     [
+     0.7071067811865477,
+     -0.7071067811865475,
      0.0,
-     1.0,
-     0.0,
-     61.87184335382291
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     77.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -61.871843353822904
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     61.87184335382291
+     56.21498910433052
     ],
     [
      0.0,
      0.0,
      1.0,
-     147.4
+     166.4
     ],
     [
      0,
@@ -4183,52 +3215,22 @@
    "group": "Head",
    "matrix": [
     [
-     1.0,
+     -0.7071067811865475,
+     0.7071067811865475,
      0.0,
-     0.0,
-     -61.871843353822925
+     -56.21498910433052
     ],
     [
+     -0.7071067811865475,
+     -0.7071067811865475,
      0.0,
-     1.0,
-     0.0,
-     -61.871843353822904
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     77.4
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Head",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -61.871843353822925
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -61.871843353822904
+     56.214989104330535
     ],
     [
      0.0,
      0.0,
      1.0,
-     147.4
+     96.4
     ],
     [
      0,
@@ -4243,22 +3245,22 @@
    "group": "Head",
    "matrix": [
     [
-     1.0,
+     -0.7071067811865475,
+     0.7071067811865475,
      0.0,
+     -56.21498910433052
+    ],
+    [
+     -0.7071067811865475,
+     -0.7071067811865475,
      0.0,
-     61.8718433538229
+     56.214989104330535
     ],
     [
      0.0,
-     1.0,
-     0.0,
-     -61.871843353822925
-    ],
-    [
-     0.0,
      0.0,
      1.0,
-     77.4
+     166.4
     ],
     [
      0,
@@ -4273,22 +3275,112 @@
    "group": "Head",
    "matrix": [
     [
-     1.0,
+     0.7071067811865474,
+     0.7071067811865477,
      0.0,
+     -56.21498910433054
+    ],
+    [
+     -0.7071067811865477,
+     0.7071067811865474,
      0.0,
-     61.8718433538229
+     -56.21498910433052
     ],
     [
      0.0,
-     1.0,
      0.0,
-     -61.871843353822925
+     1.0,
+     96.4
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Head",
+   "matrix": [
+    [
+     0.7071067811865474,
+     0.7071067811865477,
+     0.0,
+     -56.21498910433054
+    ],
+    [
+     -0.7071067811865477,
+     0.7071067811865474,
+     0.0,
+     -56.21498910433052
     ],
     [
      0.0,
      0.0,
      1.0,
-     147.4
+     166.4
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Head",
+   "matrix": [
+    [
+     0.7071067811865477,
+     -0.7071067811865475,
+     0.0,
+     56.21498910433051
+    ],
+    [
+     0.7071067811865475,
+     0.7071067811865477,
+     0.0,
+     -56.21498910433054
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     96.4
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Head",
+   "matrix": [
+    [
+     0.7071067811865477,
+     -0.7071067811865475,
+     0.0,
+     56.21498910433051
+    ],
+    [
+     0.7071067811865475,
+     0.7071067811865477,
+     0.0,
+     -56.21498910433054
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     166.4
     ],
     [
      0,
@@ -4306,19 +3398,19 @@
      1.0,
      0.0,
      0.0,
-     61.87184335382291
+     56.214989104330535
     ],
     [
      0.0,
      1.0,
      0.0,
-     61.871843353822904
+     56.21498910433052
     ],
     [
      0.0,
      0.0,
      1.0,
-     169.5
+     188.5
     ],
     [
      0,
@@ -4336,19 +3428,19 @@
      1.0,
      0.0,
      0.0,
-     -61.871843353822904
+     -56.21498910433052
     ],
     [
      0.0,
      1.0,
      0.0,
-     61.87184335382291
+     56.214989104330535
     ],
     [
      0.0,
      0.0,
      1.0,
-     169.5
+     188.5
     ],
     [
      0,
@@ -4366,19 +3458,19 @@
      1.0,
      0.0,
      0.0,
-     -61.871843353822925
+     -56.21498910433054
     ],
     [
      0.0,
      1.0,
      0.0,
-     -61.871843353822904
+     -56.21498910433052
     ],
     [
      0.0,
      0.0,
      1.0,
-     169.5
+     188.5
     ],
     [
      0,
@@ -4396,19 +3488,19 @@
      1.0,
      0.0,
      0.0,
-     61.8718433538229
+     56.21498910433051
     ],
     [
      0.0,
      1.0,
      0.0,
-     -61.871843353822925
+     -56.21498910433054
     ],
     [
      0.0,
      0.0,
      1.0,
-     169.5
+     188.5
     ],
     [
      0,
@@ -4426,19 +3518,19 @@
      1.0,
      0.0,
      0.0,
-     -66.0
+     -70.0
     ],
     [
      0.0,
      -1.0,
      -1.2246467991473532e-16,
-     -40.0
+     -18.0
     ],
     [
      0.0,
      1.2246467991473532e-16,
      -1.0,
-     162.5
+     181.5
     ],
     [
      0,
@@ -4456,19 +3548,19 @@
      1.0,
      0.0,
      0.0,
-     -66.0
+     -70.0
     ],
     [
      0.0,
      -1.0,
      -1.2246467991473532e-16,
-     40.0
+     18.0
     ],
     [
      0.0,
      1.2246467991473532e-16,
      -1.0,
-     162.5
+     181.5
     ],
     [
      0,
@@ -4486,19 +3578,19 @@
      1.0,
      0.0,
      0.0,
-     -94.0
+     -106.0
     ],
     [
      0.0,
      -1.0,
      -1.2246467991473532e-16,
-     -40.0
+     -18.0
     ],
     [
      0.0,
      1.2246467991473532e-16,
      -1.0,
-     162.5
+     181.5
     ],
     [
      0,
@@ -4516,19 +3608,19 @@
      1.0,
      0.0,
      0.0,
-     -94.0
+     -106.0
     ],
     [
      0.0,
      -1.0,
      -1.2246467991473532e-16,
-     40.0
+     18.0
     ],
     [
      0.0,
      1.2246467991473532e-16,
      -1.0,
-     162.5
+     181.5
     ],
     [
      0,
@@ -4546,19 +3638,19 @@
      1.0,
      0.0,
      0.0,
-     66.0
+     70.0
     ],
     [
      0.0,
      -1.0,
      -1.2246467991473532e-16,
-     -40.0
+     -18.0
     ],
     [
      0.0,
      1.2246467991473532e-16,
      -1.0,
-     162.5
+     181.5
     ],
     [
      0,
@@ -4576,19 +3668,19 @@
      1.0,
      0.0,
      0.0,
-     66.0
+     70.0
     ],
     [
      0.0,
      -1.0,
      -1.2246467991473532e-16,
-     40.0
+     18.0
     ],
     [
      0.0,
      1.2246467991473532e-16,
      -1.0,
-     162.5
+     181.5
     ],
     [
      0,
@@ -4606,19 +3698,19 @@
      1.0,
      0.0,
      0.0,
-     94.0
+     106.0
     ],
     [
      0.0,
      -1.0,
      -1.2246467991473532e-16,
-     -40.0
+     -18.0
     ],
     [
      0.0,
      1.2246467991473532e-16,
      -1.0,
-     162.5
+     181.5
     ],
     [
      0,
@@ -4636,19 +3728,19 @@
      1.0,
      0.0,
      0.0,
-     94.0
+     106.0
     ],
     [
      0.0,
      -1.0,
      -1.2246467991473532e-16,
-     40.0
+     18.0
     ],
     [
      0.0,
      1.2246467991473532e-16,
      -1.0,
-     162.5
+     181.5
     ],
     [
      0,
@@ -4678,7 +3770,7 @@
      0.0,
      0.0,
      1.0,
-     158.0
+     177.0
     ],
     [
      0,
@@ -4708,7 +3800,7 @@
      0.0,
      0.0,
      1.0,
-     158.0
+     177.0
     ],
     [
      0,
@@ -4738,7 +3830,7 @@
      0.0,
      0.0,
      1.0,
-     158.0
+     177.0
     ],
     [
      0,
@@ -4768,7 +3860,7 @@
      0.0,
      0.0,
      1.0,
-     158.0
+     177.0
     ],
     [
      0,
@@ -4798,7 +3890,7 @@
      0.0,
      0.0,
      1.0,
-     158.0
+     177.0
     ],
     [
      0,
@@ -4828,7 +3920,7 @@
      0.0,
      0.0,
      1.0,
-     158.0
+     177.0
     ],
     [
      0,
@@ -4858,7 +3950,7 @@
      0.0,
      0.0,
      1.0,
-     175.0
+     194.0
     ],
     [
      0,
@@ -4888,7 +3980,7 @@
      0.0,
      0.0,
      1.0,
-     175.0
+     194.0
     ],
     [
      0,
@@ -4918,7 +4010,7 @@
      0.0,
      0.0,
      1.0,
-     175.0
+     194.0
     ],
     [
      0,
@@ -4948,7 +4040,7 @@
      0.0,
      0.0,
      1.0,
-     175.0
+     194.0
     ],
     [
      0,
@@ -4978,7 +4070,7 @@
      0.0,
      0.0,
      1.0,
-     175.0
+     194.0
     ],
     [
      0,
@@ -5008,7 +4100,487 @@
      0.0,
      0.0,
      1.0,
-     175.0
+     194.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Cradle",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     -21.0
+    ],
+    [
+     0.0,
+     2.220446049250313e-16,
+     -1.0,
+     37.0
+    ],
+    [
+     -0.0,
+     1.0,
+     2.220446049250313e-16,
+     578.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Cradle",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     21.0
+    ],
+    [
+     0.0,
+     2.220446049250313e-16,
+     -1.0,
+     37.0
+    ],
+    [
+     -0.0,
+     1.0,
+     2.220446049250313e-16,
+     578.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Cradle",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     -21.0
+    ],
+    [
+     0.0,
+     2.220446049250313e-16,
+     -1.0,
+     37.0
+    ],
+    [
+     -0.0,
+     1.0,
+     2.220446049250313e-16,
+     620.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Cradle",
+   "matrix": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     21.0
+    ],
+    [
+     0.0,
+     2.220446049250313e-16,
+     -1.0,
+     37.0
+    ],
+    [
+     -0.0,
+     1.0,
+     2.220446049250313e-16,
+     620.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Cradle",
+   "matrix": [
+    [
+     1.0,
+     -0.0,
+     0.0,
+     -21.0
+    ],
+    [
+     0.0,
+     2.220446049250313e-16,
+     1.0,
+     -37.0
+    ],
+    [
+     -0.0,
+     -1.0,
+     2.220446049250313e-16,
+     578.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Cradle",
+   "matrix": [
+    [
+     1.0,
+     -0.0,
+     0.0,
+     21.0
+    ],
+    [
+     0.0,
+     2.220446049250313e-16,
+     1.0,
+     -37.0
+    ],
+    [
+     -0.0,
+     -1.0,
+     2.220446049250313e-16,
+     578.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Cradle",
+   "matrix": [
+    [
+     1.0,
+     -0.0,
+     0.0,
+     -21.0
+    ],
+    [
+     0.0,
+     2.220446049250313e-16,
+     1.0,
+     -37.0
+    ],
+    [
+     -0.0,
+     -1.0,
+     2.220446049250313e-16,
+     620.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Cradle",
+   "matrix": [
+    [
+     1.0,
+     -0.0,
+     0.0,
+     21.0
+    ],
+    [
+     0.0,
+     2.220446049250313e-16,
+     1.0,
+     -37.0
+    ],
+    [
+     -0.0,
+     -1.0,
+     2.220446049250313e-16,
+     620.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Cradle",
+   "matrix": [
+    [
+     2.220446049250313e-16,
+     0.0,
+     1.0,
+     -37.0
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     14.142135623730951
+    ],
+    [
+     -1.0,
+     0.0,
+     2.220446049250313e-16,
+     613.142135623731
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Cradle",
+   "matrix": [
+    [
+     2.220446049250313e-16,
+     0.0,
+     1.0,
+     -37.0
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     -14.14213562373095
+    ],
+    [
+     -1.0,
+     0.0,
+     2.220446049250313e-16,
+     613.142135623731
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Cradle",
+   "matrix": [
+    [
+     2.220446049250313e-16,
+     0.0,
+     1.0,
+     -37.0
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     -14.142135623730955
+    ],
+    [
+     -1.0,
+     0.0,
+     2.220446049250313e-16,
+     584.857864376269
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Nut_M4",
+   "group": "Cradle",
+   "matrix": [
+    [
+     2.220446049250313e-16,
+     0.0,
+     1.0,
+     -37.0
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     14.142135623730947
+    ],
+    [
+     -1.0,
+     0.0,
+     2.220446049250313e-16,
+     584.857864376269
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x12",
+   "group": "Cradle",
+   "matrix": [
+    [
+     2.220446049250313e-16,
+     -0.0,
+     -1.0,
+     37.0
+    ],
+    [
+     0.0,
+     1.0,
+     -0.0,
+     -8.0
+    ],
+    [
+     1.0,
+     0.0,
+     2.220446049250313e-16,
+     591.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x12",
+   "group": "Cradle",
+   "matrix": [
+    [
+     2.220446049250313e-16,
+     -0.0,
+     -1.0,
+     37.0
+    ],
+    [
+     0.0,
+     1.0,
+     -0.0,
+     8.0
+    ],
+    [
+     1.0,
+     0.0,
+     2.220446049250313e-16,
+     591.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x12",
+   "group": "Cradle",
+   "matrix": [
+    [
+     2.220446049250313e-16,
+     -0.0,
+     -1.0,
+     37.0
+    ],
+    [
+     0.0,
+     1.0,
+     -0.0,
+     -8.0
+    ],
+    [
+     1.0,
+     0.0,
+     2.220446049250313e-16,
+     607.0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "kind": "Screw_M4x12",
+   "group": "Cradle",
+   "matrix": [
+    [
+     2.220446049250313e-16,
+     -0.0,
+     -1.0,
+     37.0
+    ],
+    [
+     0.0,
+     1.0,
+     -0.0,
+     8.0
+    ],
+    [
+     1.0,
+     0.0,
+     2.220446049250313e-16,
+     607.0
     ],
     [
      0,
@@ -5020,25 +4592,25 @@
   },
   {
    "kind": "Nut_M3",
-   "group": "Head",
+   "group": "Cradle",
    "matrix": [
     [
+     -2.220446049250313e-16,
      1.0,
      0.0,
+     -36.5
+    ],
+    [
+     -1.0,
+     -2.220446049250313e-16,
      0.0,
-     -30.0
+     0.0
     ],
     [
      0.0,
-     1.0,
-     0.0,
-     -60.0
-    ],
-    [
-     0.0,
      0.0,
      1.0,
-     27.5
+     630.8
     ],
     [
      0,
@@ -5050,25 +4622,25 @@
   },
   {
    "kind": "Nut_M3",
-   "group": "Head",
+   "group": "Cradle",
    "matrix": [
     [
+     2.220446049250313e-16,
+     -1.0,
+     0.0,
+     36.5
+    ],
+    [
      1.0,
+     2.220446049250313e-16,
      0.0,
-     0.0,
-     30.0
+     0.0
     ],
     [
      0.0,
-     1.0,
-     0.0,
-     -60.0
-    ],
-    [
-     0.0,
      0.0,
      1.0,
-     27.5
+     630.8
     ],
     [
      0,
@@ -5079,8 +4651,8 @@
    ]
   },
   {
-   "kind": "Screw_M3x10",
-   "group": "AzPinion",
+   "kind": "Nut_M3",
+   "group": "Cradle",
    "matrix": [
     [
      1.0,
@@ -5092,13 +4664,13 @@
      0.0,
      1.0,
      0.0,
-     60.0
+     -36.5
     ],
     [
      0.0,
      0.0,
      1.0,
-     32.0
+     630.8
     ],
     [
      0,
@@ -5109,536 +4681,26 @@
    ]
   },
   {
-   "kind": "Screw_M4x20",
+   "kind": "Nut_M3",
    "group": "Cradle",
    "matrix": [
     [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     51.5
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     28.284271247461902
-    ],
-    [
      -1.0,
+     -1.2246467991473532e-16,
      0.0,
-     2.220446049250313e-16,
-     608.2842712474619
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Cradle",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     51.5
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -28.2842712474619
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     608.2842712474619
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Cradle",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     51.5
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -28.28427124746191
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     551.7157287525381
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Cradle",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     51.5
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     28.284271247461895
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     551.7157287525381
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M3x10",
-   "group": "ElPinion",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     -0.0,
-     -1.0,
-     49.0
-    ],
-    [
-     0.0,
-     1.0,
-     -0.0,
      0.0
     ],
     [
-     1.0,
-     0.0,
-     2.220446049250313e-16,
-     488.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Cradle",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -27.0
-    ],
-    [
-     0.0,
-     2.220446049250313e-16,
-     -1.0,
-     37.0
-    ],
-    [
-     -0.0,
-     1.0,
-     2.220446049250313e-16,
-     553.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Cradle",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     27.0
-    ],
-    [
-     0.0,
-     2.220446049250313e-16,
-     -1.0,
-     37.0
-    ],
-    [
-     -0.0,
-     1.0,
-     2.220446049250313e-16,
-     553.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Cradle",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -27.0
-    ],
-    [
-     0.0,
-     2.220446049250313e-16,
-     -1.0,
-     37.0
-    ],
-    [
-     -0.0,
-     1.0,
-     2.220446049250313e-16,
-     607.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Cradle",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     27.0
-    ],
-    [
-     0.0,
-     2.220446049250313e-16,
-     -1.0,
-     37.0
-    ],
-    [
-     -0.0,
-     1.0,
-     2.220446049250313e-16,
-     607.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Cradle",
-   "matrix": [
-    [
-     1.0,
-     -0.0,
-     0.0,
-     -27.0
-    ],
-    [
-     0.0,
-     2.220446049250313e-16,
-     1.0,
-     -37.0
-    ],
-    [
-     -0.0,
-     -1.0,
-     2.220446049250313e-16,
-     553.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Cradle",
-   "matrix": [
-    [
-     1.0,
-     -0.0,
-     0.0,
-     27.0
-    ],
-    [
-     0.0,
-     2.220446049250313e-16,
-     1.0,
-     -37.0
-    ],
-    [
-     -0.0,
-     -1.0,
-     2.220446049250313e-16,
-     553.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Cradle",
-   "matrix": [
-    [
-     1.0,
-     -0.0,
-     0.0,
-     -27.0
-    ],
-    [
-     0.0,
-     2.220446049250313e-16,
-     1.0,
-     -37.0
-    ],
-    [
-     -0.0,
-     -1.0,
-     2.220446049250313e-16,
-     607.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Cradle",
-   "matrix": [
-    [
-     1.0,
-     -0.0,
-     0.0,
-     27.0
-    ],
-    [
-     0.0,
-     2.220446049250313e-16,
-     1.0,
-     -37.0
-    ],
-    [
-     -0.0,
-     -1.0,
-     2.220446049250313e-16,
-     607.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Cradle",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     -0.0,
-     -1.0,
-     37.0
-    ],
-    [
-     0.0,
-     1.0,
-     -0.0,
-     14.142135623730951
-    ],
-    [
-     1.0,
-     0.0,
-     2.220446049250313e-16,
-     594.142135623731
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Cradle",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     -0.0,
-     -1.0,
-     37.0
-    ],
-    [
-     0.0,
-     1.0,
-     -0.0,
-     -14.14213562373095
-    ],
-    [
-     1.0,
-     0.0,
-     2.220446049250313e-16,
-     594.142135623731
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Cradle",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     -0.0,
-     -1.0,
-     37.0
-    ],
-    [
-     0.0,
-     1.0,
-     -0.0,
-     -14.142135623730955
-    ],
-    [
-     1.0,
-     0.0,
-     2.220446049250313e-16,
-     565.857864376269
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Cradle",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     -0.0,
-     -1.0,
-     37.0
-    ],
-    [
-     0.0,
-     1.0,
-     -0.0,
-     14.142135623730947
-    ],
-    [
-     1.0,
-     0.0,
-     2.220446049250313e-16,
-     565.857864376269
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Cradle",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     -37.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     14.142135623730951
-    ],
-    [
+     1.2246467991473532e-16,
      -1.0,
      0.0,
-     2.220446049250313e-16,
-     594.142135623731
+     36.5
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     630.8
     ],
     [
      0,
@@ -5649,26 +4711,26 @@
    ]
   },
   {
-   "kind": "Nut_M4",
+   "kind": "Screw_M3x12",
    "group": "Cradle",
    "matrix": [
     [
-     2.220446049250313e-16,
-     0.0,
      1.0,
-     -37.0
+     0.0,
+     0.0,
+     -36.5
     ],
     [
      0.0,
      1.0,
      0.0,
-     -14.14213562373095
+     0.0
     ],
     [
-     -1.0,
      0.0,
-     2.220446049250313e-16,
-     594.142135623731
+     0.0,
+     1.0,
+     641.0
     ],
     [
      0,
@@ -5679,26 +4741,26 @@
    ]
   },
   {
-   "kind": "Nut_M4",
+   "kind": "Screw_M3x12",
    "group": "Cradle",
    "matrix": [
     [
-     2.220446049250313e-16,
-     0.0,
      1.0,
-     -37.0
+     0.0,
+     0.0,
+     36.5
     ],
     [
      0.0,
      1.0,
      0.0,
-     -14.142135623730955
+     0.0
     ],
     [
-     -1.0,
      0.0,
-     2.220446049250313e-16,
-     565.857864376269
+     0.0,
+     1.0,
+     641.0
     ],
     [
      0,
@@ -5709,26 +4771,26 @@
    ]
   },
   {
-   "kind": "Nut_M4",
+   "kind": "Screw_M3x12",
    "group": "Cradle",
    "matrix": [
     [
-     2.220446049250313e-16,
-     0.0,
      1.0,
-     -37.0
+     0.0,
+     0.0,
+     0.0
     ],
     [
      0.0,
      1.0,
      0.0,
-     14.142135623730947
+     -36.5
     ],
     [
-     -1.0,
      0.0,
-     2.220446049250313e-16,
-     565.857864376269
+     0.0,
+     1.0,
+     641.0
     ],
     [
      0,
@@ -5739,476 +4801,26 @@
    ]
   },
   {
-   "kind": "Nut_M4",
-   "group": "Cradle",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     -0.0,
-     -1.0,
-     37.0
-    ],
-    [
-     0.0,
-     1.0,
-     -0.0,
-     28.284271247461902
-    ],
-    [
-     1.0,
-     0.0,
-     2.220446049250313e-16,
-     608.2842712474619
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Cradle",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     -0.0,
-     -1.0,
-     37.0
-    ],
-    [
-     0.0,
-     1.0,
-     -0.0,
-     -28.2842712474619
-    ],
-    [
-     1.0,
-     0.0,
-     2.220446049250313e-16,
-     608.2842712474619
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Cradle",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     -0.0,
-     -1.0,
-     37.0
-    ],
-    [
-     0.0,
-     1.0,
-     -0.0,
-     -28.28427124746191
-    ],
-    [
-     1.0,
-     0.0,
-     2.220446049250313e-16,
-     551.7157287525381
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M4",
-   "group": "Cradle",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     -0.0,
-     -1.0,
-     37.0
-    ],
-    [
-     0.0,
-     1.0,
-     -0.0,
-     28.284271247461895
-    ],
-    [
-     1.0,
-     0.0,
-     2.220446049250313e-16,
-     551.7157287525381
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M3",
+   "kind": "Screw_M3x12",
    "group": "Cradle",
    "matrix": [
     [
      1.0,
      0.0,
      0.0,
-     -32.0
+     0.0
     ],
     [
      0.0,
      1.0,
      0.0,
-     -32.0
+     36.5
     ],
     [
      0.0,
      0.0,
      1.0,
-     614.8
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M3",
-   "group": "Cradle",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     32.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -32.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     614.8
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M3",
-   "group": "Cradle",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -32.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     32.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     614.8
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M3",
-   "group": "Cradle",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     32.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     32.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     614.8
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M3x20",
-   "group": "Cradle",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -32.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -32.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     624.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M3x20",
-   "group": "Cradle",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     32.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -32.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     624.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M3x20",
-   "group": "Cradle",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     -32.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     32.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     624.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M3x20",
-   "group": "Cradle",
-   "matrix": [
-    [
-     1.0,
-     0.0,
-     0.0,
-     32.0
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     32.0
-    ],
-    [
-     0.0,
-     0.0,
-     1.0,
-     624.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Cradle",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     46.5
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     14.142135623730951
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     594.142135623731
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Cradle",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     46.5
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -14.14213562373095
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     594.142135623731
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Cradle",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     46.5
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -14.142135623730955
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     565.857864376269
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Cradle",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     46.5
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     14.142135623730947
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     565.857864376269
+     641.0
     ],
     [
      0,
@@ -6238,7 +4850,7 @@
      1.0,
      0.0,
      2.220446049250313e-16,
-     594.142135623731
+     613.142135623731
     ],
     [
      0,
@@ -6268,7 +4880,7 @@
      1.0,
      0.0,
      2.220446049250313e-16,
-     594.142135623731
+     613.142135623731
     ],
     [
      0,
@@ -6298,7 +4910,7 @@
      1.0,
      0.0,
      2.220446049250313e-16,
-     565.857864376269
+     584.857864376269
     ],
     [
      0,
@@ -6328,7 +4940,7 @@
      1.0,
      0.0,
      2.220446049250313e-16,
-     565.857864376269
+     584.857864376269
     ],
     [
      0,
@@ -6346,7 +4958,7 @@
      1.0,
      -0.0,
      0.0,
-     -27.0
+     -21.0
     ],
     [
      0.0,
@@ -6358,7 +4970,7 @@
      -0.0,
      -1.0,
      2.220446049250313e-16,
-     553.0
+     578.0
     ],
     [
      0,
@@ -6376,7 +4988,7 @@
      1.0,
      -0.0,
      0.0,
-     27.0
+     21.0
     ],
     [
      0.0,
@@ -6388,7 +5000,7 @@
      -0.0,
      -1.0,
      2.220446049250313e-16,
-     553.0
+     578.0
     ],
     [
      0,
@@ -6406,7 +5018,7 @@
      1.0,
      -0.0,
      0.0,
-     -27.0
+     -21.0
     ],
     [
      0.0,
@@ -6418,7 +5030,7 @@
      -0.0,
      -1.0,
      2.220446049250313e-16,
-     607.0
+     620.0
     ],
     [
      0,
@@ -6436,7 +5048,7 @@
      1.0,
      -0.0,
      0.0,
-     27.0
+     21.0
     ],
     [
      0.0,
@@ -6448,7 +5060,7 @@
      -0.0,
      -1.0,
      2.220446049250313e-16,
-     607.0
+     620.0
     ],
     [
      0,
@@ -6466,7 +5078,7 @@
      1.0,
      0.0,
      0.0,
-     -27.0
+     -21.0
     ],
     [
      0.0,
@@ -6478,7 +5090,7 @@
      -0.0,
      1.0,
      2.220446049250313e-16,
-     553.0
+     578.0
     ],
     [
      0,
@@ -6496,7 +5108,7 @@
      1.0,
      0.0,
      0.0,
-     27.0
+     21.0
     ],
     [
      0.0,
@@ -6508,7 +5120,7 @@
      -0.0,
      1.0,
      2.220446049250313e-16,
-     553.0
+     578.0
     ],
     [
      0,
@@ -6526,7 +5138,7 @@
      1.0,
      0.0,
      0.0,
-     -27.0
+     -21.0
     ],
     [
      0.0,
@@ -6538,7 +5150,7 @@
      -0.0,
      1.0,
      2.220446049250313e-16,
-     607.0
+     620.0
     ],
     [
      0,
@@ -6556,7 +5168,7 @@
      1.0,
      0.0,
      0.0,
-     27.0
+     21.0
     ],
     [
      0.0,
@@ -6568,7 +5180,7 @@
      -0.0,
      1.0,
      2.220446049250313e-16,
-     607.0
+     620.0
     ],
     [
      0,
@@ -6579,14 +5191,14 @@
    ]
   },
   {
-   "kind": "Screw_M5x20",
+   "kind": "Screw_M5x12",
    "group": "Cradle",
    "matrix": [
     [
      1.0,
      -0.0,
      0.0,
-     16.970562748477143
+     25.5
     ],
     [
      0.0,
@@ -6598,7 +5210,7 @@
      -0.0,
      -1.0,
      2.220446049250313e-16,
-     596.9705627484772
+     599.0
     ],
     [
      0,
@@ -6616,19 +5228,19 @@
      1.0,
      0.0,
      0.0,
-     16.970562748477143
+     25.5
     ],
     [
      0.0,
      2.220446049250313e-16,
      -1.0,
-     142.0
+     147.0
     ],
     [
      -0.0,
      1.0,
      2.220446049250313e-16,
-     596.9705627484772
+     599.0
     ],
     [
      0,
@@ -6639,14 +5251,14 @@
    ]
   },
   {
-   "kind": "Screw_M5x20",
+   "kind": "Screw_M5x12",
    "group": "Cradle",
    "matrix": [
     [
      1.0,
      -0.0,
      0.0,
-     -16.97056274847714
+     1.5614246689128753e-15
     ],
     [
      0.0,
@@ -6658,7 +5270,7 @@
      -0.0,
      -1.0,
      2.220446049250313e-16,
-     596.9705627484772
+     624.5
     ],
     [
      0,
@@ -6676,19 +5288,19 @@
      1.0,
      0.0,
      0.0,
-     -16.97056274847714
+     1.5614246689128753e-15
     ],
     [
      0.0,
      2.220446049250313e-16,
      -1.0,
-     142.0
+     147.0
     ],
     [
      -0.0,
      1.0,
      2.220446049250313e-16,
-     596.9705627484772
+     624.5
     ],
     [
      0,
@@ -6699,14 +5311,14 @@
    ]
   },
   {
-   "kind": "Screw_M5x20",
+   "kind": "Screw_M5x12",
    "group": "Cradle",
    "matrix": [
     [
      1.0,
      -0.0,
      0.0,
-     -16.970562748477143
+     -25.5
     ],
     [
      0.0,
@@ -6718,7 +5330,7 @@
      -0.0,
      -1.0,
      2.220446049250313e-16,
-     563.0294372515228
+     599.0
     ],
     [
      0,
@@ -6736,19 +5348,19 @@
      1.0,
      0.0,
      0.0,
-     -16.970562748477143
+     -25.5
     ],
     [
      0.0,
      2.220446049250313e-16,
      -1.0,
-     142.0
+     147.0
     ],
     [
      -0.0,
      1.0,
      2.220446049250313e-16,
-     563.0294372515228
+     599.0
     ],
     [
      0,
@@ -6759,14 +5371,14 @@
    ]
   },
   {
-   "kind": "Screw_M5x20",
+   "kind": "Screw_M5x12",
    "group": "Cradle",
    "matrix": [
     [
      1.0,
      -0.0,
      0.0,
-     16.970562748477136
+     -4.684274006738626e-15
     ],
     [
      0.0,
@@ -6778,7 +5390,7 @@
      -0.0,
      -1.0,
      2.220446049250313e-16,
-     563.0294372515228
+     573.5
     ],
     [
      0,
@@ -6796,19 +5408,19 @@
      1.0,
      0.0,
      0.0,
-     16.970562748477136
+     -4.684274006738626e-15
     ],
     [
      0.0,
      2.220446049250313e-16,
      -1.0,
-     142.0
+     147.0
     ],
     [
      -0.0,
      1.0,
      2.220446049250313e-16,
-     563.0294372515228
+     573.5
     ],
     [
      0,
@@ -6838,7 +5450,7 @@
      1.0,
      0.0,
      2.220446049250313e-16,
-     580.0
+     599.0
     ],
     [
      0,
@@ -6868,7 +5480,7 @@
      -1.0,
      0.0,
      2.220446049250313e-16,
-     580.0
+     599.0
     ],
     [
      0,
@@ -6898,7 +5510,7 @@
      1.0,
      0.0,
      2.220446049250313e-16,
-     580.0
+     599.0
     ],
     [
      0,
@@ -6928,7 +5540,7 @@
      -1.0,
      0.0,
      2.220446049250313e-16,
-     580.0
+     599.0
     ],
     [
      0,
@@ -6946,19 +5558,19 @@
      2.220446049250313e-16,
      0.0,
      -1.0,
-     47.5
+     47.2
     ],
     [
      0.0,
      1.0,
      0.0,
-     -380.0
+     -381.0
     ],
     [
      1.0,
      -0.0,
      2.220446049250313e-16,
-     580.0
+     599.0
     ],
     [
      0,
@@ -6976,19 +5588,19 @@
      -2.220446049250313e-16,
      -0.0,
      1.0,
-     -47.5
+     -47.2
     ],
     [
      0.0,
      1.0,
      0.0,
-     -380.0
+     -381.0
     ],
     [
      -1.0,
      0.0,
      -2.220446049250313e-16,
-     580.0
+     599.0
     ],
     [
      0,
@@ -7012,13 +5624,13 @@
      0.0,
      1.0,
      0.0,
-     -380.0
+     -381.0
     ],
     [
      -1.0,
      0.0,
      2.220446049250313e-16,
-     580.0
+     599.0
     ],
     [
      0,
@@ -7042,13 +5654,13 @@
      0.0,
      1.0,
      -0.0,
-     -380.0
+     -381.0
     ],
     [
      1.0,
      0.0,
      2.220446049250313e-16,
-     580.0
+     599.0
     ],
     [
      0,
@@ -7076,11 +5688,11 @@
    },
    {
     "kind": "part",
-    "name": "Az_Ring_Gear",
+    "name": "Az_Stingray4",
     "shot": 1,
     "t0": 3.44,
     "dur": 0.8,
-    "dist": 320,
+    "dist": 200,
     "approach": [
      0,
      0,
@@ -7089,22 +5701,9 @@
    },
    {
     "kind": "part",
-    "name": "Sensor_Sun_Gear",
+    "name": "Az_Stingray4_Output",
     "shot": 1,
     "t0": 3.99,
-    "dur": 0.8,
-    "dist": 320,
-    "approach": [
-     0,
-     0,
-     1
-    ]
-   },
-   {
-    "kind": "part",
-    "name": "SlipRing_Capsule_22mm",
-    "shot": 1,
-    "t0": 4.54,
     "dur": 0.8,
     "dist": 200,
     "approach": [
@@ -7117,6 +5716,19 @@
     "kind": "part",
     "name": "Head_Puck",
     "shot": 2,
+    "t0": 7.01,
+    "dur": 0.8,
+    "dist": 320,
+    "approach": [
+     0,
+     0,
+     1
+    ]
+   },
+   {
+    "kind": "part",
+    "name": "Az_Retainer_Ring",
+    "shot": 2,
     "t0": 7.56,
     "dur": 0.8,
     "dist": 320,
@@ -7128,113 +5740,9 @@
    },
    {
     "kind": "part",
-    "name": "Sensor_Idler",
-    "shot": 2,
-    "t0": 8.11,
-    "dur": 0.8,
-    "dist": 320,
-    "approach": [
-     0,
-     0,
-     1
-    ]
-   },
-   {
-    "kind": "part",
-    "name": "Sensor_Gear",
-    "shot": 2,
-    "t0": 8.29,
-    "dur": 0.8,
-    "dist": 320,
-    "approach": [
-     0,
-     0,
-     1
-    ]
-   },
-   {
-    "kind": "part",
-    "name": "Sensor_Gear_Keeper",
-    "shot": 2,
-    "t0": 8.47,
-    "dur": 0.8,
-    "dist": 320,
-    "approach": [
-     0,
-     0,
-     1
-    ]
-   },
-   {
-    "kind": "part",
-    "name": "Az_Pinion",
-    "shot": 2,
-    "t0": 8.65,
-    "dur": 0.8,
-    "dist": 320,
-    "approach": [
-     0,
-     0,
-     1
-    ]
-   },
-   {
-    "kind": "part",
-    "name": "SlipRing_Stub_Clamp",
-    "shot": 2,
-    "t0": 8.83,
-    "dur": 0.8,
-    "dist": 320,
-    "approach": [
-     0,
-     0,
-     1
-    ]
-   },
-   {
-    "kind": "part",
-    "name": "Az_Servo_placeholder",
-    "shot": 2,
-    "t0": 9.01,
-    "dur": 0.8,
-    "dist": 200,
-    "approach": [
-     0,
-     0,
-     1
-    ]
-   },
-   {
-    "kind": "part",
-    "name": "Az_Retainer_Ring",
-    "shot": 3,
-    "t0": 12.03,
-    "dur": 0.8,
-    "dist": 320,
-    "approach": [
-     0,
-     0,
-     1
-    ]
-   },
-   {
-    "kind": "part",
-    "name": "Az_Servo_Clamp",
-    "shot": 3,
-    "t0": 12.58,
-    "dur": 0.8,
-    "dist": 320,
-    "approach": [
-     0,
-     0,
-     1
-    ]
-   },
-   {
-    "kind": "part",
     "name": "Az_Drum",
-    "shot": 4,
-    "t0": 15.6,
+    "shot": 3,
+    "t0": 10.58,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7246,8 +5754,8 @@
    {
     "kind": "part",
     "name": "Logo_Light_Pipe",
-    "shot": 4,
-    "t0": 16.15,
+    "shot": 3,
+    "t0": 11.13,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7259,8 +5767,8 @@
    {
     "kind": "part",
     "name": "Yoke_Plate",
-    "shot": 4,
-    "t0": 16.7,
+    "shot": 3,
+    "t0": 11.68,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7272,8 +5780,8 @@
    {
     "kind": "part",
     "name": "Yoke_Access_Cover",
-    "shot": 4,
-    "t0": 17.25,
+    "shot": 3,
+    "t0": 12.23,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7285,8 +5793,8 @@
    {
     "kind": "part",
     "name": "Arm_R_1",
-    "shot": 5,
-    "t0": 20.27,
+    "shot": 4,
+    "t0": 15.25,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7298,8 +5806,8 @@
    {
     "kind": "part",
     "name": "Arm_L_1",
-    "shot": 5,
-    "t0": 20.82,
+    "shot": 4,
+    "t0": 15.8,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7311,8 +5819,8 @@
    {
     "kind": "part",
     "name": "Arm_R_2",
-    "shot": 6,
-    "t0": 23.84,
+    "shot": 5,
+    "t0": 18.82,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7324,8 +5832,8 @@
    {
     "kind": "part",
     "name": "Arm_L_2",
-    "shot": 6,
-    "t0": 24.39,
+    "shot": 5,
+    "t0": 19.37,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7336,48 +5844,48 @@
    },
    {
     "kind": "part",
-    "name": "El_Bushing_R_Lower",
-    "shot": 8,
-    "t0": 32.41,
+    "name": "El_Stingray9",
+    "shot": 7,
+    "t0": 27.39,
     "dur": 0.8,
-    "dist": 320,
+    "dist": 200,
     "approach": [
-     0,
-     0,
-     1
-    ]
-   },
-   {
-    "kind": "part",
-    "name": "El_Bushing_L_Lower",
-    "shot": 8,
-    "t0": 32.96,
-    "dur": 0.8,
-    "dist": 320,
-    "approach": [
-     0,
-     0,
-     1
-    ]
-   },
-   {
-    "kind": "part",
-    "name": "El_Stub_R",
-    "shot": 8,
-    "t0": 33.51,
-    "dur": 0.8,
-    "dist": 320,
-    "approach": [
-     1,
+     -1,
      0,
      0
     ]
    },
    {
     "kind": "part",
+    "name": "El_Stingray9_Output",
+    "shot": 7,
+    "t0": 27.94,
+    "dur": 0.8,
+    "dist": 200,
+    "approach": [
+     -1,
+     0,
+     0
+    ]
+   },
+   {
+    "kind": "part",
+    "name": "El_Bushing_L_Lower",
+    "shot": 7,
+    "t0": 28.49,
+    "dur": 0.8,
+    "dist": 320,
+    "approach": [
+     0,
+     0,
+     1
+    ]
+   },
+   {
+    "kind": "part",
     "name": "El_Stub_L",
     "shot": 8,
-    "t0": 34.06,
+    "t0": 31.51,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7388,22 +5896,9 @@
    },
    {
     "kind": "part",
-    "name": "El_Gear",
-    "shot": 8,
-    "t0": 34.61,
-    "dur": 0.8,
-    "dist": 320,
-    "approach": [
-     1,
-     0,
-     0
-    ]
-   },
-   {
-    "kind": "part",
     "name": "Cradle_Hub",
     "shot": 8,
-    "t0": 35.16,
+    "t0": 32.06,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7416,20 +5911,7 @@
     "kind": "part",
     "name": "Cradle_Lid",
     "shot": 8,
-    "t0": 35.71,
-    "dur": 0.8,
-    "dist": 320,
-    "approach": [
-     0,
-     0,
-     1
-    ]
-   },
-   {
-    "kind": "part",
-    "name": "El_Bushing_R_Upper",
-    "shot": 9,
-    "t0": 38.73,
+    "t0": 32.61,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7442,7 +5924,7 @@
     "kind": "part",
     "name": "El_Bushing_L_Upper",
     "shot": 9,
-    "t0": 39.28,
+    "t0": 35.63,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7455,7 +5937,7 @@
     "kind": "part",
     "name": "El_Bearing_Cap_R",
     "shot": 9,
-    "t0": 39.83,
+    "t0": 36.18,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7468,7 +5950,7 @@
     "kind": "part",
     "name": "El_Bearing_Cap_L",
     "shot": 9,
-    "t0": 40.38,
+    "t0": 36.73,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7479,48 +5961,9 @@
    },
    {
     "kind": "part",
-    "name": "El_Pinion",
-    "shot": 10,
-    "t0": 43.4,
-    "dur": 0.8,
-    "dist": 320,
-    "approach": [
-     1,
-     0,
-     0
-    ]
-   },
-   {
-    "kind": "part",
-    "name": "El_Servo_placeholder",
-    "shot": 10,
-    "t0": 43.95,
-    "dur": 0.8,
-    "dist": 200,
-    "approach": [
-     1,
-     0,
-     0
-    ]
-   },
-   {
-    "kind": "part",
     "name": "El_Servo_Cover",
     "shot": 10,
-    "t0": 44.5,
-    "dur": 0.8,
-    "dist": 320,
-    "approach": [
-     1,
-     0,
-     0
-    ]
-   },
-   {
-    "kind": "part",
-    "name": "El_Axis_Cap_R",
-    "shot": 10,
-    "t0": 45.05,
+    "t0": 39.75,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7533,7 +5976,7 @@
     "kind": "part",
     "name": "El_Axis_Cap_L",
     "shot": 11,
-    "t0": 48.07,
+    "t0": 42.77,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7546,7 +5989,7 @@
     "kind": "part",
     "name": "Status_Window",
     "shot": 11,
-    "t0": 48.62,
+    "t0": 43.32,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7559,7 +6002,7 @@
     "kind": "part",
     "name": "Dish_Boom",
     "shot": 12,
-    "t0": 51.64,
+    "t0": 46.34,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7572,7 +6015,7 @@
     "kind": "part",
     "name": "Dish_Adapter_Plate",
     "shot": 12,
-    "t0": 52.19,
+    "t0": 46.89,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7585,7 +6028,7 @@
     "kind": "part",
     "name": "Counterweight_Arm",
     "shot": 13,
-    "t0": 55.21,
+    "t0": 49.91,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7598,7 +6041,7 @@
     "kind": "part",
     "name": "Counterweight_Canister",
     "shot": 13,
-    "t0": 55.76,
+    "t0": 50.46,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7611,7 +6054,7 @@
     "kind": "part",
     "name": "Counterweight_Cap",
     "shot": 13,
-    "t0": 56.31,
+    "t0": 51.01,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7624,7 +6067,7 @@
     "kind": "part",
     "name": "Dish_Reference_1m",
     "shot": 14,
-    "t0": 59.33,
+    "t0": 54.03,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7637,7 +6080,7 @@
     "kind": "part",
     "name": "Feed_Reference",
     "shot": 14,
-    "t0": 59.88,
+    "t0": 54.58,
     "dur": 0.8,
     "dist": 200,
     "approach": [
@@ -7650,7 +6093,7 @@
     "kind": "part",
     "name": "Dish_Adapter_PipeStub",
     "shot": 14,
-    "t0": 59.91,
+    "t0": 54.61,
     "dur": 0.8,
     "dist": 320,
     "approach": [
@@ -7662,40 +6105,40 @@
    {
     "kind": "hw",
     "index": 0,
-    "shot": 1,
-    "t0": 4.47,
+    "shot": 0,
+    "t0": 0.9,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 1,
-    "shot": 1,
-    "t0": 3.92,
+    "shot": 0,
+    "t0": 0.95,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 2,
-    "shot": 1,
-    "t0": 4.52,
+    "shot": 0,
+    "t0": 1.0,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 3,
-    "shot": 1,
-    "t0": 3.97,
+    "shot": 0,
+    "t0": 1.05,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 4,
-    "shot": 1,
-    "t0": 4.02,
+    "shot": 2,
+    "t0": 7.49,
     "dur": 0.6,
     "dist": 60
    },
@@ -7703,39 +6146,39 @@
     "kind": "hw",
     "index": 5,
     "shot": 2,
-    "t0": 9.13,
+    "t0": 7.54,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 6,
-    "shot": 1,
-    "t0": 4.07,
+    "shot": 2,
+    "t0": 7.59,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 7,
-    "shot": 1,
-    "t0": 4.12,
+    "shot": 2,
+    "t0": 7.64,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 8,
-    "shot": 1,
-    "t0": 4.17,
+    "shot": 2,
+    "t0": 7.69,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 9,
-    "shot": 1,
-    "t0": 4.22,
+    "shot": 2,
+    "t0": 7.74,
     "dur": 0.6,
     "dist": 60
    },
@@ -7743,7 +6186,7 @@
     "kind": "hw",
     "index": 10,
     "shot": 2,
-    "t0": 8.04,
+    "t0": 7.79,
     "dur": 0.6,
     "dist": 60
    },
@@ -7751,7 +6194,7 @@
     "kind": "hw",
     "index": 11,
     "shot": 2,
-    "t0": 8.09,
+    "t0": 7.84,
     "dur": 0.6,
     "dist": 60
    },
@@ -7759,7 +6202,7 @@
     "kind": "hw",
     "index": 12,
     "shot": 2,
-    "t0": 8.14,
+    "t0": 7.89,
     "dur": 0.6,
     "dist": 60
    },
@@ -7767,7 +6210,7 @@
     "kind": "hw",
     "index": 13,
     "shot": 2,
-    "t0": 8.19,
+    "t0": 7.94,
     "dur": 0.6,
     "dist": 60
    },
@@ -7775,7 +6218,7 @@
     "kind": "hw",
     "index": 14,
     "shot": 2,
-    "t0": 8.24,
+    "t0": 7.99,
     "dur": 0.6,
     "dist": 60
    },
@@ -7783,7 +6226,7 @@
     "kind": "hw",
     "index": 15,
     "shot": 2,
-    "t0": 8.29,
+    "t0": 8.04,
     "dur": 0.6,
     "dist": 60
    },
@@ -7791,7 +6234,7 @@
     "kind": "hw",
     "index": 16,
     "shot": 2,
-    "t0": 8.34,
+    "t0": 8.04,
     "dur": 0.6,
     "dist": 60
    },
@@ -7799,7 +6242,7 @@
     "kind": "hw",
     "index": 17,
     "shot": 2,
-    "t0": 8.39,
+    "t0": 8.09,
     "dur": 0.6,
     "dist": 60
    },
@@ -7807,7 +6250,7 @@
     "kind": "hw",
     "index": 18,
     "shot": 2,
-    "t0": 8.44,
+    "t0": 8.14,
     "dur": 0.6,
     "dist": 60
    },
@@ -7815,7 +6258,7 @@
     "kind": "hw",
     "index": 19,
     "shot": 2,
-    "t0": 8.49,
+    "t0": 8.19,
     "dur": 0.6,
     "dist": 60
    },
@@ -7823,7 +6266,7 @@
     "kind": "hw",
     "index": 20,
     "shot": 2,
-    "t0": 8.54,
+    "t0": 8.24,
     "dur": 0.6,
     "dist": 60
    },
@@ -7831,597 +6274,53 @@
     "kind": "hw",
     "index": 21,
     "shot": 2,
-    "t0": 8.59,
+    "t0": 8.29,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 22,
-    "shot": 3,
-    "t0": 12.51,
+    "shot": 2,
+    "t0": 8.34,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 23,
-    "shot": 3,
-    "t0": 12.56,
+    "shot": 2,
+    "t0": 8.39,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 24,
-    "shot": 3,
-    "t0": 12.61,
+    "shot": 2,
+    "t0": 8.44,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 25,
-    "shot": 3,
-    "t0": 12.66,
+    "shot": 2,
+    "t0": 8.49,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 26,
-    "shot": 3,
-    "t0": 12.71,
+    "shot": 2,
+    "t0": 8.54,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 27,
-    "shot": 3,
-    "t0": 12.76,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 28,
-    "shot": 3,
-    "t0": 12.81,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 29,
-    "shot": 3,
-    "t0": 12.86,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 30,
-    "shot": 3,
-    "t0": 12.91,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 31,
-    "shot": 3,
-    "t0": 12.96,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 32,
-    "shot": 3,
-    "t0": 13.01,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 33,
-    "shot": 3,
-    "t0": 13.06,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 34,
-    "shot": 1,
-    "t0": 4.27,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 35,
-    "shot": 1,
-    "t0": 4.32,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 36,
-    "shot": 1,
-    "t0": 4.37,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 37,
-    "shot": 1,
-    "t0": 4.42,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 38,
-    "shot": 1,
-    "t0": 4.47,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 39,
-    "shot": 1,
-    "t0": 4.52,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 40,
-    "shot": 5,
-    "t0": 20.75,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 41,
-    "shot": 5,
-    "t0": 20.8,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 42,
-    "shot": 5,
-    "t0": 20.85,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 43,
-    "shot": 5,
-    "t0": 20.9,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 44,
-    "shot": 6,
-    "t0": 24.32,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 45,
-    "shot": 6,
-    "t0": 24.37,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 46,
-    "shot": 6,
-    "t0": 24.42,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 47,
-    "shot": 6,
-    "t0": 24.47,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 48,
-    "shot": 10,
-    "t0": 44.98,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 49,
-    "shot": 10,
-    "t0": 45.03,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 50,
-    "shot": 10,
-    "t0": 45.08,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 51,
-    "shot": 10,
-    "t0": 45.13,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 52,
-    "shot": 6,
-    "t0": 24.52,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 53,
-    "shot": 6,
-    "t0": 24.57,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 54,
-    "shot": 6,
-    "t0": 24.62,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 55,
-    "shot": 6,
-    "t0": 24.67,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 56,
-    "shot": 6,
-    "t0": 24.72,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 57,
-    "shot": 6,
-    "t0": 24.77,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 58,
-    "shot": 5,
-    "t0": 21.3,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 59,
-    "shot": 5,
-    "t0": 21.35,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 60,
-    "shot": 5,
-    "t0": 21.4,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 61,
-    "shot": 5,
-    "t0": 21.45,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 62,
-    "shot": 6,
-    "t0": 24.87,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 63,
-    "shot": 6,
-    "t0": 24.92,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 64,
-    "shot": 6,
-    "t0": 24.97,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 65,
-    "shot": 6,
-    "t0": 25.02,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 66,
-    "shot": 6,
-    "t0": 25.07,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 67,
-    "shot": 6,
-    "t0": 25.12,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 68,
-    "shot": 11,
-    "t0": 48.55,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 69,
-    "shot": 11,
-    "t0": 48.6,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 70,
-    "shot": 11,
-    "t0": 48.65,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 71,
-    "shot": 11,
-    "t0": 48.7,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 72,
-    "shot": 9,
-    "t0": 40.31,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 73,
-    "shot": 9,
-    "t0": 40.36,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 74,
-    "shot": 9,
-    "t0": 40.86,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 75,
-    "shot": 9,
-    "t0": 40.91,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 76,
-    "shot": 10,
-    "t0": 45.53,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 77,
-    "shot": 10,
-    "t0": 45.58,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 78,
-    "shot": 10,
-    "t0": 45.63,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 79,
-    "shot": 10,
-    "t0": 45.68,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 80,
-    "shot": 11,
-    "t0": 48.75,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 81,
-    "shot": 11,
-    "t0": 48.8,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 82,
-    "shot": 11,
-    "t0": 48.85,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 83,
-    "shot": 11,
-    "t0": 48.9,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 84,
-    "shot": 11,
-    "t0": 49.1,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 85,
-    "shot": 11,
-    "t0": 49.15,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 86,
-    "shot": 11,
-    "t0": 49.2,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 87,
-    "shot": 11,
-    "t0": 49.25,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 88,
-    "shot": 10,
-    "t0": 45.18,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 89,
-    "shot": 10,
-    "t0": 45.23,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 90,
-    "shot": 10,
-    "t0": 45.28,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 91,
-    "shot": 10,
-    "t0": 45.33,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 92,
-    "shot": 2,
-    "t0": 8.64,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 93,
-    "shot": 2,
-    "t0": 8.69,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 94,
-    "shot": 4,
-    "t0": 16.08,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 95,
     "shot": 2,
     "t0": 8.59,
     "dur": 0.6,
@@ -8429,63 +6328,183 @@
    },
    {
     "kind": "hw",
-    "index": 96,
+    "index": 28,
+    "shot": 9,
+    "t0": 36.66,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 29,
+    "shot": 9,
+    "t0": 36.71,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 30,
+    "shot": 5,
+    "t0": 19.3,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 31,
+    "shot": 5,
+    "t0": 19.35,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 32,
+    "shot": 5,
+    "t0": 19.4,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 33,
+    "shot": 5,
+    "t0": 19.45,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 34,
+    "shot": 5,
+    "t0": 19.5,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 35,
+    "shot": 5,
+    "t0": 19.55,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 36,
+    "shot": 5,
+    "t0": 19.6,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 37,
+    "shot": 5,
+    "t0": 19.65,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 38,
+    "shot": 5,
+    "t0": 19.7,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 39,
+    "shot": 5,
+    "t0": 19.75,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 40,
     "shot": 4,
-    "t0": 16.13,
+    "t0": 15.73,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
-    "index": 97,
-    "shot": 2,
-    "t0": 8.77,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 98,
-    "shot": 2,
-    "t0": 8.82,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 99,
-    "shot": 2,
-    "t0": 8.87,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 100,
-    "shot": 2,
-    "t0": 8.92,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 101,
+    "index": 41,
     "shot": 4,
-    "t0": 16.18,
+    "t0": 15.78,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
-    "index": 102,
+    "index": 42,
     "shot": 4,
-    "t0": 16.23,
+    "t0": 15.83,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
-    "index": 103,
+    "index": 43,
+    "shot": 4,
+    "t0": 15.88,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 44,
+    "shot": 5,
+    "t0": 19.8,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 45,
+    "shot": 5,
+    "t0": 19.85,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 46,
+    "shot": 5,
+    "t0": 19.9,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 47,
+    "shot": 5,
+    "t0": 19.95,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 48,
+    "shot": 5,
+    "t0": 20.0,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 49,
+    "shot": 5,
+    "t0": 20.05,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 50,
     "shot": 4,
     "t0": 16.28,
     "dur": 0.6,
@@ -8493,7 +6512,7 @@
    },
    {
     "kind": "hw",
-    "index": 104,
+    "index": 51,
     "shot": 4,
     "t0": 16.33,
     "dur": 0.6,
@@ -8501,7 +6520,7 @@
    },
    {
     "kind": "hw",
-    "index": 105,
+    "index": 52,
     "shot": 4,
     "t0": 16.38,
     "dur": 0.6,
@@ -8509,7 +6528,7 @@
    },
    {
     "kind": "hw",
-    "index": 106,
+    "index": 53,
     "shot": 4,
     "t0": 16.43,
     "dur": 0.6,
@@ -8517,23 +6536,375 @@
    },
    {
     "kind": "hw",
-    "index": 107,
-    "shot": 2,
-    "t0": 9.31,
+    "index": 54,
+    "shot": 5,
+    "t0": 19.85,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
-    "index": 108,
-    "shot": 2,
-    "t0": 9.36,
+    "index": 55,
+    "shot": 5,
+    "t0": 19.9,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
-    "index": 109,
+    "index": 56,
+    "shot": 5,
+    "t0": 19.95,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 57,
+    "shot": 5,
+    "t0": 20.0,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 58,
+    "shot": 5,
+    "t0": 20.05,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 59,
+    "shot": 5,
+    "t0": 20.1,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 60,
+    "shot": 11,
+    "t0": 43.25,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 61,
+    "shot": 11,
+    "t0": 43.3,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 62,
+    "shot": 11,
+    "t0": 43.35,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 63,
+    "shot": 11,
+    "t0": 43.4,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 64,
+    "shot": 9,
+    "t0": 36.76,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 65,
+    "shot": 9,
+    "t0": 36.81,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 66,
+    "shot": 9,
+    "t0": 37.21,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 67,
+    "shot": 9,
+    "t0": 37.26,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 68,
+    "shot": 11,
+    "t0": 43.45,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 69,
+    "shot": 11,
+    "t0": 43.5,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 70,
+    "shot": 11,
+    "t0": 43.55,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 71,
+    "shot": 11,
+    "t0": 43.6,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 72,
+    "shot": 11,
+    "t0": 43.65,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 73,
+    "shot": 11,
+    "t0": 43.7,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 74,
+    "shot": 11,
+    "t0": 43.75,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 75,
+    "shot": 11,
+    "t0": 43.8,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 76,
+    "shot": 10,
+    "t0": 40.23,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 77,
+    "shot": 10,
+    "t0": 40.28,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 78,
+    "shot": 10,
+    "t0": 40.33,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 79,
+    "shot": 10,
+    "t0": 40.38,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 80,
+    "shot": 2,
+    "t0": 8.64,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 81,
+    "shot": 2,
+    "t0": 8.69,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 82,
+    "shot": 2,
+    "t0": 8.74,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 83,
+    "shot": 2,
+    "t0": 8.79,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 84,
+    "shot": 3,
+    "t0": 11.06,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 85,
+    "shot": 3,
+    "t0": 11.11,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 86,
+    "shot": 3,
+    "t0": 11.16,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 87,
+    "shot": 3,
+    "t0": 11.21,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 88,
+    "shot": 3,
+    "t0": 11.26,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 89,
+    "shot": 3,
+    "t0": 11.31,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 90,
+    "shot": 3,
+    "t0": 11.36,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 91,
+    "shot": 3,
+    "t0": 11.41,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 92,
+    "shot": 3,
+    "t0": 11.46,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 93,
+    "shot": 3,
+    "t0": 11.51,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 94,
+    "shot": 3,
+    "t0": 11.56,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 95,
+    "shot": 3,
+    "t0": 11.61,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 96,
+    "shot": 3,
+    "t0": 12.71,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 97,
+    "shot": 3,
+    "t0": 12.76,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 98,
+    "shot": 3,
+    "t0": 12.81,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 99,
+    "shot": 3,
+    "t0": 12.86,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 100,
     "shot": 4,
     "t0": 16.48,
     "dur": 0.6,
@@ -8541,7 +6912,7 @@
    },
    {
     "kind": "hw",
-    "index": 110,
+    "index": 101,
     "shot": 4,
     "t0": 16.53,
     "dur": 0.6,
@@ -8549,7 +6920,7 @@
    },
    {
     "kind": "hw",
-    "index": 111,
+    "index": 102,
     "shot": 4,
     "t0": 16.58,
     "dur": 0.6,
@@ -8557,7 +6928,7 @@
    },
    {
     "kind": "hw",
-    "index": 112,
+    "index": 103,
     "shot": 4,
     "t0": 16.63,
     "dur": 0.6,
@@ -8565,265 +6936,337 @@
    },
    {
     "kind": "hw",
-    "index": 113,
+    "index": 104,
     "shot": 4,
-    "t0": 16.68,
+    "t0": 15.93,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 105,
+    "shot": 4,
+    "t0": 15.98,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 106,
+    "shot": 4,
+    "t0": 16.03,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 107,
+    "shot": 4,
+    "t0": 16.08,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 108,
+    "shot": 3,
+    "t0": 12.16,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 109,
+    "shot": 3,
+    "t0": 12.21,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 110,
+    "shot": 3,
+    "t0": 12.26,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 111,
+    "shot": 3,
+    "t0": 12.31,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 112,
+    "shot": 3,
+    "t0": 12.36,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 113,
+    "shot": 3,
+    "t0": 12.41,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 114,
-    "shot": 4,
-    "t0": 16.73,
+    "shot": 3,
+    "t0": 12.91,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 115,
-    "shot": 4,
-    "t0": 16.78,
+    "shot": 3,
+    "t0": 12.96,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 116,
-    "shot": 4,
-    "t0": 16.83,
+    "shot": 3,
+    "t0": 13.01,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 117,
-    "shot": 4,
-    "t0": 16.88,
+    "shot": 3,
+    "t0": 13.06,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 118,
-    "shot": 4,
-    "t0": 16.93,
+    "shot": 3,
+    "t0": 13.11,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 119,
-    "shot": 5,
-    "t0": 20.95,
+    "shot": 3,
+    "t0": 13.16,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 120,
-    "shot": 5,
-    "t0": 21.5,
+    "shot": 12,
+    "t0": 46.82,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 121,
-    "shot": 5,
-    "t0": 21.55,
+    "shot": 12,
+    "t0": 46.87,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 122,
-    "shot": 5,
-    "t0": 21.0,
+    "shot": 12,
+    "t0": 46.92,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 123,
-    "shot": 5,
-    "t0": 21.6,
+    "shot": 12,
+    "t0": 46.97,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 124,
-    "shot": 5,
-    "t0": 21.65,
+    "shot": 13,
+    "t0": 50.39,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 125,
-    "shot": 5,
-    "t0": 21.7,
+    "shot": 13,
+    "t0": 50.44,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 126,
-    "shot": 5,
-    "t0": 21.75,
+    "shot": 13,
+    "t0": 50.49,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 127,
-    "shot": 5,
-    "t0": 21.05,
+    "shot": 13,
+    "t0": 50.54,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 128,
-    "shot": 5,
-    "t0": 21.1,
+    "shot": 8,
+    "t0": 32.54,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 129,
-    "shot": 5,
-    "t0": 21.15,
+    "shot": 8,
+    "t0": 32.59,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 130,
-    "shot": 5,
-    "t0": 21.2,
+    "shot": 8,
+    "t0": 32.64,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 131,
-    "shot": 4,
-    "t0": 17.18,
+    "shot": 8,
+    "t0": 32.69,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 132,
-    "shot": 4,
-    "t0": 17.23,
+    "shot": 8,
+    "t0": 32.74,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 133,
-    "shot": 4,
-    "t0": 17.28,
+    "shot": 8,
+    "t0": 32.79,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 134,
-    "shot": 4,
-    "t0": 17.33,
+    "shot": 8,
+    "t0": 32.84,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 135,
-    "shot": 4,
-    "t0": 17.38,
+    "shot": 8,
+    "t0": 32.89,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 136,
-    "shot": 4,
-    "t0": 17.43,
+    "shot": 8,
+    "t0": 32.94,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 137,
-    "shot": 4,
-    "t0": 17.73,
+    "shot": 8,
+    "t0": 32.99,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 138,
-    "shot": 4,
-    "t0": 17.78,
+    "shot": 13,
+    "t0": 50.59,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 139,
-    "shot": 4,
-    "t0": 17.83,
+    "shot": 12,
+    "t0": 47.02,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 140,
-    "shot": 4,
-    "t0": 17.88,
+    "shot": 8,
+    "t0": 33.09,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 141,
-    "shot": 4,
-    "t0": 17.93,
+    "shot": 8,
+    "t0": 33.14,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 142,
-    "shot": 4,
-    "t0": 17.98,
+    "shot": 13,
+    "t0": 50.64,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 143,
-    "shot": 2,
-    "t0": 8.95,
+    "shot": 12,
+    "t0": 47.07,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 144,
-    "shot": 2,
-    "t0": 9.0,
+    "shot": 8,
+    "t0": 33.04,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 145,
-    "shot": 2,
-    "t0": 9.18,
+    "shot": 8,
+    "t0": 33.09,
     "dur": 0.6,
     "dist": 60
    },
@@ -8831,7 +7274,7 @@
     "kind": "hw",
     "index": 146,
     "shot": 8,
-    "t0": 35.64,
+    "t0": 33.14,
     "dur": 0.6,
     "dist": 60
    },
@@ -8839,31 +7282,31 @@
     "kind": "hw",
     "index": 147,
     "shot": 8,
-    "t0": 35.69,
+    "t0": 33.19,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 148,
-    "shot": 8,
-    "t0": 35.74,
+    "shot": 12,
+    "t0": 47.12,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 149,
-    "shot": 8,
-    "t0": 35.79,
+    "shot": 12,
+    "t0": 47.17,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 150,
-    "shot": 10,
-    "t0": 43.88,
+    "shot": 12,
+    "t0": 47.22,
     "dur": 0.6,
     "dist": 60
    },
@@ -8871,31 +7314,31 @@
     "kind": "hw",
     "index": 151,
     "shot": 12,
-    "t0": 52.12,
+    "t0": 47.27,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 152,
-    "shot": 12,
-    "t0": 52.17,
+    "shot": 13,
+    "t0": 50.69,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 153,
-    "shot": 12,
-    "t0": 52.22,
+    "shot": 13,
+    "t0": 50.74,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 154,
-    "shot": 12,
-    "t0": 52.27,
+    "shot": 13,
+    "t0": 50.79,
     "dur": 0.6,
     "dist": 60
    },
@@ -8903,447 +7346,135 @@
     "kind": "hw",
     "index": 155,
     "shot": 13,
-    "t0": 55.69,
+    "t0": 50.84,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 156,
-    "shot": 13,
-    "t0": 55.74,
+    "shot": 14,
+    "t0": 55.09,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 157,
-    "shot": 13,
-    "t0": 55.79,
+    "shot": 12,
+    "t0": 47.32,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 158,
-    "shot": 13,
-    "t0": 55.84,
+    "shot": 14,
+    "t0": 55.14,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 159,
-    "shot": 8,
-    "t0": 35.84,
+    "shot": 12,
+    "t0": 47.37,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 160,
-    "shot": 8,
-    "t0": 35.89,
+    "shot": 14,
+    "t0": 55.19,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 161,
-    "shot": 8,
-    "t0": 35.94,
+    "shot": 12,
+    "t0": 47.42,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 162,
-    "shot": 8,
-    "t0": 35.99,
+    "shot": 14,
+    "t0": 55.24,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 163,
-    "shot": 8,
-    "t0": 36.04,
+    "shot": 12,
+    "t0": 47.47,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 164,
-    "shot": 8,
-    "t0": 36.09,
+    "shot": 13,
+    "t0": 50.94,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 165,
-    "shot": 8,
-    "t0": 36.14,
+    "shot": 13,
+    "t0": 50.99,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 166,
-    "shot": 8,
-    "t0": 36.19,
+    "shot": 13,
+    "t0": 51.04,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 167,
-    "shot": 8,
-    "t0": 36.24,
+    "shot": 13,
+    "t0": 51.09,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 168,
-    "shot": 8,
-    "t0": 36.29,
+    "shot": 13,
+    "t0": 51.49,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 169,
-    "shot": 8,
-    "t0": 36.34,
+    "shot": 13,
+    "t0": 51.54,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 170,
-    "shot": 8,
-    "t0": 36.39,
+    "shot": 13,
+    "t0": 51.59,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 171,
-    "shot": 8,
-    "t0": 36.44,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 172,
-    "shot": 8,
-    "t0": 36.49,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 173,
-    "shot": 8,
-    "t0": 36.54,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 174,
-    "shot": 8,
-    "t0": 36.59,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 175,
     "shot": 13,
-    "t0": 55.89,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 176,
-    "shot": 13,
-    "t0": 55.94,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 177,
-    "shot": 12,
-    "t0": 52.32,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 178,
-    "shot": 12,
-    "t0": 52.37,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 179,
-    "shot": 8,
-    "t0": 36.64,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 180,
-    "shot": 8,
-    "t0": 36.69,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 181,
-    "shot": 8,
-    "t0": 36.74,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 182,
-    "shot": 8,
-    "t0": 36.79,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 183,
-    "shot": 8,
-    "t0": 36.84,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 184,
-    "shot": 8,
-    "t0": 36.89,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 185,
-    "shot": 8,
-    "t0": 36.94,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 186,
-    "shot": 8,
-    "t0": 36.99,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 187,
-    "shot": 12,
-    "t0": 52.42,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 188,
-    "shot": 12,
-    "t0": 52.47,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 189,
-    "shot": 12,
-    "t0": 52.52,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 190,
-    "shot": 12,
-    "t0": 52.57,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 191,
-    "shot": 13,
-    "t0": 55.99,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 192,
-    "shot": 13,
-    "t0": 56.04,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 193,
-    "shot": 13,
-    "t0": 56.09,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 194,
-    "shot": 13,
-    "t0": 56.14,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 195,
-    "shot": 14,
-    "t0": 60.39,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 196,
-    "shot": 12,
-    "t0": 52.62,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 197,
-    "shot": 14,
-    "t0": 60.44,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 198,
-    "shot": 12,
-    "t0": 52.67,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 199,
-    "shot": 14,
-    "t0": 60.49,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 200,
-    "shot": 12,
-    "t0": 52.72,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 201,
-    "shot": 14,
-    "t0": 60.54,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 202,
-    "shot": 12,
-    "t0": 52.77,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 203,
-    "shot": 13,
-    "t0": 56.24,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 204,
-    "shot": 13,
-    "t0": 56.29,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 205,
-    "shot": 13,
-    "t0": 56.34,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 206,
-    "shot": 13,
-    "t0": 56.39,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 207,
-    "shot": 13,
-    "t0": 56.79,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 208,
-    "shot": 13,
-    "t0": 56.84,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 209,
-    "shot": 13,
-    "t0": 56.89,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 210,
-    "shot": 13,
-    "t0": 56.94,
+    "t0": 51.64,
     "dur": 0.6,
     "dist": 60
    }
@@ -9356,7 +7487,7 @@
     "center": [
      0,
      0,
-     30
+     35
     ],
     "extent": 165,
     "theta": -50,
@@ -9364,41 +7495,27 @@
     "sweep": 25
    },
    {
-    "label": "Ring gear, sun gear, slip ring",
+    "label": "Stingray-4 azimuth drive",
     "t0": 3.02,
-    "t1": 7.14,
+    "t1": 6.59,
     "center": [
      0,
-     0,
-     25
+     20,
+     35
     ],
-    "extent": 120,
+    "extent": 130,
     "theta": -60,
-    "elev": 55,
+    "elev": 45,
     "sweep": 30
    },
    {
-    "label": "Head module: deck, encoder train, AZ pinion, servo",
-    "t0": 7.14,
-    "t1": 11.61,
+    "label": "Deck and flange plate",
+    "t0": 6.59,
+    "t1": 10.16,
     "center": [
      0,
      0,
-     60
-    ],
-    "extent": 165,
-    "theta": -55,
-    "elev": 30,
-    "sweep": 25
-   },
-   {
-    "label": "Flange plate and servo clamp",
-    "t0": 11.61,
-    "t1": 15.18,
-    "center": [
-     0,
-     0,
-     60
+     70
     ],
     "extent": 170,
     "theta": -40,
@@ -9407,12 +7524,12 @@
    },
    {
     "label": "Azimuth housing, yoke plate, access cover",
-    "t0": 15.18,
-    "t1": 19.85,
+    "t0": 10.16,
+    "t1": 14.83,
     "center": [
      0,
      0,
-     125
+     145
     ],
     "extent": 210,
     "theta": -120,
@@ -9421,12 +7538,12 @@
    },
    {
     "label": "Yoke arms, lower segments",
-    "t0": 19.85,
-    "t1": 23.42,
+    "t0": 14.83,
+    "t1": 18.4,
     "center": [
      0,
      0,
-     285
+     305
     ],
     "extent": 250,
     "theta": -30,
@@ -9435,12 +7552,12 @@
    },
    {
     "label": "Shoulder segments",
-    "t0": 23.42,
-    "t1": 26.99,
+    "t0": 18.4,
+    "t1": 21.97,
     "center": [
      0,
      0,
-     500
+     520
     ],
     "extent": 260,
     "theta": -45,
@@ -9449,12 +7566,12 @@
    },
    {
     "label": "Yoke complete",
-    "t0": 26.99,
-    "t1": 31.99,
+    "t0": 21.97,
+    "t1": 26.97,
     "center": [
      0,
      0,
-     330
+     350
     ],
     "extent": 430,
     "theta": -45,
@@ -9462,13 +7579,27 @@
     "sweep": 360
    },
    {
-    "label": "Cradle: bushings, stubs, gear, hub, lid",
-    "t0": 31.99,
-    "t1": 38.31,
+    "label": "Stingray-9 elevation drive, left bushing",
+    "t0": 26.97,
+    "t1": 31.09,
+    "center": [
+     60,
+     0,
+     570
+    ],
+    "extent": 200,
+    "theta": -40,
+    "elev": 25,
+    "sweep": 35
+   },
+   {
+    "label": "Cradle: stub, hub, lid",
+    "t0": 31.09,
+    "t1": 35.21,
     "center": [
      0,
      0,
-     585
+     605
     ],
     "extent": 200,
     "theta": -55,
@@ -9477,12 +7608,12 @@
    },
    {
     "label": "Pillow-block caps",
-    "t0": 38.31,
-    "t1": 42.98,
+    "t0": 35.21,
+    "t1": 39.33,
     "center": [
      0,
      0,
-     590
+     610
     ],
     "extent": 190,
     "theta": -35,
@@ -9490,13 +7621,13 @@
     "sweep": 35
    },
    {
-    "label": "Right shoulder: pinion, servo, covers",
-    "t0": 42.98,
-    "t1": 47.65,
+    "label": "Right shoulder: servo cover",
+    "t0": 39.33,
+    "t1": 42.35,
     "center": [
      95,
      0,
-     540
+     560
     ],
     "extent": 170,
     "theta": -25,
@@ -9505,12 +7636,12 @@
    },
    {
     "label": "Left shoulder: encoder cap and window",
-    "t0": 47.65,
-    "t1": 51.22,
+    "t0": 42.35,
+    "t1": 45.92,
     "center": [
      -95,
      0,
-     570
+     590
     ],
     "extent": 150,
     "theta": -155,
@@ -9519,12 +7650,12 @@
    },
    {
     "label": "Dish boom and adapter",
-    "t0": 51.22,
-    "t1": 54.79,
+    "t0": 45.92,
+    "t1": 49.49,
     "center": [
      0,
      140,
-     580
+     600
     ],
     "extent": 210,
     "theta": 70,
@@ -9533,12 +7664,12 @@
    },
    {
     "label": "Counterweight",
-    "t0": 54.79,
-    "t1": 58.91,
+    "t0": 49.49,
+    "t1": 53.61,
     "center": [
      0,
      -250,
-     580
+     600
     ],
     "extent": 230,
     "theta": -120,
@@ -9547,12 +7678,12 @@
    },
    {
     "label": "1 m dish",
-    "t0": 58.91,
-    "t1": 62.48,
+    "t0": 53.61,
+    "t1": 57.18,
     "center": [
      0,
      100,
-     560
+     580
     ],
     "extent": 750,
     "theta": -60,
@@ -9561,12 +7692,12 @@
    },
    {
     "label": "PERIGEE gimbal complete",
-    "t0": 62.48,
-    "t1": 70.48,
+    "t0": 57.18,
+    "t1": 65.18,
     "center": [
      0,
      0,
-     480
+     500
     ],
     "extent": 660,
     "theta": -60,
@@ -9574,7 +7705,7 @@
     "sweep": 360
    }
   ],
-  "total": 70.48,
+  "total": 65.18,
   "blend": 0.7,
   "steps": 14
  }

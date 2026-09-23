@@ -9,3 +9,16 @@ __pycache__/
 out/renders/anim/
 out/renders/*.gif
 out/renders/anim_log.txt
+# vendor STEP files (goBILDA downloads, 115 MB each: over GitHub's limit; re-download to vendor/)
+vendor/
+# FEA meshes, decks and CalculiX results (hundreds of MB; regenerate with tools_fea*.py). Reports stay.
+out/fea/*
+!out/fea/RESULTS.md
+!out/fea/fea_setup.json
+!out/fea/sweep/
+out/fea/sweep/*
+!out/fea/sweep/SWEEP.md
+!out/fea/sweep/sweep.csv
+!out/fea/sweep/pose_*.json
+# LibreOffice lock files
+.~lock*

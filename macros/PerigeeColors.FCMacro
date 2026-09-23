@@ -1,8 +1,33 @@
 # -*- coding: utf-8 -*-
-"""Apply filament colours / transparency to the Perigee gimbal parts and hide the joint markers.
-Open out/PerigeeGimbal.FCStd, then run this macro once."""
+"""Apply filament colours / transparency to the Perigee gimbal parts, hide the joint markers, and attach the Assembly
+workbench view providers so the joints, Exploded_Assembly and Track_Pass_Simulation work in the GUI.
+Open out/PerigeeGimbal.FCStd, then run this macro once (and save)."""
 import FreeCAD as App, FreeCADGui as Gui
 doc = App.ActiveDocument
+
+# The file is written by a headless build, so the Assembly workbench objects (joints, exploded view and its steps,
+# simulation and motions) have no view providers: without them the exploded view cannot be opened by double-click
+# and the joints draw nothing. Attach the workbench's own view providers to any object still missing one.
+try:
+    import JointObject, CommandCreateView, CommandCreateSimulation
+    VP = {"Joint": JointObject.ViewProviderJoint, "GroundedJoint": JointObject.ViewProviderGroundedJoint,
+          "ExplodedView": CommandCreateView.ViewProviderExplodedView, "ExplodedViewStep": CommandCreateView.ViewProviderExplodedViewStep,
+          "Simulation": CommandCreateSimulation.ViewProviderSimulation, "Motion": CommandCreateSimulation.ViewProviderMotion}
+    n_vp = 0
+    for o in doc.Objects:
+        if o.TypeId != "App::FeaturePython" or o.ViewObject is None:
+            continue
+        cls = type(getattr(o, "Proxy", None)).__name__
+        has = getattr(o.ViewObject, "Proxy", None)
+        if cls in VP and (has is None or isinstance(has, int)):
+            try:
+                VP[cls](o.ViewObject)
+                n_vp += 1
+            except Exception as ex:
+                App.Console.PrintWarning("view provider for %s: %s\n" % (o.Name, ex))
+    App.Console.PrintMessage("Assembly view providers attached: %d\n" % n_vp)
+except Exception as ex:
+    App.Console.PrintWarning("Assembly view providers: %s\n" % ex)
 COL = {
     "black": ((0.09, 0.09, 0.10), 0), "orange": ((1.0, 0.45, 0.05), 0), "white": ((0.93, 0.93, 0.92), 0),
     "grey": ((0.42, 0.44, 0.47), 0), "clear": ((0.80, 0.90, 1.0), 55), "ref": ((0.55, 0.60, 0.65), 75),
