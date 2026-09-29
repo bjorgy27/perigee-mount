@@ -16,18 +16,34 @@
   ]
  },
  {
-  "name": "Az_Retainer_Ring",
+  "name": "Az_Retainer_Ring_A",
   "group": "Base",
   "color": "black",
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 7920,
-  "notes": "Wide flange plate (12x M4x20 + nuts in the pedestal wall) trapping the puck lip: uplift + moment, and the visible AZ seam.",
-  "volume_cm3": 130.8,
+  "tris": 3598,
+  "notes": "Retainer half A (+Y), goes in first: slides in from +Y under the drum, 4 open slots pass the pre-set hook screws (M4x20 into the pedestal nuts); lower tongue of both lap notches with 4 hex pockets underneath for the notch nuts.",
+  "volume_cm3": 64.3,
   "print_bbox_mm": [
    236.0,
+   130.0,
+   8.0
+  ]
+ },
+ {
+  "name": "Az_Retainer_Ring_B",
+  "group": "Base",
+  "color": "black",
+  "printed": true,
+  "qty": 1,
+  "hidden": false,
+  "tris": 3228,
+  "notes": "Retainer half B (-Y), goes in second: slides in from -Y over A's tongues, 4 open slots pass the hook screws; notch bolts 4x M4x20 down through both tongues. Print with support under the two tongues.",
+  "volume_cm3": 62.6,
+  "print_bbox_mm": [
    236.0,
+   130.0,
    8.0
   ]
  },
@@ -60,9 +76,9 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 4574,
-  "notes": "Lower arm column (R), hollow, cables inside. Feet 4x M4x25 from under the yoke plate into side-loaded nuts; socket for the upper spigot, 2x M4x50 across.",
-  "volume_cm3": 149.8,
+  "tris": 4838,
+  "notes": "Lower arm column (R), hollow (3 mm wall), cables inside. Feet 4x M4x25 from under the yoke plate into side-loaded nuts; socket for the upper spigot, 2x M4x50 across.",
+  "volume_cm3": 123.1,
   "print_bbox_mm": [
    180.0,
    60.0,
@@ -76,12 +92,28 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 9560,
-  "notes": "Upper arm column + lower half of the shoulder drum (R): Stingray-9 pocket from the inner face, open cavity behind the translucent lens; block held by 8x M4 from the drum surface.",
-  "volume_cm3": 519.8,
+  "tris": 5982,
+  "notes": "Upper arm column + lower half of the shoulder drum (R), 4 mm shell open toward the hub: Stingray-9 channel with a 6 mm back plate (4x M4x20 + 2x M4x25 along the axis into the block's own threads, driven through the window), floor and cable opening into the column.",
+  "volume_cm3": 285.2,
   "print_bbox_mm": [
    250.0,
-   150.0,
+   120.0,
+   60.0
+  ]
+ },
+ {
+  "name": "El_Bearing_Cap_R",
+  "group": "Head",
+  "color": "white",
+  "printed": true,
+  "qty": 1,
+  "hidden": false,
+  "tris": 3644,
+  "notes": "Upper half of the shoulder drum, 4 mm shell with a split-plane plate, 2x M4x50 into nuts trapped in the lower half; closes the top of the Stingray-9 channel and carries its upper screw row.",
+  "volume_cm3": 106.6,
+  "print_bbox_mm": [
+   60.0,
+   120.0,
    60.0
   ]
  },
@@ -92,9 +124,9 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 4786,
-  "notes": "Lower arm column (L), hollow, cables inside. Feet 4x M4x25 from under the yoke plate into side-loaded nuts; socket for the upper spigot, 2x M4x50 across.",
-  "volume_cm3": 148.6,
+  "tris": 4838,
+  "notes": "Lower arm column (L), hollow (3 mm wall), cables inside. Feet 4x M4x25 from under the yoke plate into side-loaded nuts; socket for the upper spigot, 2x M4x50 across.",
+  "volume_cm3": 123.1,
   "print_bbox_mm": [
    180.0,
    60.0,
@@ -108,29 +140,13 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 7286,
-  "notes": "Upper arm column + lower half of the shoulder drum (L): pillow block for the left stub bushing, on-axis encoder cap.",
-  "volume_cm3": 657.9,
+  "tris": 6042,
+  "notes": "Upper arm column + lower half of the shoulder drum (L), 4 mm shell open toward the hub: pillow block for the left stub bushing, on-axis encoder cap.",
+  "volume_cm3": 280.0,
   "print_bbox_mm": [
    250.0,
-   150.0,
+   120.0,
    60.0
-  ]
- },
- {
-  "name": "El_Bearing_Cap_R",
-  "group": "Head",
-  "color": "white",
-  "printed": true,
-  "qty": 1,
-  "hidden": false,
-  "tris": 4622,
-  "notes": "Upper half of the shoulder drum, 2x M4x25 into nuts trapped in the lower half; closes the top of the gearbox pocket.",
-  "volume_cm3": 468.6,
-  "print_bbox_mm": [
-   60.0,
-   150.0,
-   75.0
   ]
  },
  {
@@ -140,13 +156,13 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 3726,
-  "notes": "Upper half of the shoulder drum, 2x M4x25 into nuts trapped in the lower half; holds the upper bushing half.",
-  "volume_cm3": 484.6,
+  "tris": 2346,
+  "notes": "Upper half of the shoulder drum, 4 mm shell with a split-plane plate, 2x M4x50 into nuts trapped in the lower half; holds the upper bushing half.",
+  "volume_cm3": 123.1,
   "print_bbox_mm": [
    60.0,
-   150.0,
-   75.0
+   120.0,
+   60.0
   ]
  },
  {
@@ -220,12 +236,12 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 4272,
-  "notes": "Translucent lens on the right shoulder drum showing the Stingray-9; 4x M3x12 into cavity-loaded nuts.",
-  "volume_cm3": 49.7,
+  "tris": 4348,
+  "notes": "Translucent 88 mm lens on the right shoulder drum showing the Stingray-9 and its screws; 4x M3x12 into window-loaded nuts.",
+  "volume_cm3": 41.7,
   "print_bbox_mm": [
-   96.0,
-   96.0,
+   88.0,
+   88.0,
    7.0
   ]
  },

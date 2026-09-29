@@ -78,7 +78,7 @@ def build_defeatured(P):
 
 
 GROUPS = {
-    "base": ["Base_Cup", "Az_Retainer_Ring"],
+    "base": ["Base_Cup", "Az_Retainer_Ring_A", "Az_Retainer_Ring_B"],
     "head": ["Head_Puck", "Az_Drum", "Yoke_Plate", "Arm_R_1", "Arm_L_1", "Arm_R_2", "Arm_L_2", "El_Bearing_Cap_R", "El_Bearing_Cap_L",
              "El_Bushing_L_Lower", "El_Bushing_L_Upper"],
     "cradle": ["Cradle_Hub", "Cradle_Lid", "El_Stub_L", "Dish_Boom", "Counterweight_Arm"],   # canister: its load is applied on the arm end instead
@@ -104,7 +104,7 @@ def bridges(L):
     # column spigots in their sockets, boom / counterweight / stub spigots in the hub recesses
     z1 = L.arm_splits[1]
     for sx in (-1, 1):
-        b.append(G.tube(L.arm_r - 4.0 + 0.15, L.arm_r - 4.0 - 0.35, 26, (sx * L.x_arm_mid, 0, z1 - 25)))
+        b.append(G.tube(L.arm_r - L.arm_wall + 0.15, L.arm_r - L.arm_wall - 0.35, 26, (sx * L.x_arm_mid, 0, z1 - 25)))
     hs = L.hub
     b.append(G.cyl(15.5, 11, (0, hs / 2 - 10.5, L.z_el), (0, 1, 0)))
     b.append(G.cyl(15.5, 11, (0, -(hs / 2 - 10.5), L.z_el), (0, -1, 0)))

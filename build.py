@@ -517,8 +517,8 @@ def write_bom(reg, P, L, hw):
 # Assembly sequence (starting from the base). (part, approach direction the part arrives from)
 ASSEMBLY_ORDER = [
     ("Base_Cup", (0, 0, 1)), ("Az_Stingray4", (0, 0, 1)), ("Az_Stingray4_Output", (0, 0, 1)),
-    ("Head_Puck", (0, 0, 1)), ("Az_Retainer_Ring", (0, 0, 1)),
-    ("Az_Drum", (0, 0, 1)), ("Logo_Light_Pipe", (0, 0, 1)), ("Yoke_Plate", (0, 0, 1)), ("Yoke_Access_Cover", (0, 0, 1)),
+    ("Head_Puck", (0, 0, 1)), ("Az_Drum", (0, 0, 1)),
+    ("Az_Retainer_Ring_A", (0, 1, 0)), ("Az_Retainer_Ring_B", (0, -1, 0)), ("Logo_Light_Pipe", (0, 0, 1)), ("Yoke_Plate", (0, 0, 1)), ("Yoke_Access_Cover", (0, 0, 1)),
     ("Arm_R_1", (0, 0, 1)), ("Arm_L_1", (0, 0, 1)), ("Arm_R_2", (0, 0, 1)), ("Arm_L_2", (0, 0, 1)),
     ("El_Stingray9", (-1, 0, 0)), ("El_Stingray9_Output", (-1, 0, 0)), ("El_Bushing_L_Lower", (0, 0, 1)),
     ("El_Stub_L", (-1, 0, 0)), ("Cradle_Hub", (0, 0, 1)), ("Cradle_Lid", (0, 0, 1)),
@@ -533,8 +533,9 @@ SAME_STEP = {"Feed_Reference", "El_Stub_L", "Az_Stingray4_Output", "El_Stingray9
 SHOTS = [
     ("Pedestal", ["Base_Cup"], ((0, 0, 35), 165, -50, 30, 25), None),
     ("Stingray-4 azimuth drive", ["Az_Stingray4", "Az_Stingray4_Output"], ((0, 20, 35), 130, -60, 45, 30), None),
-    ("Deck and flange plate", ["Head_Puck", "Az_Retainer_Ring"], ((0, 0, 70), 170, -40, 26, 30), None),
-    ("Azimuth housing, yoke plate, access cover", ["Az_Drum", "Logo_Light_Pipe", "Yoke_Plate", "Yoke_Access_Cover"], ((0, 0, 145), 210, -120, 26, 40), None),
+    ("Deck and azimuth housing (bolted together first)", ["Head_Puck", "Az_Drum"], ((0, 0, 100), 190, -40, 26, 30), None),
+    ("Split retainer ring: halves slide in under the drum", ["Az_Retainer_Ring_A", "Az_Retainer_Ring_B"], ((0, 0, 80), 170, -25, 22, 40), None),
+    ("Light pipe, yoke plate, access cover", ["Logo_Light_Pipe", "Yoke_Plate", "Yoke_Access_Cover"], ((0, 0, 145), 210, -120, 26, 40), None),
     ("Yoke arms, lower segments", ["Arm_R_1", "Arm_L_1"], ((0, 0, 305), 250, -30, 16, 40), None),
     ("Shoulder segments", ["Arm_R_2", "Arm_L_2"], ((0, 0, 520), 260, -45, 20, 40), None),
     ("Yoke complete", [], ((0, 0, 350), 430, -45, 22, 360), 5.0),
@@ -594,6 +595,8 @@ def assembly_sequence(reg, hw):
         b = shp.BoundBox
         touching = [n for n in names if reg[n]["printed"] and not (b.XMax < bbs[n][0] or b.XMin > bbs[n][3] or b.YMax < bbs[n][1] or b.YMin > bbs[n][4] or b.ZMax < bbs[n][2] or b.ZMin > bbs[n][5])]
         host = max(touching, key=lambda n: idx_of[n]) if touching else names[0]
+        if host.startswith("Az_Retainer_Ring") and abs(b.Center.y) > 20:
+            host = "Base_Cup"          # hook screws are set to height in the pedestal before the head goes in
         hn, hs, ht0 = order[idx_of[host]]
         j = counts.get(host, 0); counts[host] = j + 1
         items.append(dict(kind="hw", index=i, shot=hs, t0=round(ht0 + PART_DUR * 0.6 + 0.05 * j, 3), dur=HW_DUR, dist=60))

@@ -80,6 +80,7 @@ class Layout:
         self.r_mount_bolt = (self.R_pedestal + self.R_base) / 2  # M6 mount holes in the foot flange
         self.r_axle = P["el_axle_d"] / 2; self.r_bush = P["el_bushing_od"] / 2
         self.R_sh = P["shoulder_r"]; self.x_sh_out = self.x_arm_in + P["shoulder_thick"]
+        self.sh_drop = P["shoulder_drop"]; self.sh_wall = P["shoulder_wall"]; self.arm_wall = P["arm_wall"]   # stadium drop below the axis, shell and column walls
         self.arm_splits = [self.z_plate1, self.z_el - (P["segment_max"] - 30), self.z_el]   # upper piece + 24 mm spigot stays under segment_max
         self.hub = P["hub_size"]; self.hub_wall = P["hub_wall"]
         self.x_stub_end = self.x_sh_out - 12                    # left stub axle end (magnet)
@@ -199,21 +200,61 @@ def build_base(P, L, reg, hw):
             base = G.fuse(base, G.cbox(12, 12, L.z_az_block0 - L.z_floor, (sx * 18, py_, (L.z_az_block0 + L.z_floor) / 2)))
             base = hw.cbore_hole(base, 4, (hx, py_, 4.5), UP, L.z_az_block0, cbore_depth=4.5)
             hw.screw("Base", 4, 40, (hx, py_, 4.5), UP)
-    # retainer flange plate: 12x M4 down into nut traps opening on the pedestal's outer face
-    for p in G.pattern_circle(P["retainer_bolts"], L.r_ret_bolt, L.z_base_top, 15):
+    # retainer flange plate: 12x M4 down into nut traps opening on the pedestal's outer face. Since v10 the ring is split
+    # and only 8 of the traps hold nuts (the hooks); the traps at 15 / 165 / 195 / 345 deg stay empty and their screws
+    # and nuts join the two ring halves at the lap notches instead.
+    ret_pts = G.pattern_circle(P["retainer_bolts"], L.r_ret_bolt, L.z_base_top, 15)
+    hook_k = [k for k in range(P["retainer_bolts"]) if k % 6 not in (0, 5)]
+    for k, p in enumerate(ret_pts):
         base = hw.clear_hole(base, 4, p, DOWN, 12)
         rd = (p[0] / L.r_ret_bolt, p[1] / L.r_ret_bolt, 0)
         base = hw.nut_trap(base, 4, (p[0], p[1], L.z_base_top - 9), DOWN, rd, 10)
-        hw.nut("Base", 4, (p[0], p[1], L.z_base_top - 9 + NUT[4][1] / 2), DOWN, open_dir=rd)
+        if k in hook_k:
+            hw.nut("Base", 4, (p[0], p[1], L.z_base_top - 9 + NUT[4][1] / 2), DOWN, open_dir=rd)
     for p in G.pattern_circle(6, L.r_mount_bolt, 0, 30):
         base = base.cut(G.cyl(3.3, 12, p))
     _reg(reg, "Base_Cup", base, "Base", "black", notes="AZ pedestal. Step at the puck underside (r 84-96) is the greased thrust face; 192 mm bore is the journal. Stingray-4 on four pillars, 4x M4x40 from under the floor. 6x M6 in the foot flange for a mount plate.")
 
-    ret = G.tube(L.R_base, L.R_body + 0.5, P["retainer_h"], (0, 0, L.z_base_top))
-    ret = fillet_edges(ret, 2.5, lambda e: e.Curve.TypeId == "Part::GeomCircle" and abs(e.Curve.Radius - L.R_base) < 1e-3 and abs(e.Vertexes[0].Z - L.z_ret1) < 1e-3, "retainer")
-    for p in G.pattern_circle(P["retainer_bolts"], L.r_ret_bolt, L.z_ret1, 15):
-        ret = hw.cbore_hole(ret, 4, (p[0], p[1], L.z_ret1 - 3.5), DOWN, P["retainer_h"], cbore_depth=3.5); hw.screw("Base", 4, 20, (p[0], p[1], L.z_ret1 - 3.5), DOWN)
-    _reg(reg, "Az_Retainer_Ring", ret, "Base", "black", notes="Wide flange plate (12x M4x20 + nuts in the pedestal wall) trapping the puck lip: uplift + moment, and the visible AZ seam.")
+    # ---- retainer ring, split (v10) so it goes on last: the drum overhangs the bolt circle with only 6 mm above the
+    # ring, so no key reaches a ring screw once the head is in. Half A (+Y) and half B (-Y) slide in sideways through
+    # that gap, under 8 hook screws pre-set to height in the pedestal nuts (open slots run from each hook in to the
+    # bore along the slide direction), and meet at two half-lap notches on the X axis, bolted outside the drum's reach.
+    z0, z1 = L.z_base_top, L.z_ret1
+    lap, fit = P["retainer_lap"], 0.2                  # notch half-length along Y, sliding clearance
+    z_lap = z0 + P["retainer_lap_lower"]               # top of A's lower tongue; B's upper tongue starts `fit` above
+    ret = G.tube(L.R_base, L.R_body + 0.5, P["retainer_h"], (0, 0, z0))
+    ret = fillet_edges(ret, 2.5, lambda e: e.Curve.TypeId == "Part::GeomCircle" and abs(e.Curve.Radius - L.R_base) < 1e-3 and abs(e.Vertexes[0].Z - z1) < 1e-3, "retainer")
+    big = 2 * L.R_base + 40
+    slab = lambda y0, y1, za, zb: G.box(big, y1 - y0, zb - za, (-big / 2, y0, za))
+    ra = ret.common(G.fuse(slab(lap + fit, big / 2, z0 - 1, z1 + 1), slab(-lap, lap + fit, z0 - 1, z_lap)))
+    rb = ret.common(G.fuse(slab(-big / 2, -lap - fit, z0 - 1, z1 + 1), slab(-lap - fit, lap, z_lap + fit, z1 + 1)))
+    r_in = L.R_body + 0.5                              # tongue tips cross the axis while sliding: trim them straight at
+    ra = ra.cut(G.box(2 * r_in, lap + 2, P["retainer_h"] + 2, (-r_in, -lap - 2, z0 - 1)))   # |x| = r_in so they
+    rb = rb.cut(G.box(2 * r_in, lap + 2, P["retainer_h"] + 2, (-r_in, 0, z0 - 1)))          # clear the puck body
+    wc, wh = 4.5, 8.2                                  # shank slot = M4 clearance, head groove = the old counterbore
+    for k, p in enumerate(ret_pts):                    # slots run from each hook toward the axis and open at the bore
+        if k not in hook_k:
+            continue
+        sy = 1 if p[1] > 0 else -1
+        run = abs(p[1])
+        y0 = 0.0 if sy > 0 else p[1]
+        slot = G.fuse(G.cyl(wc / 2, P["retainer_h"] + 2, (p[0], p[1], z0 - 1)), G.box(wc, run, P["retainer_h"] + 2, (p[0] - wc / 2, y0, z0 - 1)),
+                      G.cyl(wh / 2, 4.5, (p[0], p[1], z1 - 3.5)), G.box(wh, run, 4.5, (p[0] - wh / 2, y0, z1 - 3.5)))
+        if sy > 0:
+            ra = ra.cut(slot)
+        else:
+            rb = rb.cut(slot)
+        hw.screw("Base", 4, 20, (p[0], p[1], z1 - 3.5), DOWN)
+    for sx in (-1, 1):                                 # notch bolts: down through B's tongue and A's tongue into a nut
+        for jy in (-P["retainer_joint_dy"], P["retainer_joint_dy"]):   # pushed up into a hex pocket under A, outside the pedestal
+            x = sx * P["retainer_joint_r"]
+            rb = hw.clear_hole(rb, 4, (x, jy, z1), DOWN, P["retainer_h"])
+            ra = hw.clear_hole(ra, 4, (x, jy, z_lap), DOWN, P["retainer_h"])
+            ra = hw.nut_pocket(ra, 4, (x, jy, z0), UP)
+            hw.screw("Base", 4, 20, (x, jy, z1), DOWN)
+            hw.nut("Base", 4, (x, jy, z0 + NUT[4][1] + 0.25), DOWN)
+    _reg(reg, "Az_Retainer_Ring_A", ra, "Base", "black", notes="Retainer half A (+Y), goes in first: slides in from +Y under the drum, 4 open slots pass the pre-set hook screws (M4x20 into the pedestal nuts); lower tongue of both lap notches with 4 hex pockets underneath for the notch nuts.")
+    _reg(reg, "Az_Retainer_Ring_B", rb, "Base", "black", notes="Retainer half B (-Y), goes in second: slides in from -Y over A's tongues, 4 open slots pass the hook screws; notch bolts 4x M4x20 down through both tongues. Print with support under the two tongues.")
 
     az, _ = placed_stingray("4", az_at, az_x, az_z, "static")
     _reg(reg, "Az_Stingray4", az, "Base", "black", printed=False, notes="goBILDA %s, SKU %s: direct AZ drive under the deck (block + servo + pinion)." % (STINGRAY_KIND["4"]["label"], STINGRAY_KIND["4"]["sku"]))
@@ -221,15 +262,22 @@ def build_base(P, L, reg, hw):
     _reg(reg, "Az_Stingray4_Output", azo, "Head", "steel", printed=False, notes="Stingray-4 output gear, hub and standoffs: turns with the head, bolted to the puck (4x M4x25 from the deck).")
 
 
-# ============================================================== ARMS (round columns, cylindrical shoulder knuckles)
+# ============================================================== ARMS (round columns, hollow stadium shoulder drums)
 def build_arms(P, L, reg, hw):
+    """Yoke columns and shoulder drums (v9).
+    Columns: 60 mm round tubes, 3 mm walls, lower + upper segment joined by a spigot with 2x M4x50 across.
+    Shoulders: a 120 mm drum (R_sh) whose lower half is dropped `shoulder_drop` below the axis (stadium profile) so the
+    Stingray-9 block (70 mm below the axis) fits. Both halves are 4 mm shells, closed on the outer face and open toward
+    the hub, printed lying on the outer face. The Stingray-9 is screwed along its axis (6x M4 through its own tapped
+    16 mm grid) into a 6 mm back plate; the caps take 2x M4x50 each into nuts 36 mm down in the lower half."""
     S = STINGRAY
     x0, xs = L.x_arm_in, L.x_sh_out
-    xc, ra, wall = L.x_arm_mid, L.arm_r, 4.0
+    xc, ra, wall = L.x_arm_mid, L.arm_r, L.arm_wall
     ri = ra - wall
     z0, z1, z2 = L.arm_splits
-    Rk = L.R_sh
+    Rk, drop, sw = L.R_sh, L.sh_drop, L.sh_wall
     y_wall = math.sqrt(ra ** 2 - 16 ** 2)                        # tube surface offset at the cross-bolt row (y = +-16)
+    c = S["clear"]
 
     # ---- lower segment: hollow column, solid foot boss (cable through), socket for the upper segment's spigot
     low = G.cyl(ra, z1 - z0, (xc, 0, z0)).cut(G.cyl(ri, z1 - z0 - 16 + 1, (xc, 0, z0 + 16)))
@@ -246,100 +294,136 @@ def build_arms(P, L, reg, hw):
         low = hw.cbore_hole(low, 4, (x_head, yy, z1 - 12), NX, 60, cbore_depth=10)
         low = hw.nut_pocket(low, 4, (xc - y_wall - 2, yy, z1 - 12), PX, depth=9)
 
-    # ---- upper segment: column + spigot + lower half of the knuckle drum on the EL axis
-    up = G.cyl(ra, z2 - z1, (xc, 0, z1)).cut(G.cyl(ri, z2 - z1, (xc, 0, z1 + 10)))          # 10 mm solid plug above the spigot
-    up = G.fuse(up, G.cyl(ri - 0.2, 24, (xc, 0, z1 - 24)))
-    up = up.cut(G.cyl(8, 40, (xc, 0, z1 - 25)))
-    def drum_half(z_lo):                                                                       # half of the shoulder drum, soft-edged
-        d = G.cyl(Rk, xs - x0, (x0, 0, z2), X).common(G.box(xs - x0, 2 * Rk, Rk + 1, (x0, -Rk, z_lo)))
-        return fillet_edges(d, 5.0, lambda e: e.Curve.TypeId != "Part::GeomLine" and all(abs(v.X - x0) < 1e-3 for v in e.Vertexes) or
-                            e.Curve.TypeId != "Part::GeomLine" and all(abs(v.X - xs) < 1e-3 for v in e.Vertexes), "drum edges")
-    up = G.fuse(up, drum_half(z2 - Rk - 1))
-    for yy in (-16, 16):                                                                       # same head / nut recesses as the socket
+    # ---- shoulder drum profile: half-circle R above the axis, straight sides for `drop`, half-circle R below
+    def stadium_x(R, xa, xb):
+        zc1, zc2 = z2, z2 - drop
+        p = lambda y, z: V(xa, y, z)
+        e1 = Part.ArcOfCircle(p(R, zc1), p(0, zc1 + R), p(-R, zc1)).toShape()
+        e2 = Part.LineSegment(p(-R, zc1), p(-R, zc2)).toShape()
+        e3 = Part.ArcOfCircle(p(-R, zc2), p(0, zc2 - R), p(R, zc2)).toShape()
+        e4 = Part.LineSegment(p(R, zc2), p(R, zc1)).toShape()
+        return Part.Face(Part.Wire([e1, e2, e3, e4])).extrude(V(xb - xa, 0, 0))
+    below = G.box(xs - x0 + 6, 2 * Rk + 6, Rk + drop + 6, (x0 - 3, -Rk - 3, z2 - Rk - drop - 6))     # z <= z2
+    above = G.box(xs - x0 + 6, 2 * Rk + 6, Rk + 6, (x0 - 3, -Rk - 3, z2))                               # z >= z2
+    on_outer_face = lambda e: all(abs(v.X - xs) < 1e-3 for v in e.Vertexes) and not all(abs(v.Z - z2) < 1e-3 for v in e.Vertexes)
+    outer_lo = fillet_edges(stadium_x(Rk, x0, xs).common(below), 2.5, on_outer_face, "drum lower rim")   # small: this edge sits on the bed
+    outer_hi = fillet_edges(G.cyl(Rk, xs - x0, (x0, 0, z2), X).common(above), 2.5, on_outer_face, "drum cap rim")
+    inner_lo = stadium_x(Rk - 1, x0, xs - 1).common(below)                              # clip for internal features: 1 mm inside the skin, so no shared faces
+    inner_hi = G.cyl(Rk - 1, xs - 1 - x0, (x0, 0, z2), X).common(above)
+    cav_lo = stadium_x(Rk - sw, x0 - 1, xs - sw).common(below)                         # open at the inner face and the split plane
+    cav_hi = G.cyl(Rk - sw, xs - sw - (x0 - 1), (x0 - 1, 0, z2), X).common(G.mv(above, dz=sw))   # cap keeps a 4 mm split-plane plate
+    x_bp = L.x_el_block[1] + c + 6.0                                                    # Stingray-9 back plate outer face (84.1)
+    y_blk = S["block"][3] + c                                                           # block half-width with clearance (22.3)
+    y_ch = y_blk + 3.0                                                                  # channel walls 3 mm
+
+    # ---- upper segment base (both sides): column + spigot + lower shell, cap-bolt ribs, cross bolts, cap bolts
+    up = G.fuse(G.cyl(ra, z2 - z1, (xc, 0, z1)), G.cyl(ri - 0.2, 24, (xc, 0, z1 - 24)), outer_lo)
+    up = up.cut(cav_lo)
+    up = up.cut(G.cyl(ri, (z2 - 85) - (z1 + 10), (xc, 0, z1 + 10)))                     # hollow column (10 mm plug above the spigot) ...
+    up = up.cut(G.cyl(ri - 2.0, 26, (xc, 0, z2 - 86)))                                   # ... opening into the shell (2 mm narrower: stays clear of the outer plate)
+    up = up.cut(G.cyl(8, 40, (xc, 0, z1 - 25)))                                          # cable bore through spigot and plug
+    y_cb = Rk - 10.5                                                                      # cap bolts at y = +-49.5, in ribs against the shell wall
+    for yy in (-y_cb, y_cb):
+        rib = G.box(13, Rk - 44 + 2, Rk + drop, (xc - 6.5, 44 if yy > 0 else -Rk - 2, z2 - Rk - drop))
+        up = G.fuse(up, rib.common(inner_lo))
+    for yy in (-16, 16):                                                                  # same head / nut recesses as the socket
         up = hw.cbore_hole(up, 4, (x_head, yy, z1 - 12), NX, 70, cbore_depth=10)
         up = hw.nut_pocket(up, 4, (xc - y_wall - 2, yy, z1 - 12), PX, depth=9)
-    for yy in (-44, 44):                                                                       # cap bolts: traps open on the drum surface
-        up = hw.clear_hole(up, 4, (xc, yy, z2), DOWN, 12)
-        up = hw.nut_trap(up, 4, (xc, yy, z2 - 10), DOWN, (0, 1 if yy > 0 else -1, 0), 30, extra_len=7)
+    z_cn = z2 - 36                                                                        # cap-bolt nut centre (M4x50 from z2 + 9 ends at z2 - 41)
+    for yy in (-y_cb, y_cb):                                                              # cap bolts: traps open on the drum side
+        up = hw.clear_hole(up, 4, (xc, yy, z2), DOWN, z2 - z_cn)
+        up = hw.nut_trap(up, 4, (xc, yy, z_cn), DOWN, (0, 1 if yy > 0 else -1, 0), 14, extra_len=7)
 
-    # ---- left: bushing bore, on-axis cap seat + 4x M3 in the lower half, nuts slid in radially from the bore
-    left = up.cut(G.cyl(L.r_bush + 0.2, xs - x0 + 2, (x0 - 1, 0, L.z_el), X))
-    left = left.cut(G.cyl(40.2, 3, (xs - 3, 0, L.z_el), X))
+    cap = outer_hi.cut(cav_hi)
+    for yy in (-y_cb, y_cb):
+        rib = G.box(13, Rk - 44 + 2, Rk, (xc - 6.5, 44 if yy > 0 else -Rk - 2, z2))
+        cap = G.fuse(cap, rib.common(inner_hi))
+        cap = hw.cbore_hole(cap, 4, (xc, yy, z2 + 9), DOWN, 10, cbore_depth=Rk)
+
+    # ---- left: pillow block around the split bushing, on-axis encoder cap seat + 4x M3 (nuts slid in from the bore)
+    pil = G.fuse(G.cyl(26, xs - x0, (x0, 0, z2), X), G.cyl(46, 14, (xs - 14, 0, z2), X))
+    def left_features(shape, half):
+        shape = G.fuse(shape, pil.common(half))
+        shape = shape.cut(G.cyl(L.r_bush + 0.2, xs - x0 + 2, (x0 - 1, 0, z2), X))
+        shape = shape.cut(G.cyl(40.2, 3, (xs - 3, 0, z2), X))
+        return shape
+    left = left_features(up, inner_lo)
     for ang in (205, 245, 295, 335):
         py, pz = 33 * math.cos(math.radians(ang)), 33 * math.sin(math.radians(ang))
-        left = hw.clear_hole(left, 3, (xs - 3, py, L.z_el + pz), NX, 7)
-        left = hw.nut_trap(left, 3, (xs - 8, py, L.z_el + pz), NX, (0, -py / 33, -pz / 33), 33 - L.r_bush - 0.5, extra_len=4)
+        left = hw.clear_hole(left, 3, (xs - 3, py, z2 + pz), NX, 7)
+        left = hw.nut_trap(left, 3, (xs - 8, py, z2 + pz), NX, (0, -py / 33, -pz / 33), 33 - L.r_bush - 0.5, extra_len=4)
     left = left.mirror(V(0, 0, 0), V(1, 0, 0))
+    cap_left = left_features(cap, inner_hi).mirror(V(0, 0, 0), V(1, 0, 0))
 
-    # ---- right: Stingray-9 pocket through the inner face, open cavity to the outer face behind a translucent lens
-    el_at, el_x, el_z = (L.x_el_load, 0, L.z_el), (0, 0, 1), (-1, 0, 0)
+    # ---- right: Stingray-9 channel (3 mm walls, floor, 6 mm back plate) inside the shell, window + lens on the outer face
+    el_at, el_x, el_z = (L.x_el_load, 0, z2), (0, 0, 1), (-1, 0, 0)
     pocket = stingray_pocket("9", el_at, el_x, el_z)
-    z_win, r_win, r_cov = L.z_el - 15, 40.0, 48.0
-    window = G.cyl(r_win, xs - L.x_el_servo1 + 5, (L.x_el_servo1 - 0.5, 0, z_win), X)
-    seat = G.cyl(r_cov + 0.2, 3, (xs - 3, 0, z_win), X)
-    right = up.cut(pocket).cut(window).cut(seat)
+    r_win, r_cov, r_ls = 38.0, 44.0, 40.5                                                # window (hex key reaches the row 32 below the axis), lens, lens screws
+    window = G.cyl(r_win, sw + 2, (xs - sw - 1, 0, z2), X)
+    seat = G.cyl(r_cov + 0.2, 3, (xs - 3, 0, z2), X)
+    ring = G.tube(r_cov + 6, r_win - 8, 8.01, (xs - sw - 8, 0, z2), X)                   # thick ring behind the lens for its nut traps
+    chan_lo = G.box(x_bp - x0, 2 * y_ch, Rk + drop + 2, (x0, -y_ch, z2 - Rk - drop - 1))
+    for sy in (-1, 1):                                                                    # walls continue to the outer plate
+        chan_lo = G.fuse(chan_lo, G.box(xs - sw - x_bp + 0.01, 3.0, Rk + drop + 2, (x_bp - 0.01, sy * y_blk if sy > 0 else -y_ch, z2 - Rk - drop - 1)))
+    chan_hi = G.box(x_bp - x0, 2 * y_ch, y_blk + 4.0, (x0, -y_ch, z2))                  # block top wall + walls in the cap
 
-    def lens_fastening(shape):                                     # lens: 4x M3 at r 44, nuts slid in from the cavity wall (two land in the cap)
-        for ang in (45, 135, 225, 315):
-            py, pz = 44 * math.cos(math.radians(ang)), 44 * math.sin(math.radians(ang))
-            shape = hw.clear_hole(shape, 3, (xs - 3, py, z_win + pz), NX, 7)
-            shape = hw.nut_trap(shape, 3, (xs - 8, py, z_win + pz), NX, (0, -py / 44, -pz / 44), 44 - r_win + 2, extra_len=4)
+    def right_features(shape, half, chan):
+        shape = G.fuse(shape, ring.common(half), chan.common(half))
+        shape = shape.cut(pocket).cut(window).cut(seat)
+        for ang in (45, 135, 225, 315):                                                   # lens: 4x M3, nuts slid in from the window
+            py, pz = r_ls * math.cos(math.radians(ang)), r_ls * math.sin(math.radians(ang))
+            shape = hw.clear_hole(shape, 3, (xs - 3, py, z2 + pz), NX, 7)
+            shape = hw.nut_trap(shape, 3, (xs - 8, py, z2 + pz), NX, (0, -py / r_ls, -pz / r_ls), r_ls - r_win + 2, extra_len=4)
         return shape
-    right = lens_fastening(right)
+    right = right_features(up, inner_lo, chan_lo)
+    cap_right = right_features(cap, inner_hi, chan_hi)
+    # block screws: along the axis through the block's own tapped 16 mm grid holes into the back plate, driven through the window
+    block_rows = ((-32.0, 25), (-16.0, 20), (16.0, 20))                                  # (grid row along the axis, screw length)
+    for tx, length in block_rows:
+        for sy in (-1, 1):
+            seat_pt = (x_bp, sy * S["hole_y"], z2 + tx)
+            tgt = cap_right if tx > 0 else right
+            tgt = hw.clear_hole(tgt, 4, seat_pt, NX, 6.0)                                # head bears on the plate face
+            if tx > 0:
+                cap_right = tgt
+            else:
+                right = tgt
+            hw.screw("Head", 4, length, seat_pt, NX)
     for ang in (45, 135, 225, 315):
-        py, pz = 44 * math.cos(math.radians(ang)), 44 * math.sin(math.radians(ang))
-        hw.nut("Head", 3, (xs - 8 - NUT[3][1] / 2, py, z_win + pz), PX, open_dir=(0, -py / 44, -pz / 44))
-    # block fastening: 8x M4 from the drum's +-Y surface into the block's side threads (two rows, two heights)
-    for tz in S["side_tap_z"]:
-        x_row = L.x_el_load - tz
-        for tx in S["side_tap_x"]:
-            zb = L.z_el + tx
-            y_surf = math.sqrt(Rk ** 2 - tx ** 2)
-            y_seat = y_surf - 4.0
-            length = 20 if abs(tx) > 48 else 50
-            for sy in (-1, 1):
-                seat_pt = (x_row, sy * y_seat, zb)
-                right = hw.cbore_hole(right, 4, seat_pt, (0, -sy, 0), y_seat - S["block"][3] - S["clear"], cbore_depth=8)
-                hw.screw("Head", 4, length, seat_pt, (0, -sy, 0))
+        py, pz = r_ls * math.cos(math.radians(ang)), r_ls * math.sin(math.radians(ang))
+        hw.nut("Head", 3, (xs - 8 - NUT[3][1] / 2, py, z2 + pz), PX, open_dir=(0, -py / r_ls, -pz / r_ls))
 
+    # ---- register both sides (left = mirrored right-hand build)
     for side, sgn in (("R", 1), ("L", -1)):
         lo = low if sgn > 0 else low.mirror(V(0, 0, 0), V(1, 0, 0))
-        zmid = (z0 + z1) / 2 + 10
+        # PERIGEE stencil through the outer wall, centred between the solid foot boss and the cross-bolt row
+        zmid = ((z0 + 16) + (z1 - 12 - 5)) / 2
         mp = None if sgn > 0 else ((0, 0, zmid), (0, 1, 0))
-        clip = G.box(ra, 2 * ra + 2, z1 - z0, (xc + ri - 0.5, -ra - 1, z0)) if sgn > 0 else G.box(ra, 2 * ra + 2, z1 - z0, (-(xc + ra) - 0.5, -ra - 1, z0))
+        clip = G.box(ra + 1, 2 * ra + 2, z1 - z0, ((xc - 0.5) if sgn > 0 else -(xc + ra) - 0.5, -ra - 1, z0))     # outer half of the tube
         lo = G.stencil_text_cut(lo, P["logo_text"], P["logo_font"], P["logo_size"], 2 * ra + 20, at=((x0 - 5) if sgn > 0 else -(xs + 5), 0, zmid), axis=X, rotate_deg=180, mirror_plane=mp, clip=clip)
         for fx in (xc - 18, xc + 18):
             for fy in (-18, 18):
                 hw.nut("Head", 4, (sgn * fx, fy, z0 + 9 - NUT[4][1] / 2), UP, open_dir=(sgn * (fx - xc), fy, 0))
         for yy in (-16, 16):
             hw.screw("Head", 4, 50, (sgn * x_head, yy, z1 - 12), (-sgn, 0, 0)); hw.nut("Head", 4, (sgn * x_nut, yy, z1 - 12), (sgn, 0, 0))
-        _reg(reg, "Arm_%s_1" % side, lo, "Head", "white", print_up=(-sgn, 0, 0), notes="Lower arm column (%s), hollow, cables inside. Feet 4x M4x25 from under the yoke plate into side-loaded nuts; socket for the upper spigot, 2x M4x50 across." % side)
+        _reg(reg, "Arm_%s_1" % side, lo, "Head", "white", print_up=(-sgn, 0, 0), notes="Lower arm column (%s), hollow (3 mm wall), cables inside. Feet 4x M4x25 from under the yoke plate into side-loaded nuts; socket for the upper spigot, 2x M4x50 across." % side)
         u = right if sgn > 0 else left
-        for yy in (-44, 44):
-            hw.nut("Head", 4, (sgn * xc, yy, z2 - 10 - NUT[4][1] / 2), UP, open_dir=PY)
+        for yy in (-y_cb, y_cb):
+            hw.nut("Head", 4, (sgn * xc, yy, z_cn - NUT[4][1] / 2), UP, open_dir=(0, 1 if yy > 0 else -1, 0))
         if sgn < 0:
             for ang in (205, 245, 295, 335):
                 py, pz = 33 * math.cos(math.radians(ang)), 33 * math.sin(math.radians(ang))
-                hw.nut("Head", 3, (-(xs - 8 - NUT[3][1] / 2), py, L.z_el + pz), NX, open_dir=(0, -py / 33, -pz / 33))
+                hw.nut("Head", 3, (-(xs - 8 - NUT[3][1] / 2), py, z2 + pz), NX, open_dir=(0, -py / 33, -pz / 33))
         _reg(reg, "Arm_%s_2" % side, u, "Head", "white", print_up=(-sgn, 0, 0),
-             notes="Upper arm column + lower half of the shoulder drum (%s): %s" % (side, "Stingray-9 pocket from the inner face, open cavity behind the translucent lens; block held by 8x M4 from the drum surface." if sgn > 0 else "pillow block for the left stub bushing, on-axis encoder cap."))
-
-    for sgn in (1, -1):
-        xa, xb = min(sgn * x0, sgn * xs), max(sgn * x0, sgn * xs)
-        cap = drum_half(L.z_el) if sgn > 0 else drum_half(L.z_el).mirror(V(0, 0, 0), V(1, 0, 0))
-        if sgn < 0:
-            cap = cap.cut(G.cyl(L.r_bush + 0.2, xb - xa + 2, (xa - 1, 0, L.z_el), X))
-            cap = cap.cut(G.cyl(40.2, 3, (xa, 0, L.z_el), X))
-        else:
-            cap = lens_fastening(cap.cut(pocket).cut(window).cut(seat))                   # block top, cavity, lens seat and two lens screws reach above the axis
-        for yy in (-44, 44):
-            cap = hw.cbore_hole(cap, 4, (sgn * xc, yy, L.z_el + 9), DOWN, 10, cbore_depth=Rk)
-            hw.screw("Head", 4, 25, (sgn * xc, yy, L.z_el + 9), DOWN)
-        _reg(reg, "El_Bearing_Cap_%s" % side_name(sgn), cap, "Head", "white", print_up=DOWN, notes="Upper half of the shoulder drum, 2x M4x25 into nuts trapped in the lower half%s." % ("; holds the upper bushing half" if sgn < 0 else "; closes the top of the gearbox pocket"))
+             notes="Upper arm column + lower half of the shoulder drum (%s), 4 mm shell open toward the hub: %s" % (side, "Stingray-9 channel with a 6 mm back plate (4x M4x20 + 2x M4x25 along the axis into the block's own threads, driven through the window), floor and cable opening into the column." if sgn > 0 else "pillow block for the left stub bushing, on-axis encoder cap."))
+        cp = cap_right if sgn > 0 else cap_left
+        for yy in (-y_cb, y_cb):
+            hw.screw("Head", 4, 50, (sgn * xc, yy, z2 + 9), DOWN)
+        _reg(reg, "El_Bearing_Cap_%s" % side, cp, "Head", "white", print_up=(-sgn, 0, 0), notes="Upper half of the shoulder drum, 4 mm shell with a split-plane plate, 2x M4x50 into nuts trapped in the lower half%s." % ("; holds the upper bushing half" if sgn < 0 else "; closes the top of the Stingray-9 channel and carries its upper screw row"))
     for half, zsgn in (("Lower", -1), ("Upper", 1)):
         bx0 = -(x0 + 42)
-        bsh = G.tube(L.r_bush, L.r_axle + 0.25, 40, (bx0, 0, L.z_el), X)
-        bsh = bsh.common(G.box(40, 80, 40, (bx0, -40, L.z_el if zsgn > 0 else L.z_el - 40)))
+        bsh = G.tube(L.r_bush, L.r_axle + 0.25, 40, (bx0, 0, z2, ), X)
+        bsh = bsh.common(G.box(40, 80, 40, (bx0, -40, z2 if zsgn > 0 else z2 - 40)))
         _reg(reg, "El_Bushing_L_%s" % half, bsh, "Head", "white", print_up=(0, 0, zsgn), notes="Half of the split plain bushing (36/30.5 x 40). Grease.")
 
     # ---- left axis cap with the AS5600 column and the status window
@@ -366,18 +450,19 @@ def build_arms(P, L, reg, hw):
     _reg(reg, "El_Axis_Cap_L", cap, "Head", "grey", print_up=NX, notes="Left axis cap: AS5600 column (2 mm off the stub magnet), translucent window; 4x M3x12 into bore-loaded nuts.")
     _reg(reg, "Status_Window", G.cyl(19.7, 2, (xso - 4, 0, L.z_el), X), "Head", "clear", print_up=NX, notes="Translucent disc in the left cap.")
 
-    # ---- right lens: translucent disc over the Stingray-9 cavity
-    lens = G.cyl(r_cov, 7, (xs - 3, 0, z_win), X)
+    # ---- right lens: translucent disc on the axis over the Stingray-9 channel (its screws are driven through this window)
+    lens = G.cyl(r_cov, 7, (xs - 3, 0, z2), X)
     lens = fillet_edges(lens, 2.5, lambda e: e.Curve.TypeId == "Part::GeomCircle" and abs(e.Curve.Radius - r_cov) < 1e-3 and abs(e.Vertexes[0].X - (xs + 4)) < 1e-3, "lens")
     for ang in (45, 135, 225, 315):
-        py, pz = 44 * math.cos(math.radians(ang)), 44 * math.sin(math.radians(ang))
-        seat_pt = (xs + 4 - 3.0, py, z_win + pz)
+        py, pz = r_ls * math.cos(math.radians(ang)), r_ls * math.sin(math.radians(ang))
+        seat_pt = (xs + 4 - 3.0, py, z2 + pz)
         lens = hw.cbore_hole(lens, 3, seat_pt, NX, 3.0 + 4, cbore_depth=3.0); hw.screw("Head", 3, 12, seat_pt, NX)
-    _reg(reg, "El_Servo_Cover", lens, "Head", "clear", print_up=PX, notes="Translucent lens on the right shoulder drum showing the Stingray-9; 4x M3x12 into cavity-loaded nuts.")
+    _reg(reg, "El_Servo_Cover", lens, "Head", "clear", print_up=PX, notes="Translucent 88 mm lens on the right shoulder drum showing the Stingray-9 and its screws; 4x M3x12 into window-loaded nuts.")
     el, _ = placed_stingray("9", el_at, el_x, el_z, "static")
     _reg(reg, "El_Stingray9", el, "Head", "black", printed=False, notes="goBILDA %s, SKU %s: direct EL drive in the right shoulder drum (block + servo + pinion)." % (STINGRAY_KIND["9"]["label"], STINGRAY_KIND["9"]["sku"]))
     elo, _ = placed_stingray("9", el_at, el_x, el_z, "output")
     _reg(reg, "El_Stingray9_Output", elo, "Cradle", "steel", printed=False, notes="Stingray-9 output gear, hub and standoffs: turns with the cradle, bolted to the hub's right wall (4x M4x12 from inside).")
+
 
 
 # ============================================================== HEAD (puck, AZ housing, yoke plate)

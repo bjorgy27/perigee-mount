@@ -30,13 +30,15 @@ Every screw and nut is modelled (about 170 pieces) as App::Link instances of mas
 All fasteners are ISO 4762 socket head cap screws in M3 / M4 / M5 with ISO 4032 hex nuts. No heat-set inserts and
 no self-tapping: each bolt ends in a nut, or in one of the gearboxes' own M4 threads, that sits either in a blind hex pocket on the far face (where that face is
 reachable at assembly time) or in a side-loaded nut trap (a slot the nut slides into before the mating part goes on:
-pedestal wall, pillar feet, arm feet, shoulder tops, around the left bore, servo window, behind the gearbox block, hub rim). The hub is
+pedestal wall, pillar feet, arm feet, shoulder ribs, around the left bore, lens window, hub rim), or in one of the Stingray-9's own
+tapped 16 mm-grid holes (6x M4 along the axis into the aluminium block). The hub is
 a hollow box with a bolted lid so all its flange nuts sit inside. The BOM lists exact counts per size and length.
 Tools: 2.5 / 3 / 4 mm hex keys and 5.5 / 7 / 8 mm spanners.
 
 ## Styling
 Canadarm / R.O.B. proportions: black pedestal with a wide flange plate, white azimuth housing under a plain round
-yoke plate, two slender 60 mm round columns rising to 150 mm cylindrical shoulder drums on the elevation axis, a
+yoke plate, two slender 60 mm round columns rising to 120 mm shoulder drums on the elevation axis (a half-circle cap over a
+stadium-shaped lower half; both are 4 mm hollow shells open toward the hub), a
 rounded black hub between them, round black boom and counterweight tubes, opaque black counterweight canister with an
 orange cap. Translucent parts show the mechanism: the lens on the right drum over the Stingray-9, the access cover on
 the yoke plate, the status window on the left cap. Cables run inside the hollow columns.
@@ -65,11 +67,12 @@ Open the master file, run `PerigeeColors.FCMacro`, then either run `PerigeeAnima
 Assembly workbench > Simulation > `Track_Pass_Simulation`, press *Generate* then *Play*. The simulation drives the AZ
 and EL joints with formulas (`18*time` and a harmonic 0-180 deg sweep).
 
-## Design summary (v8: Stingray direct drives, round columns and drums)
+## Design summary (v9: Stingray direct drives, round columns, hollow 120 mm shoulder drums)
 
 - **Frame**: Z up, AZ axis = Z, EL axis = X at z = 599 mm (510 mm above the deck). Boresight at EL 0 is +Y.
 - **Pedestal**: black 216 mm pedestal body on a 236 mm foot flange (6x M6 for a mount plate), 75 mm tall; a black
-  236 mm flange plate on top is the AZ retainer (12x M4x20) and the visible rotation seam. Everything fits a 256 mm
+  236 mm flange plate on top is the AZ retainer (split in two halves since v10: 8x M4x20 hooks in the pedestal, 4x
+  M4x20 at the two lap notches) and the visible rotation seam. Everything fits a 256 mm
   bed with room for a brim.
 - **AZ bearing**: printed plain bearing. The puck's 15 mm lip (OD 191) is the journal in the 192 mm bore; the step at
   the puck underside (r 84-96) is the greased thrust face; the flange plate traps the lip with 0.8 mm play. The
@@ -82,15 +85,22 @@ and EL joints with formulas (`18*time` and a harmonic 0-180 deg sweep).
   internal pillars tied to the wall by ribs carry the yoke (M4 top and bottom, nuts trapped in the pillars). Its lid is
   an oval 244 x 220 mm yoke plate with a translucent round access cover; the columns bolt to the plate from below and
   their cables pass up through it.
-- **Yoke**: two hollow 60 mm round columns (4 mm walls), each printed as a lower segment and an upper segment joined
-  by a solid spigot with 2x M4x50 across; the upper segment carries the lower half of a 150 mm cylindrical shoulder
-  drum on the elevation axis. The drums are split at the axis; their upper halves are the bolted caps (2x M4x25 each).
-  Feet: 4x M4x25 up from under the yoke plate into side-loaded nuts in a solid foot boss.
-- **EL drive**: goBILDA Stingray-9 (3215-0001-0009, feedback mode) sits inside the right shoulder drum, entered
-  from the inner face, servo below the axis. The block is held by 8x M4 (4x M4x50 and 4x M4x20) from the drum surface
-  into its side M4 threads. Its 88 mm output gear turns in the gap between drum and hub and its four M4 standoffs bolt
+- **Yoke**: two hollow 60 mm round columns (3 mm walls), each printed as a lower segment and an upper segment joined
+  by a solid spigot with 2x M4x50 across; the upper segment carries the lower half of a 120 mm shoulder drum on the
+  elevation axis. The drum profile is a half-circle above the axis and a stadium below it (straight sides for 20 mm,
+  then a half-circle: the Stingray-9 hangs 70 mm below the axis and the columns' foot pattern is fixed by the printed
+  yoke plate, so the lower half has to reach 80 mm down). Both halves are 4 mm shells closed on the outer face and open
+  toward the hub, with the internal ribs, channel and pillow block tied to the outer plate; they print lying on their
+  flat outer face with no support. The caps have a 4 mm split-plane plate and bolt down with 2x M4x50 each into nuts
+  36 mm deep in ribs of the lower half (traps open on the drum side). Feet: 4x M4x25 up from under the yoke plate into
+  side-loaded nuts in a solid foot boss (unchanged from v8, so the printed plate still fits).
+- **EL drive**: goBILDA Stingray-9 (3215-0001-0009, feedback mode) slides into a 3 mm-walled channel inside the right
+  shoulder shell from the inner face, servo below the axis, and is screwed along its axis into its own tapped 16 mm
+  grid: 4x M4x20 (rows 16 above and 16 below the axis) and 2x M4x25 (row 32 below), all through a 6 mm back plate and
+  all driven with a 3 mm hex key through the 76 mm window on the outer face before the lens goes on. The row above the
+  axis is in the cap. Its 88 mm output gear turns in the gap between drum and hub and its four M4 standoffs bolt
   straight to the hub's right wall (4x M4x12 from inside the hub). 200 deg of travel covers EL -5 to 185, 227 kg.cm.
-  The gearbox is visible through the translucent 96 mm lens on the outer face of the drum.
+  The gearbox, its screws and the servo are visible through the translucent 88 mm lens, centred on the axis.
 - **EL bearing, left**: a 30 mm stub axle bolts to the hub's left face (4x M4x20) and turns in a split printed
   bushing (36/30.5 x 40) inside the left drum; the left axis cap carries the AS5600 on a column 2 mm off the magnet
   in the stub end, behind a translucent status window.
@@ -132,6 +142,9 @@ are ~400 MB each and are needed only to re-run `post`.
 ## Print notes
 - ASA or PETG, 0.2 mm layers, 4-5 walls, 30-40 % gyroid for structural parts (base, puck, arms, hub, trunnions).
 - Columns print lying on their outer side (as exported); the stencil letters then print without support.
+- Shoulder halves and caps print on their flat outer face (as exported): the shells are open toward the hub, which is
+  the top of the print, so there is nothing to bridge or support. They are all walls, so print them at 100 % (the mass
+  estimate in the BOM, which assumes 45 % effective density, undercounts them: expect about 1.07 g per cm3).
 - Lid and counterweight cap print face down; their PERIGEE logos are engraved so that works.
 - Ball grooves are 45 deg V's and print clean. Sand lightly, then PTFE grease.
 - Nut pockets are 7 mm AF (M4) and 5.5 mm AF (M3) with 0.4 to 0.5 mm clearance; nut traps are the same width, opening on a side face.
@@ -139,19 +152,29 @@ are ~400 MB each and are needed only to re-run `post`.
 ## Assembly order (matches the animation)
 1. Base: Stingray-4 onto the four floor pillars, 4x M4x40 up from under the base into its grid holes; feed its
    cable out through the floor slot.
-2. Grease the thrust face and bore, lower the puck onto the gearbox standoffs, 4x M4x25 down from the deck into the
-   standoffs, bolt the retainer ring (12x M4x20, nuts in the pedestal wall).
-3. Housing: slide nuts into the pillar traps, 4x M4x30 up from under the puck; electronics in; yoke plate 4x M4x16
+2. Hooks: slide 8 M4 nuts into the pedestal wall traps at 45 / 75 / 105 / 135 deg and their mirror images (the four
+   traps next to the X axis stay empty). Lay both retainer halves on the empty pedestal in their final place, drop an
+   M4x20 into each of the 8 slots and snug it onto the groove floor, then back each off about a quarter turn and
+   slide the halves back out along +-Y. The screw heads are now hooks at exactly the right height.
+3. Head: on the bench, slide nuts into the drum's pillar-foot traps, set the drum on the puck, 4x M4x30 up from under
+   the puck. Grease the thrust face and bore, lower the puck + drum onto the gearbox standoffs (the lip passes inside
+   the hooks), 4x M4x25 down from the deck into the standoffs, reached through the open top of the drum.
+4. Retainer: slide half A in from +Y through the gap under the drum (its slots pass the hooks, its thin tongues end
+   past the X axis), then half B from -Y with its tongues over A's. Push an M4 nut up into each of the 4 hex pockets
+   under A's tongues (they sit outside the pedestal, so a fingertip reaches them) and drive 4x M4x20 down through the
+   notches. Do this before the yoke plate goes on: the plate overhangs the notches in X.
+5. Housing: electronics in; yoke plate 4x M4x16
    into the upper pillar traps. Lower columns 4x M4x25 each from under the plate into the foot traps (before the
    plate goes on). Upper columns: spigot into the socket, 2x M4x50 across + nuts.
-4. Right drum: slide the Stingray-9 into its pocket from the inner face; 4x M4x50 and 4x M4x20 from the drum surface
-   into its side threads. Translucent lens 4x M3x12 into the cavity-loaded nuts (two of them sit in the cap).
-5. Cradle: with the hub lid off, bolt the left stub (4x M4x20), boom and counterweight arm flanges (4x M4x20 each)
+6. Right drum: slide the Stingray-9 into its channel from the inner face (cap off); through the window, 2x M4x25 into
+   the grid row 32 below the axis and 2x M4x20 into the row 16 below; the two M4x20 of the row above the axis go in
+   after the cap (step 7). Then the translucent lens, 4x M3x12 into the window-loaded nuts (two of them sit in the cap).
+7. Cradle: with the hub lid off, bolt the left stub (4x M4x20), boom and counterweight arm flanges (4x M4x20 each)
    with nuts inside the hub; magnet in the stub end. Lower bushing half into the left shoulder, grease, drop the
    cradle in so the right wall meets the Stingray-9 standoffs, 4x M4x12 from inside the hub into the standoffs, lid
-   4x M3x12. Upper bushing half, caps (2x M4x25 each into the shoulder traps).
-6. Left shoulder: AS5600 on the cap column (2x M3x8 + nuts), cap 4x M3x12, press the window in.
-7. Drop the 4 M5 nuts into the pockets on the back of the boom flange, adapter 4x M5x12. Canister collar 2x M4x55 +
+   4x M3x12. Upper bushing half, caps (2x M4x50 each into the rib traps), then the last two M4x20 into the Stingray-9.
+8. Left shoulder: AS5600 on the cap column (2x M3x8 + nuts), cap 4x M3x12, press the window in.
+9. Drop the 4 M5 nuts into the pockets on the back of the boom flange, adapter 4x M5x12. Canister collar 2x M4x55 +
    nuts; drop the 2 M3 nuts into the pockets in the cap's plug, push the cap on, 2x M3x10 through skirt and wall.
    Balance with the canister empty, then fill.
 
