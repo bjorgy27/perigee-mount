@@ -54,9 +54,9 @@
   "printed": false,
   "qty": 1,
   "hidden": false,
-  "tris": 5096,
+  "tris": 8592,
   "notes": "goBILDA Stingray-4 (4:1, 450 deg, 100 kg.cm), SKU 3215-0001-0004: direct AZ drive under the deck (block + servo + pinion).",
-  "volume_cm3": 99.8
+  "volume_cm3": 98.7
  },
  {
   "name": "Az_Stingray4_Output",
@@ -65,9 +65,9 @@
   "printed": false,
   "qty": 1,
   "hidden": false,
-  "tris": 4936,
+  "tris": 5272,
   "notes": "Stingray-4 output gear, hub and standoffs: turns with the head, bolted to the puck (4x M4x25 from the deck).",
-  "volume_cm3": 31.2
+  "volume_cm3": 31.7
  },
  {
   "name": "Arm_R_1",
@@ -76,9 +76,9 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 4838,
+  "tris": 2696,
   "notes": "Lower arm column (R), hollow (3 mm wall), cables inside. Feet 4x M4x25 from under the yoke plate into side-loaded nuts; socket for the upper spigot, 2x M4x50 across.",
-  "volume_cm3": 123.1,
+  "volume_cm3": 127.8,
   "print_bbox_mm": [
    180.0,
    60.0,
@@ -92,9 +92,9 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 5982,
-  "notes": "Upper arm column + lower half of the shoulder drum (R), 4 mm shell open toward the hub: Stingray-9 channel with a 6 mm back plate (4x M4x20 + 2x M4x25 along the axis into the block's own threads, driven through the window), floor and cable opening into the column.",
-  "volume_cm3": 285.2,
+  "tris": 5598,
+  "notes": "Upper arm column + lower half of the shoulder drum (R), 4 mm shell open toward the hub: Stingray-9 channel with a 12 mm back plate (3x M4x20 along the axis into the block's back-face threads, driven through the window; 15 mm pocket for the shaft end), floor and cable opening into the column.",
+  "volume_cm3": 298.7,
   "print_bbox_mm": [
    250.0,
    120.0,
@@ -108,9 +108,9 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 3644,
-  "notes": "Upper half of the shoulder drum, 4 mm shell with a split-plane plate, 2x M4x50 into nuts trapped in the lower half; closes the top of the Stingray-9 channel and carries its upper screw row.",
-  "volume_cm3": 106.6,
+  "tris": 3806,
+  "notes": "Upper half of the shoulder drum, 4 mm shell with a split-plane plate, 2x M4x50 into nuts trapped in the lower half; closes the top of the Stingray-9 channel, carries the upper back-plate screw and the upper half of the two split-plane screw holes.",
+  "volume_cm3": 109.6,
   "print_bbox_mm": [
    60.0,
    120.0,
@@ -124,9 +124,9 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 4838,
+  "tris": 2696,
   "notes": "Lower arm column (L), hollow (3 mm wall), cables inside. Feet 4x M4x25 from under the yoke plate into side-loaded nuts; socket for the upper spigot, 2x M4x50 across.",
-  "volume_cm3": 123.1,
+  "volume_cm3": 127.8,
   "print_bbox_mm": [
    180.0,
    60.0,
@@ -141,7 +141,7 @@
   "qty": 1,
   "hidden": false,
   "tris": 6042,
-  "notes": "Upper arm column + lower half of the shoulder drum (L), 4 mm shell open toward the hub: pillow block for the left stub bushing, on-axis encoder cap.",
+  "notes": "Upper arm column + lower half of the shoulder drum (L), 4 mm shell open toward the hub: pillow block for the left stub bushing, closed by the left axis cover.",
   "volume_cm3": 280.0,
   "print_bbox_mm": [
    250.0,
@@ -204,13 +204,13 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 3774,
-  "notes": "Left axis cap: AS5600 column (2 mm off the stub magnet), translucent window; 4x M3x12 into bore-loaded nuts.",
-  "volume_cm3": 33.2,
+  "tris": 2828,
+  "notes": "Left axis cover: plain disc closing the stub bushing bore, translucent window; 4x M3x12 into bore-loaded nuts.",
+  "volume_cm3": 31.4,
   "print_bbox_mm": [
    80.0,
    80.0,
-   14.0
+   7.0
   ]
  },
  {
@@ -252,9 +252,9 @@
   "printed": false,
   "qty": 1,
   "hidden": false,
-  "tris": 5096,
+  "tris": 8592,
   "notes": "goBILDA Stingray-9 (9:1, 200 deg, 227 kg.cm), SKU 3215-0001-0009: direct EL drive in the right shoulder drum (block + servo + pinion).",
-  "volume_cm3": 98.6
+  "volume_cm3": 97.6
  },
  {
   "name": "El_Stingray9_Output",
@@ -263,9 +263,9 @@
   "printed": false,
   "qty": 1,
   "hidden": false,
-  "tris": 4952,
+  "tris": 5288,
   "notes": "Stingray-9 output gear, hub and standoffs: turns with the cradle, bolted to the hub's right wall (4x M4x12 from inside).",
-  "volume_cm3": 38.8
+  "volume_cm3": 39.2
  },
  {
   "name": "Head_Puck",
@@ -386,9 +386,9 @@
   "printed": true,
   "qty": 1,
   "hidden": false,
-  "tris": 2060,
-  "notes": "Left EL stub axle, flange 4x M4x20 through the hub wall into nuts inside; turns in the split bushings. Magnet in the end face.",
-  "volume_cm3": 58.9,
+  "tris": 1892,
+  "notes": "Left EL stub axle, flange 4x M4x20 through the hub wall into nuts inside; turns in the split bushings.",
+  "volume_cm3": 59.0,
   "print_bbox_mm": [
    60.0,
    60.0,

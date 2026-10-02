@@ -1,9 +1,9 @@
 # PERIGEE gimbal
 
 Fully 3D-printed azimuth/elevation pedestal for a dish up to 1 m (mesh), 15-20 lb payload, driven directly by two
-goBILDA Stingray servo gearboxes (Stingray-4 on azimuth, 450 deg of travel; Stingray-9 on elevation, 200 deg), with an
-AS5600 magnetic encoder on the elevation axis and the Stingrays' own feedback wires for position, controlled by an
-Arduino Uno on the rotating head (Bluetooth serial to the PC running Perigee). Azimuth needs no slip ring: 1.25 turns
+goBILDA Stingray servo gearboxes (Stingray-4 on azimuth, 450 deg of travel; Stingray-9 on elevation, 200 deg), both
+run open loop: they are positional servos, the pulse width is the position, and there is no encoder or feedback wire.
+Controlled by an ST Nucleo-F401RE on the rotating head (USB serial to the PC running Perigee). Azimuth needs no slip ring: 1.25 turns
 of travel run on a cable service loop. The azimuth axis runs on a greased printed plain bearing; elevation runs on the
 Stingray-9's own ball-bearing hub-shaft on the right and a printed split bushing on the left. The only non-printed parts
 are metric screws and nuts, the two gearboxes and the electronics.
@@ -31,7 +31,8 @@ All fasteners are ISO 4762 socket head cap screws in M3 / M4 / M5 with ISO 4032 
 no self-tapping: each bolt ends in a nut, or in one of the gearboxes' own M4 threads, that sits either in a blind hex pocket on the far face (where that face is
 reachable at assembly time) or in a side-loaded nut trap (a slot the nut slides into before the mating part goes on:
 pedestal wall, pillar feet, arm feet, shoulder ribs, around the left bore, lens window, hub rim), or in one of the Stingray-9's own
-tapped 16 mm-grid holes (6x M4 along the axis into the aluminium block). The hub is
+threads (3x M4 along the axis into the tapped holes in the back face of its aluminium block; its 16 mm-grid holes are
+plain 4 mm holes, not tapped). The hub is
 a hollow box with a bolted lid so all its flange nuts sit inside. The BOM lists exact counts per size and length.
 Tools: 2.5 / 3 / 4 mm hex keys and 5.5 / 7 / 8 mm spanners.
 
@@ -79,8 +80,8 @@ and EL joints with formulas (`18*time` and a harmonic 0-180 deg sweep).
   Stingray-4's own bearings centre the shaft; the plain bearing carries the weight and moments.
 - **AZ drive**: goBILDA Stingray-4 (3215-0001-0004, feedback mode) stands on four pillars on the pedestal floor,
   bolted from below (4x M4x40 into its 16 mm grid). Its output gear faces up and its four M4 standoffs bolt to the
-  underside of the puck (4x M4x25 from the deck). 450 deg of travel, 100 kg.cm, 15 rpm. Position comes from the
-  gearbox's feedback wire. Cables pass through a hole in the puck into the pedestal annulus as a service loop.
+  underside of the puck (4x M4x25 from the deck). 450 deg of travel, 100 kg.cm, 15 rpm. Open loop: the
+  commanded pulse is the position. Cables pass through a hole in the puck into the pedestal annulus as a service loop.
 - **AZ housing**: the rotating electronics bay is a white drum of the same 216 mm diameter as the pedestal body; four
   internal pillars tied to the wall by ribs carry the yoke (M4 top and bottom, nuts trapped in the pillars). Its lid is
   an oval 244 x 220 mm yoke plate with a translucent round access cover; the columns bolt to the plate from below and
@@ -95,15 +96,17 @@ and EL joints with formulas (`18*time` and a harmonic 0-180 deg sweep).
   36 mm deep in ribs of the lower half (traps open on the drum side). Feet: 4x M4x25 up from under the yoke plate into
   side-loaded nuts in a solid foot boss (unchanged from v8, so the printed plate still fits).
 - **EL drive**: goBILDA Stingray-9 (3215-0001-0009, feedback mode) slides into a 3 mm-walled channel inside the right
-  shoulder shell from the inner face, servo below the axis, and is screwed along its axis into its own tapped 16 mm
-  grid: 4x M4x20 (rows 16 above and 16 below the axis) and 2x M4x25 (row 32 below), all through a 6 mm back plate and
-  all driven with a 3 mm hex key through the 76 mm window on the outer face before the lens goes on. The row above the
-  axis is in the cap. Its 88 mm output gear turns in the gap between drum and hub and its four M4 standoffs bolt
-  straight to the hub's right wall (4x M4x12 from inside the hub). 200 deg of travel covers EL -5 to 185, 227 kg.cm.
+  shoulder shell from the inner face, servo below the axis, and is screwed along its axis with 3x M4x20 through a
+  12 mm back plate into the three tapped holes in the back face of its block (on a 22.6 mm circle around the shaft: one
+  11.3 mm above the axis, two either side of it on the split plane), all driven with a 3 mm hex key through the 76 mm
+  window on the outer face and a 36 mm sight bore before the lens goes on (v11; v10 screwed into the 16 mm-grid holes,
+  which turned out to be plain, untapped 4 mm holes). The hub-shaft end and its snap ring stick 3.6 mm out of the back
+  of the block into a 15 mm pocket in the back plate. Its 88 mm output gear turns in the gap between drum and hub and its four M4 standoffs bolt
+  straight to the hub's right wall (4x M4x12 from inside the hub). 200 deg of travel; the firmware uses EL -2 to 185 of it, 227 kg.cm.
   The gearbox, its screws and the servo are visible through the translucent 88 mm lens, centred on the axis.
 - **EL bearing, left**: a 30 mm stub axle bolts to the hub's left face (4x M4x20) and turns in a split printed
-  bushing (36/30.5 x 40) inside the left drum; the left axis cap carries the AS5600 on a column 2 mm off the magnet
-  in the stub end, behind a translucent status window.
+  bushing (36/30.5 x 40) inside the left drum; a plain left axis cover with a translucent status window closes the
+  bore.
 - **Cradle**: rounded 90 mm hollow hub (12 mm vertical, 3 mm top fillets) with a flush lid (4x M3x12 into nuts in a
   12 mm rim). All flange bolts end in nuts inside the cavity. Boom and counterweight arm are 40 mm round tubes with
   round 70 mm root flanges (4x M4x20 on a 42 mm square) and round spigots into the hub.
@@ -166,22 +169,23 @@ are ~400 MB each and are needed only to re-run `post`.
 5. Housing: electronics in; yoke plate 4x M4x16
    into the upper pillar traps. Lower columns 4x M4x25 each from under the plate into the foot traps (before the
    plate goes on). Upper columns: spigot into the socket, 2x M4x50 across + nuts.
-6. Right drum: slide the Stingray-9 into its channel from the inner face (cap off); through the window, 2x M4x25 into
-   the grid row 32 below the axis and 2x M4x20 into the row 16 below; the two M4x20 of the row above the axis go in
-   after the cap (step 7). Then the translucent lens, 4x M3x12 into the window-loaded nuts (two of them sit in the cap).
+6. Right drum: slide the Stingray-9 into its channel from the inner face (cap off), shaft end into the pocket in the
+   back plate; through the window, 2x M4x20 into the two back-face threads on the split plane (half holes; the cap's
+   halves slide down over them later); the M4x20 above the axis goes in after the cap (step 7). Then the translucent lens, 4x M3x12 into the window-loaded nuts (two of them sit in the cap).
 7. Cradle: with the hub lid off, bolt the left stub (4x M4x20), boom and counterweight arm flanges (4x M4x20 each)
-   with nuts inside the hub; magnet in the stub end. Lower bushing half into the left shoulder, grease, drop the
+   with nuts inside the hub. Lower bushing half into the left shoulder, grease, drop the
    cradle in so the right wall meets the Stingray-9 standoffs, 4x M4x12 from inside the hub into the standoffs, lid
-   4x M3x12. Upper bushing half, caps (2x M4x50 each into the rib traps), then the last two M4x20 into the Stingray-9.
-8. Left shoulder: AS5600 on the cap column (2x M3x8 + nuts), cap 4x M3x12, press the window in.
+   4x M3x12. Upper bushing half, caps (2x M4x50 each into the rib traps), then the last M4x20 into the Stingray-9.
+8. Left shoulder: axis cover 4x M3x12, press the window in.
 9. Drop the 4 M5 nuts into the pockets on the back of the boom flange, adapter 4x M5x12. Canister collar 2x M4x55 +
    nuts; drop the 2 M3 nuts into the pockets in the cap's plug, push the cap on, 2x M3x10 through skirt and wall.
    Balance with the canister empty, then fill.
 
 ## Caveats you should know
 - Both Stingrays must be the **feedback-mode** variants (3215-0001-xxxx) and driven by a controller that can produce
-  the wide PWM range (500-2500 us) they need for their full 450 / 200 deg travel; the Uno sketch has to unwrap
-  azimuth across the 1.25-turn range and read the feedback wires.
+  the wide PWM range (500-2500 us) they need for their full 450 / 200 deg travel. "Feedback mode" only means
+  positional mode: there is no feedback wire. The firmware (perigee-control/firmware/perigee_mount_stm32) keeps azimuth
+  inside 0..400 deg of the 1.25-turn cable loop and elevation inside -2..185.
 - The right EL bearing is the Stingray-9's own hub-shaft bearings; keep the payload balanced with the counterweight so
   the gearbox sees torque, not a permanent overhung load.
 - Printed plain bearings need grease and a break-in; the AZ journal clearance is 0.5 mm radial and the retainer play

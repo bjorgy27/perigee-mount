@@ -197,7 +197,7 @@
    "color": "white",
    "printed": true,
    "hidden": false,
-   "notes": "Upper arm column + lower half of the shoulder drum (R), 4 mm shell open toward the hub: Stingray-9 channel with a 6 mm back plate (4x M4x20 + 2x M4x25 along the axis into the block's own threads, driven through the window), floor and cable opening into the column."
+   "notes": "Upper arm column + lower half of the shoulder drum (R), 4 mm shell open toward the hub: Stingray-9 channel with a 12 mm back plate (3x M4x20 along the axis into the block's back-face threads, driven through the window; 15 mm pocket for the shaft end), floor and cable opening into the column."
   },
   {
    "name": "El_Bearing_Cap_R",
@@ -206,7 +206,7 @@
    "color": "white",
    "printed": true,
    "hidden": false,
-   "notes": "Upper half of the shoulder drum, 4 mm shell with a split-plane plate, 2x M4x50 into nuts trapped in the lower half; closes the top of the Stingray-9 channel and carries its upper screw row."
+   "notes": "Upper half of the shoulder drum, 4 mm shell with a split-plane plate, 2x M4x50 into nuts trapped in the lower half; closes the top of the Stingray-9 channel, carries the upper back-plate screw and the upper half of the two split-plane screw holes."
   },
   {
    "name": "Arm_L_1",
@@ -224,7 +224,7 @@
    "color": "white",
    "printed": true,
    "hidden": false,
-   "notes": "Upper arm column + lower half of the shoulder drum (L), 4 mm shell open toward the hub: pillow block for the left stub bushing, on-axis encoder cap."
+   "notes": "Upper arm column + lower half of the shoulder drum (L), 4 mm shell open toward the hub: pillow block for the left stub bushing, closed by the left axis cover."
   },
   {
    "name": "El_Bearing_Cap_L",
@@ -260,7 +260,7 @@
    "color": "grey",
    "printed": true,
    "hidden": false,
-   "notes": "Left axis cap: AS5600 column (2 mm off the stub magnet), translucent window; 4x M3x12 into bore-loaded nuts."
+   "notes": "Left axis cover: plain disc closing the stub bushing bore, translucent window; 4x M3x12 into bore-loaded nuts."
   },
   {
    "name": "Status_Window",
@@ -368,7 +368,7 @@
    "color": "black",
    "printed": true,
    "hidden": false,
-   "notes": "Left EL stub axle, flange 4x M4x20 through the hub wall into nuts inside; turns in the split bushings. Magnet in the end face."
+   "notes": "Left EL stub axle, flange 4x M4x20 through the hub wall into nuts inside; turns in the split bushings."
   },
   {
    "name": "Dish_Boom",
@@ -459,11 +459,6 @@
    "color": "steel",
    "label": "M4 x 20 socket head cap screw"
   },
-  "Screw_M4x25": {
-   "file": "parts/HW_Screw_M4x25.glb",
-   "color": "steel",
-   "label": "M4 x 25 socket head cap screw"
-  },
   "Nut_M3": {
    "file": "parts/HW_Nut_M3.glb",
    "color": "steel",
@@ -479,10 +474,10 @@
    "color": "steel",
    "label": "M3 x 12 socket head cap screw"
   },
-  "Screw_M3x8": {
-   "file": "parts/HW_Screw_M3x8.glb",
+  "Screw_M4x25": {
+   "file": "parts/HW_Screw_M4x25.glb",
    "color": "steel",
-   "label": "M3 x 8 socket head cap screw"
+   "label": "M4 x 25 socket head cap screw"
   },
   "Screw_M4x30": {
    "file": "parts/HW_Screw_M4x30.glb",
@@ -1367,56 +1362,26 @@
    ]
   },
   {
-   "kind": "Screw_M4x25",
+   "kind": "Screw_M4x20",
    "group": "Head",
    "matrix": [
     [
      2.220446049250313e-16,
      0.0,
      1.0,
-     84.1
+     90.1
     ],
     [
      0.0,
      1.0,
      0.0,
-     -16.0
+     0.0
     ],
     [
      -1.0,
      0.0,
      2.220446049250313e-16,
-     567.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x25",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     84.1
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     16.0
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     567.0
+     610.3
     ],
     [
      0,
@@ -1434,19 +1399,19 @@
      2.220446049250313e-16,
      0.0,
      1.0,
-     84.1
+     90.1
     ],
     [
      0.0,
      1.0,
      0.0,
-     -16.0
+     11.3
     ],
     [
      -1.0,
      0.0,
      2.220446049250313e-16,
-     583.0
+     599.0
     ],
     [
      0,
@@ -1464,79 +1429,19 @@
      2.220446049250313e-16,
      0.0,
      1.0,
-     84.1
+     90.1
     ],
     [
      0.0,
      1.0,
      0.0,
-     16.0
+     -11.3
     ],
     [
      -1.0,
      0.0,
      2.220446049250313e-16,
-     583.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     84.1
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -16.0
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     615.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M4x20",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     84.1
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     16.0
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     615.0
+     599.0
     ],
     [
      0,
@@ -2617,126 +2522,6 @@
      0.0,
      2.220446049250313e-16,
      585.053597362557
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M3x8",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     -109.6
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     -7.0
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     606.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M3",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     -1.0,
-     -115.0
-    ],
-    [
-     1.2246467991473532e-16,
-     -1.0,
-     2.465190328815662e-32,
-     -7.0
-    ],
-    [
-     -1.0,
-     -1.2246467991473532e-16,
-     -2.220446049250313e-16,
-     606.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Screw_M3x8",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     0.0,
-     1.0,
-     -109.6
-    ],
-    [
-     0.0,
-     1.0,
-     0.0,
-     7.0
-    ],
-    [
-     -1.0,
-     0.0,
-     2.220446049250313e-16,
-     606.0
-    ],
-    [
-     0,
-     0,
-     0,
-     1
-    ]
-   ]
-  },
-  {
-   "kind": "Nut_M3",
-   "group": "Head",
-   "matrix": [
-    [
-     2.220446049250313e-16,
-     -0.0,
-     -1.0,
-     -115.0
-    ],
-    [
-     0.0,
-     1.0,
-     -0.0,
-     7.0
-    ],
-    [
-     1.0,
-     0.0,
-     2.220446049250313e-16,
-     606.0
     ],
     [
      0,
@@ -6298,38 +6083,6 @@
    {
     "kind": "hw",
     "index": 28,
-    "shot": 6,
-    "t0": 22.32,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 29,
-    "shot": 6,
-    "t0": 22.37,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 30,
-    "shot": 6,
-    "t0": 22.42,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 31,
-    "shot": 6,
-    "t0": 22.47,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 32,
     "shot": 10,
     "t0": 39.68,
     "dur": 0.6,
@@ -6337,7 +6090,7 @@
    },
    {
     "kind": "hw",
-    "index": 33,
+    "index": 29,
     "shot": 10,
     "t0": 39.73,
     "dur": 0.6,
@@ -6345,7 +6098,7 @@
    },
    {
     "kind": "hw",
-    "index": 34,
+    "index": 30,
     "shot": 10,
     "t0": 39.78,
     "dur": 0.6,
@@ -6353,7 +6106,7 @@
    },
    {
     "kind": "hw",
-    "index": 35,
+    "index": 31,
     "shot": 10,
     "t0": 39.83,
     "dur": 0.6,
@@ -6361,103 +6114,7 @@
    },
    {
     "kind": "hw",
-    "index": 36,
-    "shot": 6,
-    "t0": 22.52,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 37,
-    "shot": 6,
-    "t0": 22.57,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 38,
-    "shot": 5,
-    "t0": 18.75,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 39,
-    "shot": 5,
-    "t0": 18.8,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 40,
-    "shot": 5,
-    "t0": 18.85,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 41,
-    "shot": 5,
-    "t0": 18.9,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 42,
-    "shot": 6,
-    "t0": 22.62,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 43,
-    "shot": 6,
-    "t0": 22.67,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 44,
-    "shot": 6,
-    "t0": 22.72,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 45,
-    "shot": 6,
-    "t0": 22.77,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 46,
-    "shot": 6,
-    "t0": 22.82,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 47,
-    "shot": 6,
-    "t0": 22.87,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 48,
+    "index": 32,
     "shot": 10,
     "t0": 39.88,
     "dur": 0.6,
@@ -6465,7 +6122,103 @@
    },
    {
     "kind": "hw",
-    "index": 49,
+    "index": 33,
+    "shot": 6,
+    "t0": 22.32,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 34,
+    "shot": 6,
+    "t0": 22.37,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 35,
+    "shot": 5,
+    "t0": 18.75,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 36,
+    "shot": 5,
+    "t0": 18.8,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 37,
+    "shot": 5,
+    "t0": 18.85,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 38,
+    "shot": 5,
+    "t0": 18.9,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 39,
+    "shot": 6,
+    "t0": 22.42,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 40,
+    "shot": 6,
+    "t0": 22.47,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 41,
+    "shot": 6,
+    "t0": 22.52,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 42,
+    "shot": 6,
+    "t0": 22.57,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 43,
+    "shot": 6,
+    "t0": 22.62,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 44,
+    "shot": 6,
+    "t0": 22.67,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 45,
     "shot": 10,
     "t0": 39.93,
     "dur": 0.6,
@@ -6473,7 +6226,15 @@
    },
    {
     "kind": "hw",
-    "index": 50,
+    "index": 46,
+    "shot": 10,
+    "t0": 39.98,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 47,
     "shot": 5,
     "t0": 19.3,
     "dur": 0.6,
@@ -6481,7 +6242,7 @@
    },
    {
     "kind": "hw",
-    "index": 51,
+    "index": 48,
     "shot": 5,
     "t0": 19.35,
     "dur": 0.6,
@@ -6489,7 +6250,7 @@
    },
    {
     "kind": "hw",
-    "index": 52,
+    "index": 49,
     "shot": 5,
     "t0": 19.4,
     "dur": 0.6,
@@ -6497,7 +6258,7 @@
    },
    {
     "kind": "hw",
-    "index": 53,
+    "index": 50,
     "shot": 5,
     "t0": 19.45,
     "dur": 0.6,
@@ -6505,7 +6266,7 @@
    },
    {
     "kind": "hw",
-    "index": 54,
+    "index": 51,
     "shot": 6,
     "t0": 22.87,
     "dur": 0.6,
@@ -6513,7 +6274,7 @@
    },
    {
     "kind": "hw",
-    "index": 55,
+    "index": 52,
     "shot": 6,
     "t0": 22.92,
     "dur": 0.6,
@@ -6521,7 +6282,7 @@
    },
    {
     "kind": "hw",
-    "index": 56,
+    "index": 53,
     "shot": 6,
     "t0": 22.97,
     "dur": 0.6,
@@ -6529,7 +6290,7 @@
    },
    {
     "kind": "hw",
-    "index": 57,
+    "index": 54,
     "shot": 6,
     "t0": 23.02,
     "dur": 0.6,
@@ -6537,7 +6298,7 @@
    },
    {
     "kind": "hw",
-    "index": 58,
+    "index": 55,
     "shot": 6,
     "t0": 23.07,
     "dur": 0.6,
@@ -6545,7 +6306,7 @@
    },
    {
     "kind": "hw",
-    "index": 59,
+    "index": 56,
     "shot": 6,
     "t0": 23.12,
     "dur": 0.6,
@@ -6553,39 +6314,39 @@
    },
    {
     "kind": "hw",
+    "index": 57,
+    "shot": 6,
+    "t0": 23.17,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 58,
+    "shot": 6,
+    "t0": 23.22,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 59,
+    "shot": 6,
+    "t0": 23.27,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
     "index": 60,
-    "shot": 12,
-    "t0": 46.27,
+    "shot": 6,
+    "t0": 23.32,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 61,
-    "shot": 12,
-    "t0": 46.32,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 62,
-    "shot": 12,
-    "t0": 46.37,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 63,
-    "shot": 12,
-    "t0": 46.42,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 64,
     "shot": 10,
     "t0": 40.23,
     "dur": 0.6,
@@ -6593,7 +6354,7 @@
    },
    {
     "kind": "hw",
-    "index": 65,
+    "index": 62,
     "shot": 10,
     "t0": 40.28,
     "dur": 0.6,
@@ -6601,71 +6362,39 @@
    },
    {
     "kind": "hw",
+    "index": 63,
+    "shot": 12,
+    "t0": 46.27,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 64,
+    "shot": 12,
+    "t0": 46.32,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
+    "index": 65,
+    "shot": 12,
+    "t0": 46.37,
+    "dur": 0.6,
+    "dist": 60
+   },
+   {
+    "kind": "hw",
     "index": 66,
     "shot": 12,
-    "t0": 46.47,
+    "t0": 46.42,
     "dur": 0.6,
     "dist": 60
    },
    {
     "kind": "hw",
     "index": 67,
-    "shot": 12,
-    "t0": 46.52,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 68,
-    "shot": 12,
-    "t0": 46.57,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 69,
-    "shot": 12,
-    "t0": 46.62,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 70,
-    "shot": 12,
-    "t0": 46.67,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 71,
-    "shot": 12,
-    "t0": 46.72,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 72,
-    "shot": 12,
-    "t0": 46.77,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 73,
-    "shot": 12,
-    "t0": 46.82,
-    "dur": 0.6,
-    "dist": 60
-   },
-   {
-    "kind": "hw",
-    "index": 74,
     "shot": 11,
     "t0": 43.25,
     "dur": 0.6,
@@ -6673,7 +6402,7 @@
    },
    {
     "kind": "hw",
-    "index": 75,
+    "index": 68,
     "shot": 11,
     "t0": 43.3,
     "dur": 0.6,
@@ -6681,7 +6410,7 @@
    },
    {
     "kind": "hw",
-    "index": 76,
+    "index": 69,
     "shot": 11,
     "t0": 43.35,
     "dur": 0.6,
@@ -6689,7 +6418,7 @@
    },
    {
     "kind": "hw",
-    "index": 77,
+    "index": 70,
     "shot": 11,
     "t0": 43.4,
     "dur": 0.6,
@@ -6697,7 +6426,7 @@
    },
    {
     "kind": "hw",
-    "index": 78,
+    "index": 71,
     "shot": 3,
     "t0": 12.01,
     "dur": 0.6,
@@ -6705,7 +6434,7 @@
    },
    {
     "kind": "hw",
-    "index": 79,
+    "index": 72,
     "shot": 3,
     "t0": 12.06,
     "dur": 0.6,
@@ -6713,7 +6442,7 @@
    },
    {
     "kind": "hw",
-    "index": 80,
+    "index": 73,
     "shot": 3,
     "t0": 12.11,
     "dur": 0.6,
@@ -6721,7 +6450,7 @@
    },
    {
     "kind": "hw",
-    "index": 81,
+    "index": 74,
     "shot": 3,
     "t0": 12.16,
     "dur": 0.6,
@@ -6729,7 +6458,7 @@
    },
    {
     "kind": "hw",
-    "index": 82,
+    "index": 75,
     "shot": 0,
     "t0": 1.5,
     "dur": 0.6,
@@ -6737,7 +6466,7 @@
    },
    {
     "kind": "hw",
-    "index": 83,
+    "index": 76,
     "shot": 0,
     "t0": 1.55,
     "dur": 0.6,
@@ -6745,7 +6474,7 @@
    },
    {
     "kind": "hw",
-    "index": 84,
+    "index": 77,
     "shot": 0,
     "t0": 1.6,
     "dur": 0.6,
@@ -6753,7 +6482,7 @@
    },
    {
     "kind": "hw",
-    "index": 85,
+    "index": 78,
     "shot": 0,
     "t0": 1.65,
     "dur": 0.6,
@@ -6761,7 +6490,7 @@
    },
    {
     "kind": "hw",
-    "index": 86,
+    "index": 79,
     "shot": 2,
     "t0": 8.04,
     "dur": 0.6,
@@ -6769,7 +6498,7 @@
    },
    {
     "kind": "hw",
-    "index": 87,
+    "index": 80,
     "shot": 2,
     "t0": 8.09,
     "dur": 0.6,
@@ -6777,7 +6506,7 @@
    },
    {
     "kind": "hw",
-    "index": 88,
+    "index": 81,
     "shot": 2,
     "t0": 8.14,
     "dur": 0.6,
@@ -6785,7 +6514,7 @@
    },
    {
     "kind": "hw",
-    "index": 89,
+    "index": 82,
     "shot": 2,
     "t0": 8.19,
     "dur": 0.6,
@@ -6793,7 +6522,7 @@
    },
    {
     "kind": "hw",
-    "index": 90,
+    "index": 83,
     "shot": 2,
     "t0": 8.24,
     "dur": 0.6,
@@ -6801,7 +6530,7 @@
    },
    {
     "kind": "hw",
-    "index": 91,
+    "index": 84,
     "shot": 2,
     "t0": 8.29,
     "dur": 0.6,
@@ -6809,7 +6538,7 @@
    },
    {
     "kind": "hw",
-    "index": 92,
+    "index": 85,
     "shot": 2,
     "t0": 8.34,
     "dur": 0.6,
@@ -6817,7 +6546,7 @@
    },
    {
     "kind": "hw",
-    "index": 93,
+    "index": 86,
     "shot": 2,
     "t0": 8.39,
     "dur": 0.6,
@@ -6825,7 +6554,7 @@
    },
    {
     "kind": "hw",
-    "index": 94,
+    "index": 87,
     "shot": 4,
     "t0": 15.73,
     "dur": 0.6,
@@ -6833,7 +6562,7 @@
    },
    {
     "kind": "hw",
-    "index": 95,
+    "index": 88,
     "shot": 4,
     "t0": 15.78,
     "dur": 0.6,
@@ -6841,7 +6570,7 @@
    },
    {
     "kind": "hw",
-    "index": 96,
+    "index": 89,
     "shot": 4,
     "t0": 15.83,
     "dur": 0.6,
@@ -6849,7 +6578,7 @@
    },
    {
     "kind": "hw",
-    "index": 97,
+    "index": 90,
     "shot": 4,
     "t0": 15.88,
     "dur": 0.6,
@@ -6857,7 +6586,7 @@
    },
    {
     "kind": "hw",
-    "index": 98,
+    "index": 91,
     "shot": 5,
     "t0": 19.5,
     "dur": 0.6,
@@ -6865,7 +6594,7 @@
    },
    {
     "kind": "hw",
-    "index": 99,
+    "index": 92,
     "shot": 5,
     "t0": 19.55,
     "dur": 0.6,
@@ -6873,7 +6602,7 @@
    },
    {
     "kind": "hw",
-    "index": 100,
+    "index": 93,
     "shot": 5,
     "t0": 19.6,
     "dur": 0.6,
@@ -6881,7 +6610,7 @@
    },
    {
     "kind": "hw",
-    "index": 101,
+    "index": 94,
     "shot": 5,
     "t0": 19.65,
     "dur": 0.6,
@@ -6889,7 +6618,7 @@
    },
    {
     "kind": "hw",
-    "index": 102,
+    "index": 95,
     "shot": 5,
     "t0": 18.95,
     "dur": 0.6,
@@ -6897,7 +6626,7 @@
    },
    {
     "kind": "hw",
-    "index": 103,
+    "index": 96,
     "shot": 5,
     "t0": 19.0,
     "dur": 0.6,
@@ -6905,7 +6634,7 @@
    },
    {
     "kind": "hw",
-    "index": 104,
+    "index": 97,
     "shot": 5,
     "t0": 19.05,
     "dur": 0.6,
@@ -6913,7 +6642,7 @@
    },
    {
     "kind": "hw",
-    "index": 105,
+    "index": 98,
     "shot": 5,
     "t0": 19.1,
     "dur": 0.6,
@@ -6921,7 +6650,7 @@
    },
    {
     "kind": "hw",
-    "index": 106,
+    "index": 99,
     "shot": 4,
     "t0": 15.18,
     "dur": 0.6,
@@ -6929,7 +6658,7 @@
    },
    {
     "kind": "hw",
-    "index": 107,
+    "index": 100,
     "shot": 4,
     "t0": 15.23,
     "dur": 0.6,
@@ -6937,7 +6666,7 @@
    },
    {
     "kind": "hw",
-    "index": 108,
+    "index": 101,
     "shot": 4,
     "t0": 15.28,
     "dur": 0.6,
@@ -6945,7 +6674,7 @@
    },
    {
     "kind": "hw",
-    "index": 109,
+    "index": 102,
     "shot": 4,
     "t0": 15.33,
     "dur": 0.6,
@@ -6953,7 +6682,7 @@
    },
    {
     "kind": "hw",
-    "index": 110,
+    "index": 103,
     "shot": 4,
     "t0": 15.38,
     "dur": 0.6,
@@ -6961,7 +6690,7 @@
    },
    {
     "kind": "hw",
-    "index": 111,
+    "index": 104,
     "shot": 4,
     "t0": 15.43,
     "dur": 0.6,
@@ -6969,7 +6698,7 @@
    },
    {
     "kind": "hw",
-    "index": 112,
+    "index": 105,
     "shot": 4,
     "t0": 15.93,
     "dur": 0.6,
@@ -6977,7 +6706,7 @@
    },
    {
     "kind": "hw",
-    "index": 113,
+    "index": 106,
     "shot": 4,
     "t0": 15.98,
     "dur": 0.6,
@@ -6985,7 +6714,7 @@
    },
    {
     "kind": "hw",
-    "index": 114,
+    "index": 107,
     "shot": 4,
     "t0": 16.03,
     "dur": 0.6,
@@ -6993,7 +6722,7 @@
    },
    {
     "kind": "hw",
-    "index": 115,
+    "index": 108,
     "shot": 4,
     "t0": 16.08,
     "dur": 0.6,
@@ -7001,7 +6730,7 @@
    },
    {
     "kind": "hw",
-    "index": 116,
+    "index": 109,
     "shot": 4,
     "t0": 16.13,
     "dur": 0.6,
@@ -7009,7 +6738,7 @@
    },
    {
     "kind": "hw",
-    "index": 117,
+    "index": 110,
     "shot": 4,
     "t0": 16.18,
     "dur": 0.6,
@@ -7017,7 +6746,7 @@
    },
    {
     "kind": "hw",
-    "index": 118,
+    "index": 111,
     "shot": 13,
     "t0": 49.84,
     "dur": 0.6,
@@ -7025,7 +6754,7 @@
    },
    {
     "kind": "hw",
-    "index": 119,
+    "index": 112,
     "shot": 13,
     "t0": 49.89,
     "dur": 0.6,
@@ -7033,7 +6762,7 @@
    },
    {
     "kind": "hw",
-    "index": 120,
+    "index": 113,
     "shot": 13,
     "t0": 49.94,
     "dur": 0.6,
@@ -7041,7 +6770,7 @@
    },
    {
     "kind": "hw",
-    "index": 121,
+    "index": 114,
     "shot": 13,
     "t0": 49.99,
     "dur": 0.6,
@@ -7049,7 +6778,7 @@
    },
    {
     "kind": "hw",
-    "index": 122,
+    "index": 115,
     "shot": 14,
     "t0": 53.41,
     "dur": 0.6,
@@ -7057,7 +6786,7 @@
    },
    {
     "kind": "hw",
-    "index": 123,
+    "index": 116,
     "shot": 14,
     "t0": 53.46,
     "dur": 0.6,
@@ -7065,7 +6794,7 @@
    },
    {
     "kind": "hw",
-    "index": 124,
+    "index": 117,
     "shot": 14,
     "t0": 53.51,
     "dur": 0.6,
@@ -7073,7 +6802,7 @@
    },
    {
     "kind": "hw",
-    "index": 125,
+    "index": 118,
     "shot": 14,
     "t0": 53.56,
     "dur": 0.6,
@@ -7081,7 +6810,7 @@
    },
    {
     "kind": "hw",
-    "index": 126,
+    "index": 119,
     "shot": 9,
     "t0": 35.56,
     "dur": 0.6,
@@ -7089,7 +6818,7 @@
    },
    {
     "kind": "hw",
-    "index": 127,
+    "index": 120,
     "shot": 9,
     "t0": 35.61,
     "dur": 0.6,
@@ -7097,7 +6826,7 @@
    },
    {
     "kind": "hw",
-    "index": 128,
+    "index": 121,
     "shot": 9,
     "t0": 35.66,
     "dur": 0.6,
@@ -7105,7 +6834,7 @@
    },
    {
     "kind": "hw",
-    "index": 129,
+    "index": 122,
     "shot": 9,
     "t0": 35.71,
     "dur": 0.6,
@@ -7113,7 +6842,7 @@
    },
    {
     "kind": "hw",
-    "index": 130,
+    "index": 123,
     "shot": 9,
     "t0": 35.76,
     "dur": 0.6,
@@ -7121,7 +6850,7 @@
    },
    {
     "kind": "hw",
-    "index": 131,
+    "index": 124,
     "shot": 9,
     "t0": 35.81,
     "dur": 0.6,
@@ -7129,7 +6858,7 @@
    },
    {
     "kind": "hw",
-    "index": 132,
+    "index": 125,
     "shot": 9,
     "t0": 35.86,
     "dur": 0.6,
@@ -7137,7 +6866,7 @@
    },
    {
     "kind": "hw",
-    "index": 133,
+    "index": 126,
     "shot": 9,
     "t0": 35.91,
     "dur": 0.6,
@@ -7145,7 +6874,7 @@
    },
    {
     "kind": "hw",
-    "index": 134,
+    "index": 127,
     "shot": 9,
     "t0": 35.96,
     "dur": 0.6,
@@ -7153,7 +6882,7 @@
    },
    {
     "kind": "hw",
-    "index": 135,
+    "index": 128,
     "shot": 9,
     "t0": 36.01,
     "dur": 0.6,
@@ -7161,7 +6890,7 @@
    },
    {
     "kind": "hw",
-    "index": 136,
+    "index": 129,
     "shot": 14,
     "t0": 53.61,
     "dur": 0.6,
@@ -7169,7 +6898,7 @@
    },
    {
     "kind": "hw",
-    "index": 137,
+    "index": 130,
     "shot": 13,
     "t0": 50.04,
     "dur": 0.6,
@@ -7177,7 +6906,7 @@
    },
    {
     "kind": "hw",
-    "index": 138,
+    "index": 131,
     "shot": 9,
     "t0": 36.11,
     "dur": 0.6,
@@ -7185,7 +6914,7 @@
    },
    {
     "kind": "hw",
-    "index": 139,
+    "index": 132,
     "shot": 9,
     "t0": 36.16,
     "dur": 0.6,
@@ -7193,7 +6922,7 @@
    },
    {
     "kind": "hw",
-    "index": 140,
+    "index": 133,
     "shot": 14,
     "t0": 53.66,
     "dur": 0.6,
@@ -7201,7 +6930,7 @@
    },
    {
     "kind": "hw",
-    "index": 141,
+    "index": 134,
     "shot": 13,
     "t0": 50.09,
     "dur": 0.6,
@@ -7209,7 +6938,7 @@
    },
    {
     "kind": "hw",
-    "index": 142,
+    "index": 135,
     "shot": 9,
     "t0": 36.06,
     "dur": 0.6,
@@ -7217,7 +6946,7 @@
    },
    {
     "kind": "hw",
-    "index": 143,
+    "index": 136,
     "shot": 9,
     "t0": 36.11,
     "dur": 0.6,
@@ -7225,7 +6954,7 @@
    },
    {
     "kind": "hw",
-    "index": 144,
+    "index": 137,
     "shot": 9,
     "t0": 36.16,
     "dur": 0.6,
@@ -7233,7 +6962,7 @@
    },
    {
     "kind": "hw",
-    "index": 145,
+    "index": 138,
     "shot": 9,
     "t0": 36.21,
     "dur": 0.6,
@@ -7241,7 +6970,7 @@
    },
    {
     "kind": "hw",
-    "index": 146,
+    "index": 139,
     "shot": 13,
     "t0": 50.14,
     "dur": 0.6,
@@ -7249,7 +6978,7 @@
    },
    {
     "kind": "hw",
-    "index": 147,
+    "index": 140,
     "shot": 13,
     "t0": 50.19,
     "dur": 0.6,
@@ -7257,7 +6986,7 @@
    },
    {
     "kind": "hw",
-    "index": 148,
+    "index": 141,
     "shot": 13,
     "t0": 50.24,
     "dur": 0.6,
@@ -7265,7 +6994,7 @@
    },
    {
     "kind": "hw",
-    "index": 149,
+    "index": 142,
     "shot": 13,
     "t0": 50.29,
     "dur": 0.6,
@@ -7273,7 +7002,7 @@
    },
    {
     "kind": "hw",
-    "index": 150,
+    "index": 143,
     "shot": 14,
     "t0": 53.71,
     "dur": 0.6,
@@ -7281,7 +7010,7 @@
    },
    {
     "kind": "hw",
-    "index": 151,
+    "index": 144,
     "shot": 14,
     "t0": 53.76,
     "dur": 0.6,
@@ -7289,7 +7018,7 @@
    },
    {
     "kind": "hw",
-    "index": 152,
+    "index": 145,
     "shot": 14,
     "t0": 53.81,
     "dur": 0.6,
@@ -7297,7 +7026,7 @@
    },
    {
     "kind": "hw",
-    "index": 153,
+    "index": 146,
     "shot": 14,
     "t0": 53.86,
     "dur": 0.6,
@@ -7305,7 +7034,7 @@
    },
    {
     "kind": "hw",
-    "index": 154,
+    "index": 147,
     "shot": 15,
     "t0": 58.11,
     "dur": 0.6,
@@ -7313,7 +7042,7 @@
    },
    {
     "kind": "hw",
-    "index": 155,
+    "index": 148,
     "shot": 13,
     "t0": 50.34,
     "dur": 0.6,
@@ -7321,7 +7050,7 @@
    },
    {
     "kind": "hw",
-    "index": 156,
+    "index": 149,
     "shot": 15,
     "t0": 58.16,
     "dur": 0.6,
@@ -7329,7 +7058,7 @@
    },
    {
     "kind": "hw",
-    "index": 157,
+    "index": 150,
     "shot": 13,
     "t0": 50.39,
     "dur": 0.6,
@@ -7337,7 +7066,7 @@
    },
    {
     "kind": "hw",
-    "index": 158,
+    "index": 151,
     "shot": 15,
     "t0": 58.21,
     "dur": 0.6,
@@ -7345,7 +7074,7 @@
    },
    {
     "kind": "hw",
-    "index": 159,
+    "index": 152,
     "shot": 13,
     "t0": 50.44,
     "dur": 0.6,
@@ -7353,7 +7082,7 @@
    },
    {
     "kind": "hw",
-    "index": 160,
+    "index": 153,
     "shot": 15,
     "t0": 58.26,
     "dur": 0.6,
@@ -7361,7 +7090,7 @@
    },
    {
     "kind": "hw",
-    "index": 161,
+    "index": 154,
     "shot": 13,
     "t0": 50.49,
     "dur": 0.6,
@@ -7369,7 +7098,7 @@
    },
    {
     "kind": "hw",
-    "index": 162,
+    "index": 155,
     "shot": 14,
     "t0": 53.96,
     "dur": 0.6,
@@ -7377,7 +7106,7 @@
    },
    {
     "kind": "hw",
-    "index": 163,
+    "index": 156,
     "shot": 14,
     "t0": 54.01,
     "dur": 0.6,
@@ -7385,7 +7114,7 @@
    },
    {
     "kind": "hw",
-    "index": 164,
+    "index": 157,
     "shot": 14,
     "t0": 54.06,
     "dur": 0.6,
@@ -7393,7 +7122,7 @@
    },
    {
     "kind": "hw",
-    "index": 165,
+    "index": 158,
     "shot": 14,
     "t0": 54.11,
     "dur": 0.6,
@@ -7401,7 +7130,7 @@
    },
    {
     "kind": "hw",
-    "index": 166,
+    "index": 159,
     "shot": 14,
     "t0": 54.51,
     "dur": 0.6,
@@ -7409,7 +7138,7 @@
    },
    {
     "kind": "hw",
-    "index": 167,
+    "index": 160,
     "shot": 14,
     "t0": 54.56,
     "dur": 0.6,
@@ -7417,7 +7146,7 @@
    },
    {
     "kind": "hw",
-    "index": 168,
+    "index": 161,
     "shot": 14,
     "t0": 54.61,
     "dur": 0.6,
@@ -7425,7 +7154,7 @@
    },
    {
     "kind": "hw",
-    "index": 169,
+    "index": 162,
     "shot": 14,
     "t0": 54.66,
     "dur": 0.6,
@@ -7602,7 +7331,7 @@
     "sweep": 40
    },
    {
-    "label": "Left shoulder: encoder cap and window",
+    "label": "Left shoulder: axis cover and window",
     "t0": 45.37,
     "t1": 48.94,
     "center": [
